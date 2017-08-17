@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "module": "commonjs",
+    "lib":["es2015","dom"],
+    "target": "es5",
+    "jsx": "react",
+    "baseUrl":"./node_modules",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true
+    /*
+    "target": "ES5",
+    "lib": ["es2015", "dom"],
+    "module": "commonjs",
+    "emitDecoratorMetadata": true,
+
+    "sourceMap": true,    "experimentalDecorators": true,
+    "noEmitOnError": true,
+    "outDir": "temp",
+    "baseUrl": "./node_modules"
+    */
+  },
+  "include": [
+    "demo/**/*.ts"
+  ],
+  "compileOnSave": false
+}
