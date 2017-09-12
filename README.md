@@ -22,8 +22,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     ]
 })
 ```
-4.include ng-ztw.css:
----
+4. include ng-ztw.css:
+
  path in  `ng-ztw/ng-ztw.min.css`;
 
 Component List:
