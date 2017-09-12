@@ -1,5 +1,5 @@
 ng-ztw  angular
-### you include sass in the demo folder, or await for me update tommorrow!!
+### you should include sass in the demo folder, or await for me update tommorrow!!
 
 Install
 ---
