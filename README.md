@@ -1,5 +1,4 @@
 ng-ztw  angular
-### you should include sass in the demo folder, or await for me update tommorrow!!
 
 Install
 ---
@@ -22,8 +21,11 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     BrowerAnimationsModule
     ]
 })
-
 ```
+4.include ng-ztw.css:
+---
+ path in  `ng-ztw/ng-ztw.min.css`;
+
 Component List:
 ---
 
