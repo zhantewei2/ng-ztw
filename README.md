@@ -23,6 +23,37 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 })
 
 ```
+Component List:
+---
+
+- collapse
+- nav-side
+- modal
+- tooltip
+- carousel
+- min-modal
+- footer-notice
+- scroll
+- tab
+- slider
+- menu
+- pagination
+- progree-bar
+
+Direction List:
+---
+- col-show
+- sticky
+- clickCopy
+- highlight
+- ForIn
+- handEvent
+- handMove
+
+Pipes:
+---
+- time
+- limitStr
 
 
 
