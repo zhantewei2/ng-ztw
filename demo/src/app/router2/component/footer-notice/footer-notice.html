@@ -1,0 +1,19 @@
+<my-template title0="footer-notice" main="<ngz-footer-notice>" [lib]="lib">
+    <div class="example m-2 center-column">
+        <ngz-footer-notice [(ngModel)]="footerValue" [type]="footerType"></ngz-footer-notice>
+        <h3>string</h3>
+        <div class="my-1 btn-group flex-fluid">
+            <button *ngFor="let i of main.allColors" class="btn btn-{{i}}" (click)="showFooter(i)">show footer</button>
+        </div>
+        <h3>Template</h3>
+        <button class="btn btn-p" (click)="footerValue=tp">show footer</button>
+        <ng-template #tp>
+            This is a Template!
+            <hr>
+            Footer will be closed after 2 seconds
+        </ng-template>
+    </div>
+    <div class="API">
+        <my-api [lib]="lib.api"></my-api>
+    </div>
+</my-template>

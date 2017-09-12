@@ -1,0 +1,18 @@
+%abs-center{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+}
+.focus-effect {
+  position:relative;
+  overflow:hidden;
+  &:focus::before{
+    @extend %abs-center;
+    content: '';
+    display: block;
+    border-radius: 50%;
+    background: rgba($effectColor, 0.2);
+    @include animateOnce(BtnActive, 1s);
+  }
+}

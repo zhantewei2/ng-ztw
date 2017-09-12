@@ -1,0 +1,17 @@
+%row{
+  display:flex;
+  width:100%;
+  flex-wrap:nowrap;
+}
+@mixin screen($select){
+  $pre:max;
+  @if $select==lg{
+    $pre:min;
+  }
+  @media (#{$pre}-width:map-get($screen,$select)){
+    @content;
+  }
+}
+@mixin get-col($num){
+  width:100%/12*$num;
+}

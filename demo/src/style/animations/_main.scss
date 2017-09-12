@@ -1,0 +1,17 @@
+
+@mixin an_transition($name){
+  animation:$name $animate-timer;
+}
+@keyframes an_Show {
+  from{opacity:0}
+  to{opacity:1}
+}
+.an_show{
+  @include an_transition(an_Show);
+  @include transition();
+}
+.fadeOut{
+  @include transition();
+  opacity:0
+}
+

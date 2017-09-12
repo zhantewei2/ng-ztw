@@ -1,0 +1,6 @@
+
+@each $abbre,$color in $theme-colors2{
+  .hazy-#{$abbre}{
+    @include lamplight-bg($color);
+  }
+}

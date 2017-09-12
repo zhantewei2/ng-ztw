@@ -1,0 +1,30 @@
+.hid{
+  visibility:hidden;
+  top:0;
+  left:0;
+}
+.hidNode{
+  position:absolute;
+  opacity:0;
+  top:0;
+  left:0;
+}
+.animateNode{
+  @include transition()
+}
+.moveNode{
+  position:absolute;
+  left:0;
+  top:0;
+  display:inline-block;
+}
+.noSelect{
+  @include prefix(user-select,none);
+}
+.rotate45{
+  display:inline-block;
+  transform:rotate(90deg);
+}
+.article{
+  text-indent:$article-indent;
+}

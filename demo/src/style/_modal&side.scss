@@ -1,0 +1,55 @@
+.fix-bg{
+  @include fix-block(100%,100%);
+  z-index:map-get($indexes,fixBg);
+  background:$fix-bg-color;
+}
+.nav-side-c{
+  @include fix-block($nav-side-width,100%);
+  @include bottom-left-shd($nav-side-shd-color);
+  background:$nav-side-bg-color;
+  z-index:map-get($indexes,navSide);
+}
+.modal-bg{
+  @include fix-block(100%,100%);
+  z-index:map-get($indexes,modal);
+  background:$fix-bg-color;
+ }
+ .modal{
+   @include fix-child();
+   background:white;
+   overflow:hidden;
+   @extend .column;
+   position:relative;
+   @include radius();
+   @include bottom-left-shd($effectColor,nth($modal-shd,1),nth($modal-shd,2));
+
+ }
+ .modal-divide{
+   @extend hr;
+ }
+ .modal-header{
+   padding:$base-space;
+   height:$modal-header-height;
+ }
+ .modal-content{
+   flex:1;
+   padding:$base-space;
+ }
+ .modal-footer{
+   text-align:end;
+   padding:$base-space 0;
+ }
+ .modal-lg{
+   width:$modal-lg-width;
+  @include screen(md){
+    width:$modal-lgMd-width;
+  }
+ }
+ .min-modal{
+   @include shadow-out($default-color,40px);
+   background:$slightBg-Color;
+   font-weight:bold;
+   border:1px solid $light-color;
+   min-width:$min-modal-min-width;
+   text-align:center;
+ }

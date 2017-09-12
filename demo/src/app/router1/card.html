@@ -1,0 +1,16 @@
+<div class="p-2">
+    <h4>Card</h4>
+    <div style="width:300px;" class="card" *ngFor="let i of cardArr">
+        <img class="card-img" [src]="i">
+        <div class="card-header">
+            card-header
+        </div>
+        <div class="card-content">
+            Taylor Swift,  card-content
+        </div>
+        <div class='card-footer between'>
+            <button class="btn btn-sm btn-l">cancel</button>
+            <button class="btn btn-sm btn-d">entry</button>
+        </div>
+    </div>
+</div>

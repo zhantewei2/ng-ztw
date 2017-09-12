@@ -1,0 +1,38 @@
+%slider{
+  display:block;
+  position:relative;
+  outline:none;
+  cursor:pointer;
+  @extend .center;
+}
+.slider{
+  @extend %slider;
+  height:$slider-thumb-length;
+}
+.slider-vertical{
+  @extend %slider;
+  height:100%;
+  width:$slider-thumb-length;
+}
+.slider-line{
+  height:1px;
+  background:$default-color;
+  width:100%;
+}
+.slider-line-vertical{
+  width:1px;
+  background:$default-color;
+  height:100%;
+}
+.slider-thumb{
+  display:block;
+  visibility:hidden;
+  background:$p;
+  border-radius:50%;
+  @include transition('transform 0.3s ease');
+  width:$slider-thumb-length;
+  height:$slider-thumb-length;
+  &:hover{
+    transform:scale(1.2,1.2);
+  }
+}

@@ -1,0 +1,23 @@
+@mixin flex($alignItem:null,$content:null,$flow:null){
+  display:flex !important;
+  @if $alignItem{align-items:$alignItem !important}
+  @if $content{justify-content:$content !important}
+  @if $flow{flex-flow:$flow !important }
+  @else{flex-wrap:wrap}
+}
+@mixin wrapFlex(){
+  display:flex;
+  flex-wrap:wrap;
+}
+.abs{
+  position:absolute !important;
+}
+@mixin absPos($pos1,$pos2,$space:$abs-distance){
+  @extend .abs;
+  #{$pos1}:$space;
+  #{$pos2}:$space;
+}
+@mixin abs-horzontal-center(){
+  left:50%;
+  transform:translateX(-50%);
+}

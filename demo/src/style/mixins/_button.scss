@@ -1,0 +1,69 @@
+@mixin base-btn(){
+  outline:none;
+  border:none;
+  white-space:nowrap;
+  text-align:center;
+}
+%button{
+  @include base-btn();
+  @include radius($glob-radius);
+  @include transition($btn-transition);
+  &:hover{
+    cursor:pointer;
+  }
+}
+@mixin size-btnFont($size:$btn-size){
+  font-size:filterFontSize($size*.85)+0rem ;
+}
+@mixin size-btn($size:$btn-size,$px:null){
+  @if(not $px){
+    $px:$size
+  }
+  padding:btn-py($size) btn-px($px);
+  @include size-btnFont($size);
+}
+
+
+@mixin btn-variant($bgColor,$borderColor,$isOutline:null){
+  @if($isOutline){
+    $border-color:yiq($bgColor,$deep-default-color,$bgColor);
+    background-color:transparent;
+    color:$border-color;
+    $light:lighten($bgColor,10%);
+    border:1px solid sub-color($borderColor);
+    &:hover,&.focus,&.active{
+      @include hover-darken($bgColor);
+      @include shadow-out($light,.5rem);
+      color:$light-color;
+      border-color:$light-color;
+    }
+    &:active{
+      @include shadow-out($light,1rem);
+    }
+    &:disabled{
+      background-color:transparent !important;
+      color:disabled-color($border-color) !important;
+      border-color:disabled-color($borderColor,70%) !important;
+    }
+  }
+  @else{
+    background-color:$bgColor;
+    @include color-yiq($bgColor);
+    border:1px solid $borderColor;
+    &:hover{
+      @include hover-darken($bgColor);
+    }
+    &:focus{
+      @include shadow1($bgColor)
+    }
+    &:active,&.active{
+      @include hover-darken($bgColor,15%)
+    }
+    &:disabled{
+      border-color:disabled-color($borderColor) !important;
+      background-color:disabled-color($bgColor) !important;
+    }
+  }
+
+}
+

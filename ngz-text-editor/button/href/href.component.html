@@ -1,0 +1,15 @@
+
+<i class="fa fa-link"></i>
+<ng-template #tp>
+
+  <div class="center column">
+    <div class="input-group" style="width:250px;">
+      <label><i class="fa fa-link"></i></label>
+      <input placeholder="请先选中文本" [disabled]="inputDisabled" id="ztw-text-editor-href-input" class="form-c" [(ngModel)]="hrefText" name="input"/>
+    </div>
+  <p class="between">
+      <button [disabled]="inputDisabled" class="btn0 btn-o-l btn-sm mr-2" (click)="confirm()">确定</button>
+      <button class="btn0 btn-o-l btn-sm" (click)="cancel()">取消</button>
+  </p>
+  </div>
+</ng-template>

@@ -1,0 +1,3 @@
+@mixin border-color($dr,$color,$width:$border-color-width){
+  border-#{$dr}:$width solid rgba($color,0.2);
+}

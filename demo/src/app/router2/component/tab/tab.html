@@ -1,0 +1,36 @@
+<h2>tab</h2>
+<item-card myTitle="Example">
+    <div class="center column">
+        点改变主题
+        <div class="btn-group m-1">
+            <button *ngFor="let color of main.allColors" (click)="tabType=color" class="btn btn-{{color}}">{{color}}</button>
+        </div>
+        <p class="btn-group m-1">
+            <button [class.active]="selectItem==index" (click)="ngzTab.open(index);" class="btn0 btn-o-p" *ngFor="let i of selectList;index as index">{{i}}</button>
+        </p>
+    </div>
+    <div >
+        <ngz-tab class="card-block" [defaultIndex]="selectItem" (select)="selectItem=$event" #ngzTab [type]="tabType">
+            <button ngz-tabBtn>TAB1</button>
+            <button ngz-tabBtn>TAB2</button>
+            <button ngz-tabBtn>TAB3</button>
+            <div *ngz-tabContent>
+                content1
+            </div>
+            <div *ngz-tabContent>
+                content2
+            </div>
+            <div *ngz-tabContent>
+                content3
+            </div>
+        </ngz-tab>
+    </div>
+</item-card>
+<item-card myTitle="HTML">
+<my-code [html]="lib.code1"></my-code>
+</item-card>
+<item-card myTitle="API">
+    <div>ngz-tab将会从0开始给每个tab自动编号</div>
+    <my-api [lib]="lib.apiLib">
+    </my-api>
+</item-card>

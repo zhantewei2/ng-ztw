@@ -1,0 +1,24 @@
+<h2>ztw-indexeddb</h2>
+<p>Install:</p>
+<div class="quote-w">
+    <p>npm install ztw-indexeddb --save</p>
+</div>
+<p>Example:</p>
+<my-code [js]="lib.code1"></my-code>
+<h5>简介</h5>
+<div class="quote article sm">
+    这是一个有些类似mongodb语法的indexeddb库。
+    <br>
+    而相比原本的indexeddb。你只用考虑一个<b>publishVersion</b>,不需要考虑<b>indexedDB</b>的本地version。
+    <br>
+    所有本地<b>indexedDB</b>的版本都由<b>publishVersion</b>来管理。
+    <br>
+    一旦<b>publishVersion</b>变更，前版本的本地indexedDB，在获取更新时，会被重新清理。
+    <br>
+    因为本地版本是动态生成的，所以你不必在app初始化时，就创建所有的collection。一旦你的collection比较多时，这可能有些费时。
+    <var>ztw-indexeddb</var>根据用户触发来创建或使用collection，并且只需要简单地使用db.use就可以了。
+</div>
+<item-card myTitle="api">
+    <my-api [lib]="lib.api">
+    </my-api>
+</item-card>

@@ -1,0 +1,8 @@
+@mixin attrAfter($attrName:data-foo,$font-size:null,$color:null){
+  &::after{
+    content:attr(#{$attrName});
+    @if $font-size {font-size:$font-size};
+    font-weight:bold;
+    @if $color {color:$color}
+  }
+}

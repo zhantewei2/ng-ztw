@@ -1,0 +1,15 @@
+@mixin abs-center($left:50%,$top:50%,$index:map-get($indexes,fixCenter)){
+  display:block;
+  left:$left;
+  top:$top;
+  transform:translate(-$left,-$top);
+}
+@mixin abs-mid($left:50%){
+  display:block;
+  left:$left;
+  transform:translateX(-$left);
+}
+@mixin get-fix($name:normal){
+  position:fixed;
+  z-index:map-get($indexes,$name);
+}

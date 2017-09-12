@@ -1,0 +1,44 @@
+.card{
+  background:$light-color;
+  color:$effectColor;
+  display:inline-flex;
+  flex-direction:column;
+  border:1px solid $default-color;
+  margin:$base-space;
+  @include shadow-out()
+}
+.card-block{
+  @extend .card;
+  @include radius();
+  display:block;
+  padding:$base-space*2;
+}
+.card-img{
+ width:100%;
+}
+.container-card{
+  @include radius();
+  margin:$base-space/2;
+  border:1px solid $default-color;
+  background:$slightBg-Color;
+  @include slight-shadow();
+}
+%card-container{
+  word-break:break-all;
+  padding:$base-space;
+  display:block;
+}
+.card-header{
+  @extend %card-container;
+  font-size:$head-font-size;
+  @include headerFont();
+}
+.card-content{
+  @extend %card-container;
+  text-indent:1rem;
+  @include contentFont();
+}
+.card-footer{
+  @extend %card-container;
+  font-size:0.8rem;
+}

@@ -1,0 +1,19 @@
+.sm0{
+  font-size:$sm-font0;
+}
+.sm{
+  @include smFont();
+}
+.lg{
+  @include lgFont();
+}
+.ngz-header{
+  @extend .noSelect;
+  font-size:1rem !important;
+  @include sassFont();
+  color:$deep-default-color;
+
+}
+.bold{
+  font-weight:bold;
+}

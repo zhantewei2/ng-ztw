@@ -1,0 +1,20 @@
+$text-editor:(
+        'container-height':20rem,
+        'container-padding':.5rem,
+        'modal-top':.5rem,
+        'modal-bg':$light-color,
+        'db-padding':.2rem,
+        'db-minWidth-right':1rem,
+        'db-minWidth-left':1.5rem,
+        'fontColor-w':1.6rem,
+        'fontColor-margin':2px,
+        'fontColor-radius':$glob-radius,
+        'upload-w':15rem,
+        'upload-h':10rem,
+        'upload-radius':.5rem,
+        'img-nav-width':15rem
+);
+
+@function editor($key){
+  @return map-get($text-editor,$key);
+}

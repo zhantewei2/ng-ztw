@@ -1,0 +1,51 @@
+
+@mixin get-menu($direction,$space:null){
+  @if ($space){
+    #{$direction}:-$space;
+  }
+  @if($direction==top){
+    left:50%;
+    transform:translate(-50%,-100%);
+  }
+  @else if($direction==right){
+    top:50%;
+    transform:translate(100%,-50%)
+  }
+  @else if($direction==bottom){
+    left:50%;
+    transform:translate(-50%,100%);
+  }
+  @else if($direction=left){
+    top:50%;
+    transform: translate(-100%,-50%);
+  }
+}
+
+%dropdown-container{
+  @include base-block();
+  list-style-type:none;
+  z-index:map-get($indexes,menu);
+}
+@mixin dropdown-size(){
+  min-width:$dropdown-min-width;
+  min-height:$dropdown-min-height;
+  background:$light-color;
+}
+@mixin menu-shd($dr,$color:$deep-default-color){
+  $color:getShdColor($color);
+  $str:null;
+  $len:3px;
+  $short:1px;
+  @if($dr==top){
+    $str:$short+' '+-$len;
+  }@else if($dr==bottom){
+    $str:$short $len;
+  }@else if($dr==left){
+    $str:-$len $short;
+  }@else if($dr==right){
+    $str:$len $short;
+  }
+  box-shadow:unquote($str+' 10px '+$color);
+}
+
+

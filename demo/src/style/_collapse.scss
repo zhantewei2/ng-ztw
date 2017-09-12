@@ -1,0 +1,36 @@
+.collapse-btn{
+  display:flex !important;
+  justify-content:space-between;
+  border-radius:0 !important;
+  font-weight: bold;
+  &::after{
+    content:map-get($directions,right);
+    font-size:$sm-font;
+    @include iconShd($light-color);
+    @include transition();
+  }
+  &.active::after{
+    color:$light-color;
+    transform:rotate(90deg);
+    @include iconShd($light-color,null);
+  }
+}
+.collapse-null-btn{
+  font-size:$head-font-size;
+  text-align:left;
+  color:$deep-default-color;
+}
+.collapse-list{
+  border-color:$p;
+  &.active,&:active{
+    color:$p;
+  }
+  &:hover{
+    border-left:$collapse-list-width solid $p;
+  }
+}
+@each $abbrev,$value in $theme-colors{
+  ._clp-btn-#{$abbrev}::after{
+    color:sub-color($value);
+  }
+}

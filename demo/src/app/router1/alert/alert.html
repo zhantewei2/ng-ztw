@@ -1,0 +1,23 @@
+<h2>Alert</h2>
+<item-card myTitle="Alert">
+    <span *ngFor="let color of main.allColors2" class="my-2 alert-{{color}}" >
+    This class is <em class="b-{{color}}">alert-{{color}}</em>
+    </span>
+    <my-code [html]="lib.code1"></my-code>
+</item-card>
+<item-card myTitle="Alert with hazy">
+    <span *ngFor="let color of main.allColors2" class="my-2 alert-{{color}} hazy-{{color}}">
+        This class is
+        <b>alert-{{color}}</b>
+        <b>hazy-{{color}}</b>
+     </span>
+    <my-code [html]="lib.code2"></my-code>
+</item-card>
+
+<item-card myTitle="Alert Close">
+<span class="alert-d">
+    Alert close
+    <span class="close">&times;</span>
+</span>
+    <my-code [html]="lib.code3"></my-code>
+</item-card>

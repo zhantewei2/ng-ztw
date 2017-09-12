@@ -1,0 +1,7 @@
+@mixin table-stripe(){
+  &.table-stripe{
+    &>:not(thead) tr:nth-child(odd) {
+      @content;
+    }
+  }
+}

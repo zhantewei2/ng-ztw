@@ -1,0 +1,37 @@
+*{
+  box-sizing:border-box;
+}
+html{
+  font-size:$base-fontSize;
+
+}
+body{
+
+  position:relative;
+  overflow-x:hidden;
+  font-family:$glob-font;
+}
+.show{
+  visibility:visible !important;
+}
+.close{
+  cursor:pointer;
+  float:right;
+  line-height:70%;
+  margin:0 $base-space;
+  font-size:$close-size;
+  font-weight: bold;
+  @include transition(all .1s ease-in);
+  @include fontHover($close-size);
+}
+hr{
+  @include hrStyle();
+}
+i{
+  margin:0 $icon-tag-margin;
+}
+.inverse{
+  background:lighten($effectColor,$inverse-percent) !important;
+  color:$light-color !important;
+  border-color:darken($light-color,$inverse-percent) !important;
+}

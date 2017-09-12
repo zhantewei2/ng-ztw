@@ -1,0 +1,46 @@
+%base-font-family{
+  font-family: $light-family;
+}
+@mixin set-base($color,$family:null){
+  color:$color;
+  @if($family){
+    font-family:$family;
+  }
+  @else{
+    @extend %base-font-family;
+  }
+}
+
+.zl-tag{
+  @include set-base(indianred);
+}
+//tag-attribute
+.zl-tAttr{
+  @include set-base(blue);
+}
+//tag-attribute-value
+.zl-tVal{
+  @include set-base(purple);
+}
+
+.zl-fn{
+  @include set-base(red);
+}
+.zl-var{
+  color:green;
+  padding:0 3px 0 0;
+}
+//js-property:
+.zl-pt{
+  @include set-base(deepskyblue);
+}
+//js-special
+.zl-sp{
+  @include set-base(purple)
+}
+//js-comments:
+.zl-cmt{
+  @include set-base(gray,$comment-family);
+  font-size:.6rem;
+  font-style:italic;
+}

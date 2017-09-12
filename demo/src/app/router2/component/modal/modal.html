@@ -1,0 +1,49 @@
+<my-template [lib]="lib" title0="modal" main="<ngz-modal>">
+    <table class="example m-4 full">
+        <ngz-modal #modal [content]="content" ></ngz-modal>
+            <tr >
+                <td>btn:'double' lg:true type:'d'</td>
+                <td>
+                     <button (click)="content=_content1;modal.open()" class="btn0 btn-o-d">Lg Modal</button>
+                    {{result1}}
+                </td>
+            </tr>
+            <tr>
+                <td>type:'s'</td>
+                <td>
+                <button (click)="content={content:'Example',type:'s'};modal.open()" class="btn0 btn-o-s">s Modal</button>
+                </td>
+            </tr>
+            <tr>
+                <td>pure</td>
+                <td>
+                <button (click)="content={content:'Example'};modal.open()" class="btn btn-l">pure Modal</button>
+                </td>
+            </tr>
+            <tr>
+                <td>content:Template</td>
+                <td>
+                    <button (click)="content={content:tp1,type:'p',title:'innert Template',btn:null};modal.open()"  class="btn btn-p">Template Modal</button>
+                </td>
+            </tr>
+            <ng-template #tp1>
+                <p>
+                    <b class="color-p">account</b>
+                    <input class="form-c" placeholder="Input Name"/>
+                </p>
+                <p>
+                    <b class="color-p">password</b>
+                    <input class="form-c" placeholder="password"/>
+                </p>
+                <p >
+                    <button (click)="modal.close()" class="btn btn-p mx-2">LOGIN</button>
+                    <button (click)="modal.close()" class="btn btn-p">CANCEL</button>
+                </p>
+            </ng-template>
+    </table>
+    <div class="example-footer">
+        <div class="quote-w">
+            建议只在app.component中放入ngz-modal，其他组件通过service来访问它
+        </div>
+    </div>
+</my-template>

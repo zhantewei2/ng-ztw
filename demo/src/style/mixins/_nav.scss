@@ -1,0 +1,22 @@
+@mixin _nav-space($x,$index,$h:$nav-height,$px:$nav-x-space){
+  padding:0 $px*$x;
+  height:$h*$x;
+  & .nav-item,& .nav-brand{
+    padding:0 nth($nav-item-px,$index);
+    margin-right:nth($nav-item-ml,$index);
+  }
+}
+
+@mixin get-nav($size:null){
+  display:flex;
+  @if ($size==lg){
+    @include _nav-space(1.5,3);
+  }
+  @else if ($size==sm){
+    @include _nav-space(0.6,2);
+  }
+  @else{
+    @include _nav-space(1,1);
+  }
+}
+

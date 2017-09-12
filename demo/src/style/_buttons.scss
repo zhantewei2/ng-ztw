@@ -1,0 +1,31 @@
+.btn0{
+  @extend %button;
+  @include size-btn($btn-size);
+  &:disabled{
+    cursor:not-allowed !important;
+    box-shadow:none !important;
+  }
+}
+.btn{
+  @extend .btn0;
+  @extend .focus-effect;
+}
+.btn-none{
+  @extend .btn0;
+  background:transparent;
+}
+
+@each $abbrev,$color in $theme-colors{
+  .btn-#{$abbrev}{
+    @include btn-variant($color,$color);
+  }
+  .btn-o-#{$abbrev}{
+    @include btn-variant($color,$color,true);
+  }
+}
+.btn-left{
+  @include radius($glob-radius,right);
+}
+.btn-right{
+  @include radius($glob-radius,left);
+}

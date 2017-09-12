@@ -1,0 +1,33 @@
+.table-inverse{
+  @extend .inverse;
+  & tr{
+    border-color:$deep-default-color !important;
+  }
+  @include table-stripe(){
+    background-color:lighten($effectColor,25%) !important;
+  }
+}
+
+.table{
+  width:100%;
+  border-spacing:0;
+  border-collapse:collapse;
+
+  & tr{
+    border-top:1px solid $table-color;
+    line-height:$table-td-line-h;
+  }
+  & thead tr{
+    border-bottom:2px solid $table-color;
+  }
+  & td,& th{
+    text-align:left;
+    padding:$table-td-padding;
+  }
+  & th{
+    @include headerFont();
+  }
+  @include table-stripe(){
+    background:$table-color;
+  }
+}

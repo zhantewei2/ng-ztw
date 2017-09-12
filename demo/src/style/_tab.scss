@@ -1,0 +1,62 @@
+
+.strip-bar{
+  z-index:map-get($indexes,normal);
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:100%;
+  height:$tab-strip-height;
+  @include transition();
+}
+.tab-group{
+  .tab-btn-group{
+    display:flex;
+    overflow: hidden;
+    max-width:$tab-nav-maxWidth;
+  }
+  & .tab-btn{
+    @include base-btn();
+    @include transition();
+    font-size:$btn-size+rem;
+    background:transparent;
+    flex:1;
+    position:relative;
+    padding: $tab-padding 0;
+  }
+}
+
+.tab-btn-group-sm{
+  & .tab-btn{
+    padding:$tab-padding/2 $tab-padding !important;
+    @include size-btnFont(map-get($btn-size-map,sm));
+  }
+}
+@each $abbrev,$val in $tab-nav-min-maxWidth{
+  .tab-btn-group-sm-#{$abbrev}{
+    @extend .tab-btn-group-sm;
+    max-width:$val !important;
+  }
+}
+.bottomLine{
+  border-bottom:1px solid $default-color;
+}
+.tab-container{
+  overflow:hidden;
+  height:100%;
+  min-height:$tab-content-minh;
+  margin-top:$tab-content-marginTop;
+}
+
+@each $abbrev,$color in $theme-colors{
+  @if $color==$l{
+    $color:$default-color;
+  }
+  .tab-group-#{$abbrev}{
+    & .strip-bar{
+      background-color:$color;
+    }
+    & .tab-btn{
+      @include emptyBg-hover-focus($color);
+    }
+  }
+}

@@ -1,0 +1,64 @@
+.full{
+  width:100%;
+  height:100%;
+}
+.rel{
+  position:relative;
+}
+@supports(position:sticky){
+  .sticky{
+    position:sticky;
+    position:-webkit-sticky;
+  }
+  .fix-top{
+    position:sticky;
+    top:0;
+    z-index:map-get($indexes,fixTop);
+  }
+
+}
+
+$absList:(tr,top,right),(tl,top,left),(br,bottom,right),(bl,bottom,left);
+
+@each $key,$val1,$val2 in $absList{
+  .abs-#{$key}{
+    @include absPos($val1,$val2);
+  }
+  .abs-#{$key}-0{
+    @include absPos($val1,$val2,0);
+  }
+}
+.abs-center{
+  @include abs-center();
+}
+.fix-center{
+  @include get-fix(fixCenter);
+  @extend .abs-center;
+}
+.abs-mid{
+  @include abs-mid();
+}
+.fix-bottom{
+  @include get-fix(fixBottom);
+  @extend .abs-mid;
+  bottom:0;
+}
+
+
+.auto{
+  overflow:auto;
+}
+.block{
+  display:block;
+}
+.inline-d{
+  position:relative;
+  display:inline-block;
+}
+//text:
+.text-center{
+  text-align:center;
+}
+.text-left{
+  text-align:left;
+}

@@ -1,0 +1,34 @@
+@mixin get-angle($pos,$size:$tooltip-angle-size,$color:$effectColor){
+  $space:#{$size*2};
+    position:absolute;
+    display:block;
+    border:$size solid transparent;
+    color:$color;
+    border-#{$pos}-color:inherit;
+    @if($pos==top){
+      bottom:-$space;
+      left:50%;
+      margin-left:-$size;
+    }
+    @else if ($pos==bottom){
+      top:-$space;
+      left:50%;
+      margin-left:-$size;
+    }
+    @else if ($pos==left){
+      right:-$space;
+      top:50%;
+      margin-top:-$size;
+    }
+    @else if ($pos==right){
+      left:-$space;
+      top:50%;
+      margin-top:-$size;
+    }
+}
+%tip-base{
+  background:$effectColor;
+  color:$light-color;
+  text-align:center;
+}
+

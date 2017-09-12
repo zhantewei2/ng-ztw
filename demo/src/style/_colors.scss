@@ -1,0 +1,18 @@
+@each $abbrev,$color in $theme-colors2{
+  .bg-#{$abbrev}{
+    background-color:$color;
+    @include color-yiq($color);
+  };
+  .color-#{$abbrev}{color:$color};
+  .border-#{$abbrev}{border-color:$color};
+  .-hover-#{$abbrev}{
+    @include emptyBg-hover-focus($color:$color,$p1:.3,$p2:.6);
+  }
+}
+.color-wt{color:white};
+
+.-hover{
+  &:hover{
+    @include hover-darken($l,1%);
+  }
+}

@@ -1,0 +1,18 @@
+@mixin get-alert(){
+  @include radius();
+  display:block;
+  padding:$alert-padding;
+  margin:$alert-margin;
+  position:relative;
+  border:1px solid transparent;
+}
+@mixin alert-variant($color){
+  $bgPercent:25%;
+  $subColor:sub-color-deep($color);
+  background-color:lighten($color,$bgPercent);
+  color:$subColor;
+  border-color:$color;
+  & hr{
+    background:gray-color($color)
+  }
+}

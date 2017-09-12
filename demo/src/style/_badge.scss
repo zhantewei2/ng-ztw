@@ -1,0 +1,14 @@
+%badge{
+  @include base-badge();
+}
+
+@each $abbrev,$color in $theme-colors{
+  .b-#{$abbrev}{
+    @extend %badge;
+    @include color-yiq($color);
+    background-color:$color;
+  }
+}
+.b-pill{
+  @include badge-pill()
+}

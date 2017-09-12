@@ -1,0 +1,24 @@
+<h2>ngz-text-editor</h2>
+<item-card myTitle="Example">
+    <div>
+        <ngz-text-editor #textEditor style="min-height:400px;"></ngz-text-editor>
+    </div>
+    <div class="px-2 my-1">
+        <button class="btn btn-l" (click)="result=textEditor.getHTML() ; disResult=false">Submit</button>
+        <button class="btn btn-l mx-1" (click)="textEditor.clearTxt1() ; disResult=true">Clear</button>
+    </div>
+    <div class="card block" *ngIf="result&&!disResult">
+        <header class="modal-header bg-w">
+            获取内容：
+            <span class="close" (click)="disResult=true">&times;</span>
+        </header>
+        <article class="card-content" [innerHTML]="result"></article>
+    </div>
+    <div class="mt-2">
+        <p><b>code:</b></p>
+         <my-code [html]="lib.code1"></my-code>
+    </div>
+</item-card>
+<item-card myTitle="API">
+    <my-code [html]=""></my-code>
+</item-card>

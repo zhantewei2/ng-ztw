@@ -1,0 +1,24 @@
+@mixin radius($radius:$glob-radius,$dr:all){
+
+  @if($dr==all){
+    border-radius:$radius;
+  }
+  @else if($dr==left){
+    border-radius:$radius 0 0 $radius;
+  }
+  @else if($dr==top){
+    border-radius:$radius $radius 0 0;
+  }
+  @else if ($dr==right){
+    border-radius:0 $radius $radius 0;
+  }
+  @else if ($dr==bottom){
+    border-radius:0 0 $radius $radius;
+  }
+  @else if ($dr==tl){
+    border-radius:$radius 0 0 0;
+  }
+  @else if ($dr==tr){
+    border-radius:0 $radius 0 0;
+  }
+}

@@ -1,0 +1,33 @@
+<header class="header">
+    <samp class="quote-sign-w">
+        <i class="fa fa-bookmark"></i>
+        dropdown-menu
+    </samp>
+</header>
+<div *ngFor="let i of btnArr">
+    <div (click)="$event.stopPropagation()" class="m-2" [ngClass]="i.dr=='bottom'?'dropdown':'dropdown-'+i.dr">
+        <button (click)="show(menu,i)"  class="btn btn-p dropdown-btn">
+            {{i.dr}}
+        </button>
+        <div #menu class="dropdown-menu">
+            dropdown-menu {{i.value}}
+        </div>
+    </div>
+</div>
+<hr>
+<div style="height:400px;">
+<header class="header">
+    <samp class="quote-sign-w">
+        <i class="fa fa-bookmark"></i>
+        menu-list
+    </samp>
+</header>
+<div class="dropdown">
+    <button (click)="showList=!showList" class="btn btn-p dropdown-btn">
+        List
+    </button>
+    <ul [class.show]="showList" class="dropdown-list">
+        <div (click)="listSelect=i" [class.active]="listSelect==i" *ngFor="let i of menuList" class="dropdown-list-item">{{i}}</div>
+    </ul>
+</div>
+</div>

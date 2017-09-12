@@ -1,0 +1,42 @@
+<my-template title0="Pagination" [lib]="lib">
+    <div class="example container">
+        <p>Default pagination</p>
+        <ngz-pagination [(ngModel)]="pageValue" total="100"></ngz-pagination>
+        <p><em>autoSkip</em>=false</p>
+        <ngz-pagination [(ngModel)]="pageValue" total="100" [autoSkip]="false"></ngz-pagination>
+        <p><em>boundaryLinks</em>=true</p>
+        <ngz-pagination [(ngModel)]="pageValue" total="100" boundaryLinks="true"></ngz-pagination>
+        <p><em>rotated</em>=true</p>
+        <ngz-pagination [(ngModel)]="pageValue" total="100" rotated="true"></ngz-pagination>
+
+    </div>
+    <div class="example-footer">
+        <h4>More Example</h4>
+        <div class="quote-w">
+            <ngz-tab appendNav="tab-btn-group-sm-0" type="w">
+                <button ngz-tabBtn>Example</button>
+                <button ngz-tabBtn>Code</button>
+            <div class="center-column" *ngz-tabContent>
+            <p><samp>type</samp> and <samp>btn-size</samp></p>
+            <ngz-pagination class="btns-disTransition" [(ngModel)]="pageValue2" total="200" [type]="type2" [btn-size]="btnSize2"></ngz-pagination>
+            <p>点击以下按钮改变样式或大小</p>
+            <p class="btn-group">
+                <button (click)="type2=i" class="btn btn-{{i}}" *ngFor="let i of main.allColors">{{i}}</button>
+            </p>
+            <p class="btn-group">
+                <button (click)="type2='o-'+i" class="btn btn-o-{{i}}" *ngFor="let i of main.allColors">o-{{i}}</button>
+            </p>
+            <p class="btn-group">
+                <button class="btn btn-w" (click)="btnSize2=i" *ngFor="let i of sizeArr">{{i}}</button>
+            </p>
+            </div>
+                <div *ngz-tabContent>
+                    <my-code [html]="lib.codeMore"></my-code>
+                </div>
+            </ngz-tab>
+        </div>
+    </div>
+    <div class="API">
+        <my-api [lib]="lib.api"></my-api>
+    </div>
+</my-template>

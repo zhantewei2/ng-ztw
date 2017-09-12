@@ -1,0 +1,42 @@
+<h4>Form-c</h4>
+<div class="list-group">
+    <div class="list-item border-l">
+        <div class="header">
+            <a class="quote-sign-s ">
+                <i class="fa fa-bookmark-o"></i>
+                input
+            </a>
+        </div>
+        <input type="text" placeholder="I am a placeholder" class="form-c">
+    </div>
+    <div class="list-item border-l">
+        <div class="header">
+            <a class="quote-sign-p ">
+                <i class="fa fa-bookmark-o"></i>
+                input-group:
+            </a>
+        </div>
+        <div class="input-group mt-2">
+            <label class="color-p">label</label>
+            <input type="number" placeholder="holder" class="form-c">
+            <samp>end</samp>
+        </div>
+    </div>
+    <div class="list-item border-l">
+        <header class="header">
+            <a class="quote-sign-d">
+                <i class="fa fa-bookmark-o"></i>
+                input-validator:
+            </a>
+        </header>
+        <div class="validator-container">
+            <input class="form-c" minlength="4" type="text" name="input1" #input1="ngModel"  required #inputNode ngModel>
+        </div>
+        <div class="quote-p">
+            minlength=4;
+        </div>
+        {{inputNode.className}}
+        <button (click)="input1.reset()" class="btn btn-p">reset</button>
+        <div class="test1" #div2><b class="test2">bibibi</b></div>aaab<span>span2</span>
+    </div>
+</div>

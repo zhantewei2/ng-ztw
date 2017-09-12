@@ -1,0 +1,35 @@
+<h2>Pipes</h2>
+<item-card myTitle="ngzTime">
+    <table class="table">
+        <tr class="bg-l">
+            <th>原时间</th>
+            <th>使用<var>&#10100;&#10100;value|ngzTime&#10101;&#10101;</var> 后</th>
+        </tr>
+        <tr>
+            <td colspan="2"><kbd>nowTime:</kbd> {{nowTime|date:format}}</td>
+        </tr>
+        <tr  *ngFor="let i of times">
+            <td>{{i|date:format}}</td>
+            <td class="color-d">{{i|ngzTime}}</td>
+        </tr>
+    </table>
+</item-card>
+<item-card myTitle="ngzLimitStr">
+    <table class="table">
+        <tr class="bg-l">
+            <th>value</th>
+            <th>{{limitEn}} {{limitCn}}</th>
+        </tr>
+        <tr *ngFor="let i of limitStrs">
+            <td>
+                <var>ngzLimitStr:{{i}}</var>
+            </td>
+            <td>
+            {{limitEn|ngzLimitStr:i}} {{limitCn|ngzLimitStr:i}}
+            </td>
+        </tr>
+    </table>
+    <div class="quote">
+        作者觉得在排版上，中英文不能混为一样长，<em>ngzValidator</em>也是基于这个规则.
+    </div>
+</item-card>

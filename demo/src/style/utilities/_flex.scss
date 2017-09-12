@@ -1,0 +1,31 @@
+.flex{
+  display:flex;
+}
+.fluid-block{
+  display:block;
+  flex:1;
+}
+.flex-fluid,.flex-wrap{
+  display:flex;
+  flex-wrap:wrap;
+}
+.flex-1{
+  flex:1;
+  width:100%;
+}
+
+.center{
+  @include flex(center,center);
+}
+.around{
+  @include flex($content:space-around);
+}
+.between{
+  @include flex($content:space-between);
+}
+.column{
+  @include flex($flow:column wrap);
+}
+.center-column{
+  @include flex(center,center,column wrap);
+}

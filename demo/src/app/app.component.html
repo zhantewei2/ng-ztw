@@ -1,7 +1,23 @@
-<p>aaa
-    hello bbbmain!!aaaaaaaabb
-    <button routerLink="/">back</button>
-    <button routerLink="child1">1</button>
-    <button routerLink="child2">2</button>
-    <router-outlet></router-outlet>
-</p>
+<nav class="nav bg-l fix-top nav-shd">
+    <button *ngIf="_main._res.value=='sm'&&useSide" class="btn nav-item" (click)="navSide.toggle()" >
+        <i class="fa fa-navicon"></i>
+    </button>
+    <button routerLink=""  class="btn nav-item">Zle</button>
+    <button routerLink="css" routerLinkActive="active" class="btn nav-item">Css</button>
+    <button routerLink="module" routerLinkActive="active" class="btn nav-item">ngzModule</button>
+</nav>
+<ngz-nav-side paddingTop="55" width="200" #navSide>
+    <div [innerTp]="_main.navTp"></div>
+</ngz-nav-side>
+<div class="row host-container">
+    <div class="col-auto col-10">
+        <router-outlet (activate)="routerActivate($event)"></router-outlet>
+    </div>
+    <ng-template [ngIf]="useSide">
+        <div class="col-2" *ngz-col-show="'lg'">
+        </div>
+    </ng-template>
+</div>
+<footer style="height:400px;" class="bg-l">
+
+</footer>

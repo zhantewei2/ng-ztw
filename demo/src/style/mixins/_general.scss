@@ -1,0 +1,66 @@
+@mixin transition($args...){
+  @if $enable-transition{
+    @if length($args)==0{
+      transition:$transition-base;
+    }
+    @else{
+      transition:$args;
+    }
+  }
+}
+@mixin prefix($key,$value){
+  -webkit-#{$key}:$value;
+  -moz-user-#{$key}:$value;
+  -ms-user-#{$key}:$value;
+  #{$key}:$value;
+}
+@mixin animateOnce($name,$duration:$keyframe-duration){
+  animation:$name $duration ease;
+}
+@mixin hover-focus($color:$effectColor,$percent:$hover-focus-percent){
+  background:rgba($color,$percent);
+}
+@mixin hover-darken($color:$effectColor,$percent:$hover-darken-percent){
+  background:darken($color,$percent);
+}
+@mixin emptyBg-hover-focus($color,$yiq:$hover-yiq,$p1:.1,$p2:.3){
+  &:hover{
+    background-color:rgba($color,$p1);
+  }
+  &.active,&:active,&:focus{
+    background-color:rgba($color,$p2);
+  };
+}
+@mixin headerFont(){
+  font-family: "Microsoft YaHei UI";
+}
+@mixin contentFont(){
+  font-family: "Microsoft YaHei UI Light","Candara" !important;
+}
+
+@mixin sassFont(){
+  font-family:'Comic Sans MS';
+}
+
+@mixin base-block($space:$base-space){
+  padding:$space;
+  @include contentFont();
+  @include radius();
+}
+@mixin smFont(){
+  font-size:$sm-font;
+}
+@mixin lgFont(){
+  font-size:$lg-font;
+}
+
+@mixin fontHover($fontSize:1rem){
+  &:active{
+    font-size:$fontSize*.8;
+  }
+}
+@mixin hrStyle($color:$default-color){
+  height:1px;
+  border:0;
+  @include gra-line($color);
+}

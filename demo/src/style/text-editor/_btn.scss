@@ -1,0 +1,25 @@
+.db-btn{
+  @include base-btn();
+  border:1px solid transparent;
+  display:inline-flex;
+  &:hover{
+    border-color:$default-color;
+  }
+  & .db-item{
+    @include size-btnFont();
+    @include space(y,btn-py($btn-size));
+    &:hover{
+      @include hover-focus();
+    }
+  }
+  & .db-item-left{
+    min-width:editor(db-minWidth-left);
+    @include space(left,editor(db-padding));
+  }
+  & .db-item-right{
+    min-width:editor(db-minWidth-right);
+    @extend .center;
+    flex-flow:column;
+    @include space(right,editor(db-padding));
+  }
+}

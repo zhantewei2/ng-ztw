@@ -1,0 +1,30 @@
+<h4>
+    Badge
+</h4>
+
+<div>
+    <span  [style.fontSize]="10+5*index+'px'" class="b-{{i}}" *ngFor="let i of _main.allColors;index as index">b-{{i}}</span>
+    <p>code:</p>
+    <pre [highlight]="code1">
+    </pre>
+    <table class="table">
+       <tr *ngFor="let i of _main.allColors">
+           <td class="center"><a class="b-{{i}}">badge</a></td>
+           <td>
+               &lt;a class=<var>'b-{{i}}'</var> &gt;badge &lt;/a &gt;
+           </td>
+       </tr>
+        <tr>
+            <td class="center">
+                <a class="b-s b-pill">124</a>
+                <a class="b-d b-pill">0</a>
+            </td>
+            <td>
+                &lt;a class=<var>'b-s b-pill'</var> &gt;124&lt;/a &gt;
+            </td>
+        </tr>
+    </table>
+    <p class="color-d">其他语义化标签:</p>
+    <table class="table text-center" [innerHTML]="tagsHTML"></table>
+</div>
+

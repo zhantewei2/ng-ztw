@@ -1,0 +1,50 @@
+.carousel{
+  width:100%;
+  position:relative;
+  @include radius($carousel-radius);
+}
+.carousel-btn{
+  width:map-get($carousel-btn,width);
+  opacity:.4;
+  color:$light-color;
+  @include transition();
+  @extend .center;
+  height:map-get($carousel-btn,height);
+  z-index:map-get($indexes,normal);
+  background: $effectColor;
+  @include attrAfter($font-size:map-get($carousel-btn,fontSize));
+  &:hover,&:active{
+    opacity:.6;
+  }
+}
+.carousel-nav{
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  bottom:$carousel-nav-bottom;
+  color:$light-color;
+  & .carousel-nav-item{
+    @include transition();
+    margin:0 $base-space;
+    width:$carousel-nav-item-width;
+    height:$carousel-nav-item-width;
+    display:inline-block;
+    @include radius(50%);
+    background:$deep-default-color;
+    &.active{
+      background:$l;
+      @include shadow-out(white,10px)
+    }
+    &:hover,&:active{
+      cursor:pointer;
+      @include shadow-out(white,20px)
+    }
+  }
+}
+.carousel-item-header{
+  position:absolute;
+  text-align:center;
+  z-index:map-get($indexes,addon);
+  @include abs-horzontal-center();
+  bottom:$carousel-nav-bottom+$carousel-nav-item-width+$carousel-item-header-bottom;
+}

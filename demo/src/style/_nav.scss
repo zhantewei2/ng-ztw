@@ -1,0 +1,35 @@
+.nav{
+  @include get-nav()
+}
+.smNav{
+  @include get-nav(sm)
+}
+.lgNav{
+  @include get-nav(lg);
+}
+.nav-item{
+  @extend .center;
+  @extend %button;
+  @include radius(0);
+  font-size:1rem;
+  background:transparent;
+  &:hover{
+    @include hover-focus();
+  }
+  &.active{
+   @include hover-focus($effectColor,.2);
+  }
+}
+.nav-brand{
+  @extend .center;
+}
+.nav-inverse{
+  background:$default-color;
+  color:$light-color !important;
+  & .nav-item{
+    color:$light-color !important;
+  }
+}
+.nav-shd{
+  @include nav-shd(black);
+}

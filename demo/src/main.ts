@@ -3,7 +3,6 @@ import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppModule } from './app/app.module';
-
-process.env.ZTW_ENV=='prod'&&enableProdMode();
+process.env.isProd&&enableProdMode();
 
 platformBrowserDynamic().bootstrapModule(AppModule);

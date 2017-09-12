@@ -1,0 +1,21 @@
+em{
+  @extend %badge;
+  font-style:normal;
+  background:$default-color;
+}
+var{
+  @extend %badge;
+  background:sub-color($l,50%,0);
+  font-weight: bold;
+}
+samp{
+  padding:nth($badge-padding,2);
+  font-weight: bold;
+  background:lighten($w,40%);
+}
+kbd{
+  @extend %badge;
+  color:$light-color;
+  background:$deep-default-color;
+  @include shadow1($l,0,4px);
+}

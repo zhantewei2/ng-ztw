@@ -1,0 +1,12 @@
+<div class="text-center p-3">
+    <h1>
+        Welcome to NgzModule
+    </h1>
+    <p>
+    <div *ngIf="obj.a==1 as u;">
+        {{u}} aab{{u.b}}
+    </div>
+    <ng-template let-u #tp1>
+        hello {{u}}
+    </ng-template>
+</div>

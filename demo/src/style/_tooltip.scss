@@ -1,0 +1,26 @@
+.tooltip{
+  @extend .dropdown;
+}
+.tip{
+  @extend %dropdown-container;
+  visibility:hidden;
+  @extend %tip-base;
+  position:absolute;
+}
+@each $dr,$value in $directions{
+  .arrow-#{$dr}{
+    @include get-angle($dr)
+  }
+  .tip-#{$dr}{
+    @extend .tip;
+    @include get-menu($dr,$tooltip-space);
+    &::after{
+      content:'';
+      @extend .arrow-#{$dr}
+    }
+  }
+  .tooltip:hover .tip-#{$dr}{
+    @extend .show;
+  }
+}
+

@@ -1,0 +1,37 @@
+.te-container{
+  outline:none;
+  padding:editor(container-padding);
+  @include radius($dr:bottom);
+  border:1px solid $default-color;
+  border-top-width:0;
+  height:100%;
+  flex:1;
+  width:100%;
+}
+.te-editor{
+
+}
+.te-nav{
+  background:$l;
+  width:100%;
+  display:flex;
+  flex-wrap:wrap;
+  & .btn{
+    border-radius:0;
+    &:focus{
+      box-shadow: none;
+    }
+  }
+}
+.te-modal-bg{
+  width:100%;
+  background:rgba($light-color,.5);
+  overflow:hidden;
+ }
+.te-modal{
+  padding-top:editor(modal-top);
+  background:rgba(editor(modal-bg),.9);
+  @include slight-shadow($deep-default-color);
+  border:1px solid $l;
+
+}

@@ -1,0 +1,10 @@
+<my-template [lib]="lib" main="<ngz-min-modal>" title0="min-modal">
+    <div class="example">
+        <div>
+            <button *ngFor="let i of main.allColors2" class="m-3 btn btn-{{i}}" (click)="modalValue=i;modalType=i">{{i}}</button>
+        </div>
+    </div>
+    <div class="API">
+    </div>
+</my-template>
+<ngz-min-modal [(ngModel)]="modalValue" [type]="modalType"></ngz-min-modal>

@@ -1,0 +1,15 @@
+
+@mixin fix-block($w,$h,$top:0,$left:0){
+  position:fixed;
+  height:$h;
+  width:$w;
+  top:$top;
+  left:$left;
+  overflow:auto;
+}
+@mixin fix-child($margin:auto){
+  margin:$margin;
+  top:$modal-top;
+  width:$modal-sm-width;
+  min-height:$modal-min-height;
+}

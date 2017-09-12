@@ -1,0 +1,21 @@
+<div class="row">
+    <div *ngz-col-show="'!sm'"  class="col-2" >
+        <span [innerTp]="navTp"></span>
+    </div>
+
+    <div class="col">
+        <div class="container">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
+<ng-template #navTp>
+        <div class="btn-group-vertical">
+            <ng-container *ngFor="let cg of cgList">
+                <button (click)="_main.closeNav()" [routerLink]="[noString(cg)?cg.router:cg]" routerLinkActive="active" class="btn btn-l between" >
+                    {{noString(cg)?cg.name:cg}}
+                    <i class="color-l fa fa-chevron-right"></i>
+                </button>
+            </ng-container>
+        </div>
+</ng-template>

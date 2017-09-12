@@ -1,0 +1,18 @@
+.colorBlock{
+  display:inline-block;
+  cursor:pointer;
+  border:1px solid transparent;
+  width:editor(fontColor-w);
+  height:editor(fontColor-w);
+  margin:editor(fontColor-margin);
+  @include radius(editor(fontColor-radius));
+  &:hover{
+    border-color:white;
+    @include shadow-out()
+  }
+}
+.colorPick{
+  width:10px;
+  height:10px;
+  border-radius:3px;
+}

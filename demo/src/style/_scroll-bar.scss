@@ -1,0 +1,22 @@
+.scroll-appearance{
+  &::-webkit-scrollbar{
+    width:$scroll-bar-width;
+    height:$scroll-bar-height;
+  }
+  &::-webkit-scrollbar-track{
+    background:$scroll-bar-bg;
+    border:1px solid $default-color;
+  }
+  &::-webkit-scrollbar-thumb{
+    cursor:pointer;
+    &:hover{
+      background:$deep-default-color;
+    }
+    background:$scroll-thumb-bg;
+    border:1px solid $default-color;
+    @include radius();
+  }
+}
+div,pre,nav{
+  @extend .scroll-appearance;
+}

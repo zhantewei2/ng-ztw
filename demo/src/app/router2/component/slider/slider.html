@@ -1,0 +1,17 @@
+<h2>Slider</h2>
+<my-template [lib]="lib">
+    <div class="example row p-2">
+        <div class="col column center">
+            <ngz-slider type="w" style="height:200px;" [(ngModel)]="sliderValue" vertical="true"></ngz-slider>
+            <p><a class="b-w">{{sliderValue}}</a></p>
+        </div>
+        <div class="col py-2 ">
+            <ngz-slider style="width:200px" [(ngModel)]="sliderValue2"></ngz-slider>
+            <p><a class="b-p color-wt">{{sliderValue2}}</a></p>
+            <button class="mt-2 btn0 btn-o-p btn-sm" (click)="sliderValue2=50">ScrollTo 50</button>
+        </div>
+    </div>
+    <div class="API">
+        <my-api [lib]="api"></my-api>
+    </div>
+</my-template>

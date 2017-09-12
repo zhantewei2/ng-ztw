@@ -1,0 +1,18 @@
+@mixin quote-radius(){
+  border-radius:$quote-radius $quote-radius/2 $quote-radius/2 $quote-radius;
+}
+@mixin quote-variant($color:$default-color){
+  background-color:$light-color;
+  //@include shadow-out( $color:disabled-color($color),$size:.5rem);
+;
+  @include set-border(left,$quote-tip-width solid $color);
+}
+@mixin quote-length-padding($p:$base-space){
+  padding:$p $p*3 $p $p;
+}
+
+@mixin header-sign-shadow($color){
+  color:yiq($color,mix($effectColor,white,50%),$light-color,200);
+  background:$color;
+  @include bottom-left-shd($color);
+}

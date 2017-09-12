@@ -1,0 +1,41 @@
+.btn-group{
+  display:inline-flex;
+  @include list-manage(btn);
+  @include list-manage(btn0);
+}
+.btns-disTransition{
+  & .btn,& .btn0{
+    transition:none !important;
+  }
+}
+@each $abbrev,$val in $btn-size-map{
+  .btn-group-#{$abbrev}{
+    & .btn,& .btn0{
+      @include size-btn($val)
+    }
+  }
+  .btn-#{$abbrev}{
+    @include size-btn($val);
+  }
+}
+.btn-group-sm{
+  & .btn,&.btn0{
+
+  }
+}
+.btn-group-lg{
+
+}
+.btn-group-block{
+  & .btn,& .btn0{
+    display:block;
+    width:100%;
+  }
+  @include list-manage(btn,vertical);
+  @include list-manage(btn0,vertical);
+}
+.btn-group-vertical{
+  @extend .btn-group-block;
+  display:inline-flex;
+  flex-flow:column;
+}

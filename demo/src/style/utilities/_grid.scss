@@ -1,0 +1,43 @@
+.row{
+  @extend %row;
+}
+@for $i from 1 through 12{
+  .col-#{$i}{
+    @include get-col($i);
+  }
+}
+
+@each $size in $sort-screen{
+  @include screen($size){
+    //col
+    @for $i from 1 through 12{
+      .col-#{$size}-#{$i}{
+        @include get-col($i);
+      }
+    }
+    //container:
+    .container{
+      padding:$container-padding-y map-get($container-padding-x,$size) !important;
+    }
+  }
+}
+.host-container{
+  width:100%;
+  margin:auto;
+}
+@each $abbrev,$value in $maxScreen{
+ @media(min-width:$value){
+   .host-container{
+     width:map-get($host-container-width,$abbrev)
+   }
+ }
+}
+.col,.col-auto{
+  @extend .flex-1;
+}
+.w-100{
+  width:100%;
+}
+.h-100{
+  height:100%;
+}

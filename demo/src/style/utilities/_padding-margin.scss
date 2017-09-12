@@ -1,0 +1,16 @@
+
+@for $i from 0 through $space-count{
+  $v:$i*$place-space;
+  @each $an,$av in (m:margin,p:padding){
+    .#{$an}-#{$i}{#{$av}:$v};
+    .#{$an}x-#{$i}{
+      @include space(x,$v,$av)
+    };
+    .#{$an}y-#{$i}{
+      @include space(y,$v,$av);
+    };
+    @each $abbrev,$pos in $space-position{
+      .#{$an+$abbrev}-#{$i}{#{$av}-#{$pos}:$i*$place-space}
+    }
+  }
+}

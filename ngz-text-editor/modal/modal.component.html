@@ -1,0 +1,12 @@
+<div class="abs-tl-0 full te-modal-bg" [@Fade]="show" (click)="close()">
+  <div [class.full]="full" (click)="$event.stopPropagation()" [@DownModal]="show2" (@DownModal.done)="modalDone()" class="te-modal">
+    <div [hidden]="!containerTitle">
+      <a class="ml-2 b-w">{{containerTitle}}</a>
+      <a (click)="close()" class="close"><i class="fa fa-angle-up"></i></a>
+    </div>
+    <div class="modal-content">
+      <ng-template #container></ng-template>
+      <div *ngIf="innerText" class="text-center">{{innerText}}</div>
+    </div>
+  </div>
+</div>

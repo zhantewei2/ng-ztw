@@ -1,0 +1,44 @@
+@function getShdColor($color){
+  @return rgba(yiq($color,darken($color,20%),$color),$base-opacity*2);
+}
+
+@mixin shadow1($color:$shadow-color,$shd:0,$out:$btn-outline-width){
+  $color:getShdColor($color);
+  @if shadow-enabled{
+    box-shadow:0 0 $shd $out $color;
+  }
+}
+@mixin nav-shd($color){
+  $color:getShdColor($color);
+  @if shadow-enabled{
+    box-shadow:0 1px 8px $color;
+  }
+}
+@mixin bottom-left-shd($color:$shadow-color,$width:$shadow-width,$shd:0){
+  $color:getShdColor($color);
+  @if shadow-enabled{
+    box-shadow:$width $width $shd $color;
+  }
+}
+@mixin shadow-out($color:$l,$size:map-get($shadow-out,md)){
+  @if shadow-enabled{
+    box-shadow:0 0 $size darken($color,10%);
+  }
+}
+@mixin slight-shadow($color:$l){
+  @include bottom-left-shd($color,3px,map-get($shadow-out,md));
+}
+@mixin quote-shadow($color:$l){
+  @if shadow-enabled{
+    box-shadow:-4px 4px 6px $color;
+  }
+}
+@mixin iconShd($color:$shadow-color,$isBase:true){
+  @if($isBase){
+    text-shadow:0 0 map-get($shadow-out,lg) $color;
+  }
+  @else{
+    text-shadow:0 0 map-get($shadow-out,sm) sub-color($color);
+  }
+}
+

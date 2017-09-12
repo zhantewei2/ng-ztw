@@ -1,0 +1,23 @@
+@mixin _linear($args...){
+  background-image:linear-gradient($args);
+}
+@mixin gra-line($color,$percent:10%) {
+  $colorBoth:rgba($color,$base-opacity);
+  @include _linear(45deg,$colorBoth,$color 35%,$color 65%,$colorBoth)
+}
+@mixin gra-line-horizontal-fade($color){
+  @include _linear(90deg,lighten($color,20%),$color,rgba($color,0))
+}
+@mixin gra-bottom($color){
+  @include _linear(to bottom,$color,$color 90%,darken($color,3%));
+}
+
+
+@mixin gra-line-lamplight(
+  $color,
+  $count:map-get($linear,lamplight-count),
+  $percent:map-get($linear,lamplight-percent)
+){
+    $colors:stripe-color((lighten($color,$percent),$color),$count);
+    @include _linear(map-get($linear,lamplight-angle),$colors);
+}

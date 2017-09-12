@@ -2,14 +2,14 @@ const path=require('path');
 const webpack=require('webpack');
 const HtmlWebpackPlugin=require('html-webpack-plugin');
 const ExtractTextPlugin=require('extract-text-webpack-plugin');
+const {AotPlugin}=require('@ngtools/webpack');
+
 const join=(...args)=>path.join(__dirname,...args);
 
-const ENV=process.env.MODE;
-const isProd= ENV==='build';
-
-module.exports=function makeWepbackConfig(){
+module.exports=function makeWepbackConfig(envOptions){
+    const isProd=process.env.isProd=!!(envOptions&&envOptions.MODE);
     const config={};
-    config.devtool='source-map';
+
     config.entry={
         main:join('demo/src/main.ts'),
         polyfills:join('demo/src/polyfills.ts'),
@@ -18,16 +18,26 @@ module.exports=function makeWepbackConfig(){
     config.output={
         path:join('demo/dist'),
         filename:'[name].bundle.js',
-        chunkFilename:'[name].chunk.js'
+        chunkFilename:'[id].chunk.js',
+        sourceMapFilename:'[name].bundle.map',
+        //publicPath:join('assets')
     };
     config.module={
       rules:[
           {
               test:/\.ts$/,
-              use:'ts-loader'
+              use:isProd?'@ngtools/webpack':
+                  ['ts-loader','angular-router-loader','angular2-template-loader']
           },
           {
-              test:/\.scss/,
+              test:/\.css$/,
+              use:ExtractTextPlugin.extract({
+                  fallback:'style-loader',
+                  use:'css-loader'
+              })
+          },
+          {
+              test:/\.scss$/,
               use:ExtractTextPlugin.extract({
                   fallback:'style-loader',
                   use:['css-loader','sass-loader']
@@ -42,11 +52,53 @@ module.exports=function makeWepbackConfig(){
     config.plugins=[
         new HtmlWebpackPlugin({
             template:'./demo/src/index.html',
-            chunksSortMode:'dependency'
-        })
+            chunksSortMode:function(a,b){
+                const order=['vendors','ployfills','main'];
+                return order.indexOf(a.names[0])-order.indexOf(b.names[0]);
+            }
+        }),
+        new webpack.LoaderOptionsPlugin({
+            debug:!isProd,
+            minimize:isProd
+        }),
+        new webpack.optimize.CommonsChunkPlugin({
+            names:["vendor"],
+            "minChunks":2,
+            "async":"common"
+        }),
+        new ExtractTextPlugin('styles.css')
     ];
+    if(isProd){
+        config.plugins.push(
+            new AotPlugin({
+                tsConfigPath:join('tsconfig-aot.json'),
+                entryModule:join('demo/src/app/app.module#AppModule')
+            }),
+            new webpack.NoEmitOnErrorsPlugin(),
+            new webpack.optimize.UglifyJsPlugin({
+                mangle:true,
+                output:{comments:false},
+                sourceMap:false
+            })
+        );
+    }else{
+        /*dismiss angular warning:
+          It can not present to the prod mode;
+          will lead to not create lazy route chunks
+         */
+        config.plugins.push(
+            new webpack.ContextReplacementPlugin(
+                /angular(\\|\/)core(\\|\/)@angular/,
+                join('demo/src/app')
+            )
+        )
+    }
+
     config.resolve={
-        modules:['node_modules'],
+        modules:['node_modules',join('demo/src'),'ngzModule'],
+        alias:{
+          '@ng-ztw':join('ngzModule')
+        },
         extensions:['.ts','.js','.css','.scss']
     };
 
@@ -56,6 +108,6 @@ module.exports=function makeWepbackConfig(){
       host:'localhost',
       historyApiFallback:true
     };
-
+    //config.devtool='inline-source-map';
     return config;
 };

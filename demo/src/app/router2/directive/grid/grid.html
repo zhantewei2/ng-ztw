@@ -1,0 +1,18 @@
+<my-template title0="col-show" [lib]="lib" main="col-show">
+        <div class="row example" style="height:200px;">
+            <div class="col-2 bg-d center">col-2</div>
+            <div class="col bg-p center" *ngz-col-show="'!md'">col-hidden-md</div>
+            <div class="col-8 bg-i center" *ngz-col-show="'!lg'">col-hidden-gt-lg</div>
+            <div class="col bg-w center" *ngz-col-show="'lg'">col-show-gt-lg</div>
+        </div>
+        <div class="example-footer">
+            <div class="quote">
+                不同于css的<var>col-show-#</var>,<var>col-hidden-#</var>隐蔽元素。<br>
+                <var>*ngz-col-show</var>是将元素从页面添加或移除.
+            </div>
+        </div>
+        <div class="API">
+            <my-api [lib]="apiLib"></my-api>
+        </div>
+
+</my-template>

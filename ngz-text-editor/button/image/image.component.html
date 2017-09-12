@@ -1,0 +1,72 @@
+<i class="fa fa-file-image-o"> </i>
+
+<ng-template #tp>
+  <div>
+    <ngz-tab disabledDefault="true" appendNav="btn-group"  noNavLine="true" >
+      <button class="btn0 btn-o-w btn-sm" ngz-tabBtn>外链</button>
+      <button class="btn0 btn-o-w btn-sm" ngz-tabBtn>上传</button>
+      <div class="center-column" *ngz-tabContent>
+        <div class="mb-1 input-group">
+          <input style="width:300px" placeholder="输入图片网址" class="form-c control-w" [(ngModel)]="inputHref" name="imgHref" #imgHref="ngModel" required>
+          <span *ngIf="imgHref.valid" (click)="inputHref=null" class="btn-none"><a class="b-d">&times;</a></span>
+        </div>
+        <button [disabled]="!imgHref.valid" (click)="addPicture(inputHref)" class="btn0 btn-w">添加</button>
+      </div>
+      <div *ngz-tabContent>
+        <div *ngIf="!showList;else tp2" class="center-column">
+          <div class="upload-btn center-column rel mb-1" [class.bg-w]="overImg">
+            <i class="fa fa-cloud-upload" style="font-size:2rem;"></i>
+            <span class="muted">{{!overImg?'拖进图片或直接点击':'超过最大限制'}}</span>
+            <input [disabled]="imgList.length>=config.limitCount" #tempFile class="abs-tl-0 full" style="opacity:0" (change)="fileChange($event)" type="file">
+            <img *ngIf="imgData" class="abs full te-upload-img" [src]="imgData">
+            <span [hidden]="!imgData" (click)="imgData=null" class="close0 closeBtn">&times;</span>
+          </div>
+          <div>
+            <span *ngIf="imgData">
+              <button  class="btn btn-w btn-sm" (click)="upload()">
+                <i class="fa fa-upload "></i>上传
+              </button>
+              <button class="btn btn-w mx-1 btn-sm" (click)="imgData=null">
+                <i class="fa fa-repeat"></i>撤销
+              </button>
+            </span>
+            <button *ngIf="imgList.length" class="btn btn-w" (click)="showList=true">
+              已上传<i class="fa fa-caret-right"></i>
+            </button>
+          </div>
+        </div>
+        <ng-template #tp2>
+
+          <!---The following code is my old code,and not processs --->
+          <nav class="between ">
+            <div class="grow">
+              <div (click)="!isEdit&&(imgItem=j)" class="column mx-1 box-1" *ngFor="let i of imgList;index as j">
+                <img [class.cover]="j!=imgItem" class="imgItem"  [src]="i.show">
+                <span (click)="removeImg(j,i.pre)" *ngIf="isEdit" class="hover box-1 text-center">
+                        <i class="fa fa-trash"></i>
+                      </span>
+              </div>
+            </div>
+            <i [ngClass]="{'fa-trash':!isEdit,'fa-undo':isEdit}" class="fa closeBtn" (click)="isEdit=!isEdit"></i>
+          </nav>
+          <div>
+            <img class="" [src]="imgList[imgItem]?.show">
+          </div>
+          <div class="text-sm mt-3">
+            <button [class]="btnC" (click)="showList=false">
+              <i class="fa fa-caret-left"></i>继续上传
+            </button>
+            <button [class]='btnC+" ml-3"'  (click)="addPicture(imgList[imgItem].show)">
+              插入图片
+            </button>
+          </div>
+        </ng-template>
+      </div>
+    </ngz-tab>
+
+
+
+
+  </div>
+
+</ng-template>

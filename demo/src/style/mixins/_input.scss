@@ -1,0 +1,22 @@
+
+@mixin place-holder{
+  $libs:placeholder,-webkit-placeholder;
+  @each $lib in $libs{
+    &::#{$lib}{
+      @include transition();
+      display:inline-block;
+    }
+    &:focus::#{$lib}{
+      transform: scale(0.7,0.7) translateY(-100%);
+    }
+  }
+}
+@mixin variousInput($color){
+  $libs:placeholder,-webkit-placeholder;
+  border-color:$color;
+  @each $lib in $libs{
+    &::#{$lib}{
+      color:$color;
+    }
+  }
+}

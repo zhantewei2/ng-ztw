@@ -1,0 +1,38 @@
+.quote{
+  display:block;
+  padding:$quote-padding;
+  margin:$base-space 0;
+  line-height: $quote-line-height;
+  border:1px solid $default-color;
+  @include quote-shadow();
+  @include quote-radius();
+  @include quote-variant();
+}
+.header{
+  display:block;
+  margin:$base-space;
+  padding:$base-space;
+}
+.quote-sign{
+  display:inline-block;
+  @include radius($dr:right);
+  @include header-sign-shadow($default-color);
+  font-size:1.1rem;
+  @include quote-length-padding($quote-sign-space);
+}
+@each $abbrev,$color in $theme-colors {
+  @if($abbrev!=l) {
+    .quote-#{$abbrev} {
+      @extend .quote;
+      @include quote-variant($color);
+    }
+    .quote-sign-#{$abbrev}{
+      @extend .quote-sign;
+      @include header-sign-shadow($color);
+    }
+  }
+}
+.sign-sm{
+  font-size:0.8rem;
+  @include quote-length-padding($base-space);
+}

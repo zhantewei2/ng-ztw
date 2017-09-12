@@ -1,0 +1,45 @@
+<h2>Menu<a class="sm b-d">Directive</a></h2>
+<my-template [lib]="lib">
+
+    <div class="example p-2 center btn-group">
+        <ng-template #tp1>
+                <li class="dropdown-list-item -hover-{{type}} between">
+                    <i class="fa fa-home"></i>Home
+                </li>
+                <li class="dropdown-list-item -hover-{{type}} between">
+                    <i class="fa fa-book"></i>Library
+                </li>
+                <li class="dropdown-list-item -hover-{{type}} between">
+                    <i class="fa fa-pencil"></i>Pencil
+                </li>
+        </ng-template>
+        <button (click)="type='w'" [ngz-menu]="tp1"  class="btn btn-w">Menu Bottom</button>
+        <button (click)="type='s'" [ngz-menu]="tp1" placement="top" class="btn btn-s">Menu Up</button>
+        <button (click)="type='i'" [ngz-menu]="tp1" placement="left" class="btn btn-i">Menu Left</button>
+        <button (click)="type='d'" [ngz-menu]="tp1" placement="right" class="btn btn-d">Menu Right</button>
+    </div>
+    <div class="example-footer">
+        <item-card myTitle="More Example">
+            <ng-template #tp2>
+                   Example
+            </ng-template>
+            <div class="text-center">
+                <h5>点击Toggle，控制container的<em>ngz-menu</em></h5>
+                <div>
+                <button disabled #control="ngz-menu" [ngz-menu]="tp2" class="btn btn-p">container</button>
+                <button (click)="control.toggle()" class="btn0 btn-o-s mx-2">
+                    toggle
+                </button>
+                </div>
+                <h5>点击document不关闭</h5>
+                <button [ngz-menu]="tp2" disDocument="true" class="btn btn-p">disDocument</button>
+            </div>
+            <h5><var>CODE</var></h5>
+            <my-code [html]="lib.code3">
+            </my-code>
+        </item-card>
+    </div>
+    <div class="API">
+        <my-api [lib]="lib.api"></my-api>
+    </div>
+</my-template>

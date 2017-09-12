@@ -1,0 +1,42 @@
+.list-group{
+  list-style-type:none;
+  padding:0;
+  @extend .column;
+  @include list-manage(list-item,vertical);
+  &.list-hover{
+    @each $abbrev,$color in $theme-colors{
+      & .list-item-#{$abbrev}{
+        &:hover{
+          @include hover-darken($color)
+        }
+      }
+    }
+  }
+}
+
+.list-item{
+  border:1px solid $default-color;
+  padding:$list-item-py $list-item-px;
+  @include transition();
+  @include radius();
+}
+
+@each $abbrev,$color in $theme-colors{
+  .list-item-#{$abbrev}{
+    @extend .list-item;
+    @include color-yiq($color);
+    background:$color;
+    &:active,&.active{
+      @include hover-darken($color)
+    }
+  }
+
+}
+.item-head{
+  padding-bottom:$list-child-space*0.8;
+}
+.item-body{
+  font-size:$list-child-space*0.7;
+  padding:$list-child-space*0.3 0;
+  margin-left:$list-child-space*2;
+}

@@ -1,30 +1,35 @@
 {
   "compilerOptions": {
-    "outDir": "./dist/",
+    "outDir": "dist",
     "sourceMap": false,
     //"noImplicitAny": true,
-    "module": "commonjs",
+    "module": "es2015",
     "lib":["es2015","dom"],
     "target": "es5",
     "declaration":true,
     "baseUrl":"./node_modules",
+
+    "paths":{
+      "@ng-ztw":["../ngzModule"],
+      "*":["../ngzModule/*"]
+    },
+
     "moduleResolution":"node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "noEmitOnError":true
-    /*
-    "target": "ES5",
-    "lib": ["es2015", "dom"],
-    "module": "commonjs",
-    "emitDecoratorMetadata": true,
-    "sourceMap": true,    "experimentalDecorators": true,
-    "noEmitOnError": true,
-    "outDir": "temp",
-    "baseUrl": "./node_modules"
-    */
+
   },
   "include": [
-    "./demo/src/main.ts"
+    "demo/**/*.ts",
+    "ngzModule/**/*.ts"
+    /*
+    "./demo/src/main.ts",
+    "./demo/src/app/router1/router.module",
+    "./demo/src/app/router2/router.module",
+    "./demo/src/app/router2/directives-router.module",
+    "./demo/src/app/router2/expriment/expriment.module"
+    */
   ],
   "angularCompilerOptions":{
     "strictMetadataEmit":true

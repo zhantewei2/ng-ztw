@@ -1,0 +1,9 @@
+.alert{
+  @include get-alert();
+}
+@each $abbrev,$color in $theme-colors2{
+  .alert-#{$abbrev}{
+    @extend .alert;
+    @include alert-variant($color);
+  }
+}

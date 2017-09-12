@@ -1,0 +1,34 @@
+@mixin set-border($pos,$val){
+  border-#{$pos}:$val;
+}
+
+@mixin list-manage($child,$kind:null,$radius:$glob-radius){
+  $first:left;
+  $end:right;
+  $bs:right;
+  $name:#{'\.'+$child};
+
+  @if str-index($child,'#'){
+    $name:str-slice($child,2);
+  }
+  @if ($kind==vertical){
+    $first:top;
+    $end:bottom;
+    $bs:bottom;
+  }
+  @else if($kind==tab){
+    $first:tl;
+    $end:tr;
+  }
+  & #{$name}:not(:first-of-type):not(:last-of-type){
+    @include radius(0);
+    @include set-border($bs,none);
+  }
+  & #{$name}:first-of-type{
+    @include radius($radius,$first);
+    @include set-border($bs,none);
+  }
+  & #{$name}:last-of-type{
+    @include radius($radius,$end);
+  }
+}

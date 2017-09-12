@@ -1,0 +1,5 @@
+/node_modules/
+/dist/
+/demo/dist/
+/indexDB_dist/
+npm-debug.log

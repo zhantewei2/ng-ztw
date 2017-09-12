@@ -1,0 +1,13 @@
+$list-family:Candara;
+$light-family:Calibri;
+$comment-family:Consolas;
+$font-size:14px;
+$word-spacing:5px;
+$line-height:120%;
+$font-color:black;
+$list-color:lighten($font-color,70%);
+$stripe-color:lighten(#ddd,10%);
+$tr-indent-space:1rem;
+$tr-padding-y:.2rem;
+@import 'color.scss';
+@import 'container-table.scss';

@@ -1,0 +1,125 @@
+@function getColor($color){
+  @if map-has-key($theme-colors,$color){
+    @return map-get($theme-colors,$color)
+  }
+  @else{
+    @warn '#{color} inexistence'
+  }
+}
+
+@function yiq($color,$select1,$select2,$base:180){
+  $r:red($color);
+  $g:green($color);
+  $b:blue($color);
+  $yiq:(($r*299)+($g*587)+($b*114))/1000;
+  @if($yiq>=$base){
+    @return $select1;
+  }
+  @else{
+    @return $select2;
+  }
+}
+@mixin color-yiq($color){
+  color:yiq($color,$effectColor,$light-color);
+}
+
+@function shadow-length($color,$len){
+  $shadows:();
+  @for $i from 1 through $len{
+    $shadows:append($shadows,$i+px $i+px 5px $color,'comma');
+  }
+  @return $shadows;
+}
+
+@function stripe-color($colorArr,$replaceCount:1){
+  $gradientColors:();
+  @for $i from 1 through $replaceCount{
+    $gradientColors:append($gradientColors,$colorArr,'comma');
+  }
+  @return $gradientColors;
+}
+
+@function lighten-color($color){
+  @return lighten($color,$hover-darken-percent*2.5)
+}
+@function darken-color($color){
+  @return darken($color,$hover-darken-percent);
+}
+@function sub-color($color,$sat:20%,$dark:10%){
+  @return darken(saturate($color,$sat),$dark);
+}
+@function sub-color-deep($color){
+  @return sub-color($color:$color,$dark:35%);
+}
+@function gray-color($color){
+  @return mix(grayscale($color),$color);
+}
+@function disabled-color($color,$percent:50%){
+  @return mix($color,$disabled-color,$percent);
+}
+@function filterFontSize($size){
+  @if($size<$min-size){
+    @return $min-size
+  }
+  @else{
+    @return $size;
+  }
+}
+@function btn-px($size){
+  @return $size*.9+0rem;
+}
+@function btn-py($size){
+  @return $size*.75+0rem
+}
+
+
+$numMap:('0':0,'1':1,'2':2,'3':3,'4':4,'5':5,'6':6,'7':7,'8':8,'9':9);
+
+@function seqStr($val,$sign){
+  $index:str-index(#{$val},$sign);
+  @if($index) {
+    @return (pre:str-slice(#{$val}, 0, -1+$index), next:str-slice(#{$val}, 1+$index));
+  }
+  @else{
+    @return null;
+  }
+}
+@function square($num,$n){
+  $result:1;
+  @if($n==0){
+    @return 1;
+  }
+  @else {
+    @for $i from 1 through $n {
+      $result: $result*$num;
+    }
+    @return $result;
+  }
+}
+@function appendNum($str,$per){
+  $l:str-length($str);
+  $p:null;
+  $result:0;
+  $n:null;
+  $index:0;
+  @for $i from 0 through -1+$l{
+    $index:if($per==1,$l - $i,1+$i);
+    $p:map-get($numMap,str-slice($str,$index,$index));
+    $n:square(if($per==1,10,$per),$i);
+    $result:$per*$n*$p+$result;
+  }
+  @return $result;
+}
+
+@function toNumber($val){
+  $seq:seqStr($val,'.');
+  $result:0;
+  @if($seq){
+    $n:map-get($seq,next);
+    $p:map-get($seq,pre);
+    $result:appendNum($n,0.1)+appendNum($p,1);
+  }@else{
+    $result:appendNum($val,1);
+  }
+  @return $result;
+}

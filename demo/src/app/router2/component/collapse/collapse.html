@@ -1,0 +1,56 @@
+<my-template title0="collapse" main="<ngz-collapse>" [lib]="lib">
+    <ngz-collapse class="example" [type]="useType">
+        <ngz-collapse-item open="true">
+            <span ngz-collapse-btn>Item1</span>
+            content
+            <p>p1</p>
+            <p>p2</p>
+        </ngz-collapse-item>
+        <ngz-collapse-item open="true">
+            <span  ngz-collapse-btn>Item2</span>
+            <div class="w-100 p-3">
+                <div class="card w-100 p-3">
+                    content
+                </div>
+            </div>
+        </ngz-collapse-item>
+        <ngz-collapse-item>
+            <span  ngz-collapse-btn>Item3-Inner</span>
+
+            <ngz-collapse>
+                <ngz-collapse-item>
+                    <button ngz-collapse-btn>inner1</button>
+                    innerContent1
+                </ngz-collapse-item>
+                <ngz-collapse-item>
+                    <button ngz-collapse-btn>inner2</button>
+                    innerContent2
+                </ngz-collapse-item>
+            </ngz-collapse>
+
+        </ngz-collapse-item>
+    </ngz-collapse>
+<span class="example-footer">
+    <div class="mt-2 center" style="box-sizing:border-box">
+        点击改变主题
+        <span class="btn-group ml-2">
+        <button (click)="useType=i" class="btn btn-{{i}}" *ngFor="let i of _main.allColors">{{i}}</button>
+        </span>
+    </div>
+    <h4>基础用法：</h4>
+     <pre highlight="
+        <ngz-collapse>
+            <ngz-collapse-item>
+                <button ngz-collapse-btn>Item1</button>
+            </ngz-collapse-item>
+        </ngz-collapse>
+    ">
+    </pre>
+</span>
+<article class="API">
+    <div class="quote-sign-p sign-sm">ngz-collapse</div>
+    <my-api [lib]="lib.api"></my-api>
+    <div class="quote-sign-p sign-sm">ngz-collapse-item</div>
+    <my-api [lib]="lib.api2"></my-api>
+</article>
+</my-template>

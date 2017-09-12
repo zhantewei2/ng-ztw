@@ -1,0 +1,12 @@
+<h4>List-group:</h4>
+<ul class="list-group">
+    <li class="list-item -hover" *ngFor="let i of lists">
+        {{i.h}}
+    </li>
+</ul>
+<ul class="list-group">
+    <li class="list-item-{{i.type}}" *ngFor="let i of lists">
+        <header class="item-head">{{i.h}}</header>
+        <article class="item-body">{{i.c}}</article>
+    </li>
+</ul>

@@ -1,0 +1,5 @@
+
+@mixin lamplight-bg($color){
+  @include gra-line-lamplight($color);
+  @include shadow-out(lighten-color($color));
+}

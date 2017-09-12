@@ -1,0 +1,15 @@
+@mixin base-badge($padding:$badge-padding){
+  display:inline-block;
+  padding:$padding;
+  text-align:center;
+  white-space:nowrap;
+  vertical-align:baseline;
+  line-height:1;
+  @include radius();
+  margin:0 $badge-margin-x;
+}
+@mixin badge-pill($padding:$pill-padding){
+  padding:$padding;
+  border-radius:50%;
+  min-width: $pill-min-width;
+}

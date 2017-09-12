@@ -1,0 +1,34 @@
+@keyframes Progress-bar-stripe{
+  from{background-position:0}
+  to{background-position:$progress-bar-h*2}
+}
+.progress-bar-animate{
+  animation:Progress-bar-stripe $progress-animate-duration linear 0s infinite;
+}
+.progress-container{
+  @extend .fluid-block;
+  background-color:$progress-bg;
+  @include progress-height();
+  @include radius();
+  @include progress-container-shd();
+  margin:$progress-margin;
+  overflow: hidden;
+}
+.progress-sm{
+  @include progress-height(sm);
+}
+.progress-lg{
+  @include progress-height(lg);
+}
+
+.progress-bar{
+  display:block;
+  height:100%;
+  width:100%;
+  @extend .center;
+  overflow:visible;
+}
+
+.progress-strip{
+  @include gra-strip();
+}

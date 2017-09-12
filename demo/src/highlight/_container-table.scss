@@ -1,0 +1,24 @@
+$table-space:.3rem;
+
+.z-hLight-table{
+  padding:$table-space;
+  font-size:$font-size;
+  font-family:$comment-family;
+  word-spacing: $word-spacing;
+  line-height: $line-height;
+  width:100%;
+  & tr td:nth-child(2){
+    padding:$tr-padding-y $tr-indent-space;
+  }
+  & tr td:first-of-type{
+   text-align:center;
+    width:2rem;
+    font-family:$list-family !important;
+    font-size:.8rem !important;
+    font-style:normal !important;
+    color:$list-color !important;
+  }
+  &.stripe tr:nth-child(odd){
+    background:$stripe-color;
+  }
+}

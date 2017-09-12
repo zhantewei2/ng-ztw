@@ -1,0 +1,16 @@
+.upload-btn{
+  background:disabled-color($w);
+  @include radius(editor(upload-radius));
+  width:editor(upload-w);
+  height:editor(upload-h);
+}
+.te-img-nav{
+  max-width:editor(img-nav-width)
+}
+.te-upload-img{
+  @include slight-shadow();
+  @include radius(10px);
+}
+.te-resize-img{
+  @include shadow-out($deep-default-color);
+}

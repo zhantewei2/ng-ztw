@@ -1,0 +1,16 @@
+
+<b (mousedown)="$event.preventDefault()" (click)="setSize()" class="db-item db-item-left">{{size}}</b>
+<div (mousedown)="$event.preventDefault()" (click)="getSize(tp)" class="db-item db-item-right">
+  <i class="fa fa-caret-down btn2 center"></i>
+</div>
+
+<ng-template #tp>
+  <div class="center column">
+    <ngz-slider max="8" style="width:200px" [(ngModel)]="fontSize" type="w"></ngz-slider>
+    <div class="mt-1">
+      <em class="color-wt">{{fontSize}}</em>
+      <button (click)="setSize()" class="btn0 btn-w btn-sm">确定</button>
+    </div>
+  </div>
+
+</ng-template>

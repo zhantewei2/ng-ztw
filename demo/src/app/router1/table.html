@@ -1,0 +1,25 @@
+<h3>table</h3>
+<div class="p-2">
+    <div *ngFor="let table of tableArr">
+    <p><span class="quote-sign-p sign-sm">{{table||'table'}}</span></p>
+    <table class="table {{table}}">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th *ngFor="let td of tdArr;index as index">{{index+1}}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let tr of trArr;index as index">
+            <th scope="row">{{index+1}}</th>
+            <td *ngFor="let td of tdArr">{{td}}</td>
+        </tr>
+        </tbody>
+    </table>
+    <p>class=<var>"table {{table}}"</var></p>
+</div>
+</div>
+<h3>HTML</h3>
+<my-code [html]="code"></my-code>
+<h3>TS</h3>
+<my-code [js]="code2"></my-code>

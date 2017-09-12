@@ -1,0 +1,59 @@
+<h2>
+    {{switch}}
+</h2>
+
+<item-card myTitle="Example">
+    <div [ngSwitch]="switch">
+        <div *ngSwitchCase="'sticky'" class="card-block" style="height:300px">
+            <div top="60" style="max-width:150px;" class="alert hazy-w color-dark" ngz-sticky>
+                Sticky Card
+            </div>
+        </div>
+        <div *ngSwitchCase="'clickCopy'" class="card-block center">
+            <button class="btn btn-lg btn-l" ngz-clickCopy="点击上面按钮复制此内容">CLICK COPY</button>
+            <p>点击上面按钮复制此内容</p>
+            <input placeholder="粘贴尝试" class="form-c">
+        </div>
+        <div *ngSwitchCase="'highlight'">
+            <pre [highlight]="item.code" language="html">
+            </pre>
+        </div>
+        <div *ngSwitchCase="'ForIn'">
+            <div class="list-group">
+                <div *ngzFor="let i in obj;value as value" class="list-item">
+                 {{i}}
+                 <span class="b-w">{{value}}</span>
+                </div>
+            </div>
+        </div>
+        <div *ngSwitchCase="'handEvent'">
+            <div class="bg-l center" (direction)="hand=$event" style="height:200px;" ngz-handEvent>
+                {{hand}}
+            </div>
+            <p class="color-w">
+                尝试在上面滑动
+            </p>
+        </div>
+        <div *ngSwitchCase="'handMove'">
+            <div class="card-block p-2 bg-l" style="height:200px">
+                <div #myMove="ngz-handMove" (offset)="pos=$event" class="bg-p hazy-p" style="width:50px;height:50px;" ngz-handMove>
+                </div>
+            </div>
+            <p class="color-w">
+                尝试拖动上面方块{{pos|json}}
+                <button class="btn btn-p" (click)="myMove.moveTo({x:0.5,y:0.5})">moveTo Center</button>
+            </p>
+        </div>
+    </div>
+</item-card>
+
+<item-card *ngIf="item.html" myTitle="HTML">
+    <my-code [html]="item.html"></my-code>
+    <p [innerHtml]="item.m"></p>
+</item-card>
+<item-card *ngIf="item.api" myTitle="API">
+    <my-api [lib]="item.api"></my-api>
+</item-card>
+
+
+

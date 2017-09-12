@@ -1,0 +1,33 @@
+.form-c{
+  border:none;
+  outline:none;
+  display:block;
+  background:transparent;
+  height:$form-control-height;
+  margin:$base-space $form-control-px*2;
+  @include space(top,$form-control-px);
+  @include space(bottom,$form-control-px/2);
+  width:80%;
+  width:calc(100% - #{$form-control-px*4});
+  @include set-border(bottom,$form-control-border);
+  @include place-holder();
+  @include transition();
+  &:focus{
+    width:calc(100% - #{$form-control-px*2});
+    margin:$base-space $form-control-px;
+  };
+}
+@each $abbrev,$color in $theme-colors{
+  .control-#{$abbrev}{
+    @include variousInput($color);
+  }
+}
+
+.input-group{
+  display:flex;
+  @include wrapFlex();
+  &>*{
+    @extend .center;
+    vertical-align:bottom;
+  }
+}

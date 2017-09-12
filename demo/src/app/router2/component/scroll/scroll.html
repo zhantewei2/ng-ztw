@@ -1,0 +1,38 @@
+
+<h2>Scroll</h2>
+<p class="mt-2">
+ <span class="quote-sign-p sign-sm">Example</span>
+
+</p>
+<ngz-tab type="p">
+    <button ngz-tabBtn>API</button>
+    <button ngz-tabBtn>EXAMPLE</button>
+    <button ngz-tabBtn>HTML</button>
+    <div *ngz-tabContent>
+        <h2>ngz-scroll</h2>
+        <my-api [lib]="apiLib"></my-api>
+        <h2>ngz-scroll-item</h2>
+        <my-api [lib]="apiLib2"></my-api>
+    </div>
+    <div *ngz-tabContent>
+        <ngz-scroll #myScroll baseLine="55" [(ngModel)]="scrollValue" (ngModelChange)="change($event)">
+            <p>请尝试滚动页面</p>
+            <div sticky="55px" ngz-scroll-item="exhibition">
+                <a> scroll Value is <var>{{scrollValue||'undefined'}}</var></a>
+                <div>
+                    <div class="btn-group">
+                        <button (click)="scrollValue=i" [class.active]="i==scrollValue" class="btn btn-p" *ngFor="let i of scrollList">{{i}}</button>
+                    </div>
+                </div>
+            </div>
+            <div class="p-2 bg-l center lg" style="height:300px;"  *ngFor="let i of scrollList;index as index;" [ngz-scroll-item]="i">
+                {{i}}
+            </div>
+        </ngz-scroll>
+    </div>
+    <div *ngz-tabContent>
+
+        <my-code [html]="lib.code1"></my-code>
+    </div>
+</ngz-tab>
+

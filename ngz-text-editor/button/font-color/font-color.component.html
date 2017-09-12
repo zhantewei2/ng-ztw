@@ -1,0 +1,11 @@
+<span (mousedown)="$event.preventDefault()" class="db-item db-item-left" (click)="setColor()">
+  <i class="fa fa-font"></i>
+</span>
+<div class="db-item db-item-right" (mousedown)="$event.preventDefault()"  (click)="selectColor(colorTp)">
+  <span class="colorPick" [style.background]="color"></span>
+  <i class="fa fa-caret-down" ></i>
+</div>
+<ng-template #colorTp>
+  <div #colorPalette class="center" id="ztw-textEdit-color" (click)="click($event)">
+  </div>
+</ng-template>

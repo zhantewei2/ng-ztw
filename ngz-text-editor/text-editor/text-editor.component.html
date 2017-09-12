@@ -1,0 +1,31 @@
+<nav class="te-nav">
+  <button *ngFor="let i of buttonArr" class="btn btn-l"  (click)="i.fn()">
+    <i [class]="'fa fa-'+i.name"> </i>
+  </button>
+  <ztw-font-color></ztw-font-color>
+  <ztw-font-size></ztw-font-size>
+  <ztw-href></ztw-href>
+  <button class="btn btn-l" (click)="buttonFn.unlink()">
+    <i class="fa fa-unlink"> </i>
+  </button>
+  <ztw-image [disUpload]="disUpload"></ztw-image>
+  <ng-content select="[customeBtn]"></ng-content>
+</nav>
+<div class="rel flex-1 column">
+    <div class="te-container" #textarea id="ztw_textEditor" contenteditable="true"></div>
+    <ztw-text-editor-modal #modal></ztw-text-editor-modal>
+  <div *ngIf="txt2">
+    <div class="full" [class.blur]="!closeBg2"></div>
+    <div class="abs full column" >
+      <div class="ztwBlock parent between">
+        <samp><i class="fa fa-hand-o-down"></i>&nbsp;{{txt2.title}}</samp>
+        <i (click)="txt2Close()" class="fa fa-chevron-down hover mid"></i>
+        <span class="colorBlock frame mr-3" (click)="closeBg2=!closeBg2" [class.remindBg]="!closeBg2"></span>
+      </div>
+      <div contenteditable="true" class="frame container1" style="flex:1" id="ztw_textEditor2"></div>
+    </div>
+  </div>
+  <i class="fa fa-chevron-up topBtn btn0" style="opacity:0.5" (click)="txt2Open()" *ngIf="txt2&&!txt2.isOpen"></i>
+</div>
+
+

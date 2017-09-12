@@ -1,0 +1,204 @@
+$default-color:#ddd !default;
+$light-color:white !default;
+$deep-default-color:darken($default-color,40%);
+$p:#69d2e7 !default;
+$i:#9b539c !default;
+$w:#e8b71a !default;
+$s:#1fda9a !default;
+$d:#eb7260 !default;
+$effectColor:black;
+$l:darken($light-color,5%);
+$dark:gray;
+$slightBg-Color:mix($l,$light-color,20%);
+$disabled-color:$light-color;
+$theme-colors:(
+  p:$p,
+  i:$i,
+  w:$w,
+  d:$d,
+  s:$s,
+  l:$l
+);
+$theme-colors2:append($theme-colors,(dark,$dark));
+$indexes:(
+  normal:1,
+  addon:2,
+  fixBg:5,
+  navSide:6,
+  fixTop:100,
+  fixCenter:201,
+  fixBottom:98,
+  modal:200,
+  menu:99
+);
+$glob-font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+$sm-font0:.9rem;
+$sm-font:.8rem;
+$lg-font:1.3rem;
+$close-size:1.5rem;
+//screen:
+$screen:(sm:720px,md:1140px,lg:1140px);
+$maxScreen:(xl:1365px,xxl:1790px);
+$sort-screen:md,sm,lg;
+//animate:
+$animate-timer:.3s ease;
+//invser:
+$inverse-percent:15%;
+//yiq:
+$hover-yiq:200;
+//icon tag:
+$icon-tag-margin:.3rem;
+
+$enable-transition:true !default;
+$transition-base:all .3s ease !default;
+$base-fontSize:17px;
+
+$base-space:.5rem;
+$base-opacity:.2;
+$base-saturate:.15;
+$space-count:5;
+$place-space:$base-space*2;
+$space-position:(
+        l:left,
+        b:bottom,
+        r:right,
+        t:top
+);
+$hover-darken-percent:8%;
+$hover-focus-percent:.1;
+
+$head-font-size:1.2rem;
+$glob-radius:.25rem !default;
+$min-size:0.8;
+//container:
+$container-padding-x:(sm:.5rem,md:1rem,lg:3rem);
+$container-padding-y:$base-space;
+$host-container-width:(xl:92%,xxl:82%);
+//linear:
+$linear:(
+        lamplight-percent:25%,
+        lamplight-count:2,
+        lamplight-angle:135deg
+);
+//article:
+$article-indent:2em;
+
+//button:
+$btn-transition:$transition-base;
+$btn-size:1;
+$btn-size-sm:.8;
+$btn-size-lg:1.4;
+$btn-size-map:(sm:.8,lg:1.4);
+$btn-border:1px solid $default-color !default;
+$btn-outline-width:.15rem;
+$keyframe-duration:0.3s;
+$abs-distance:.5rem;
+
+$shadow-enabled:true !default;
+$shadow-out:(lg:16px,md:8px,sm:2px);
+$shadow-width:4px;
+$shadow-color:$deep-default-color;
+
+$border-color-width:0.2rem;
+$nav-x-space:1rem;
+$nav-height:3.5rem;
+$nav-item-px:1rem .8rem 1.2rem;
+$nav-item-ml:1rem .7rem 1.2rem;
+
+$list-item-px:.8rem;
+$list-item-py:.7rem;
+
+$list-child-space:1rem;
+//form:
+
+$form-control-height:2.6rem;
+$form-control-px:.5rem;
+$form-control-border:1px solid $dark;
+$form-control-border-focus-width:2px;
+
+//quote:
+$quote-padding:$base-space $base-space $base-space $base-space*1.5;
+$quote-radius:$glob-radius*2;
+$quote-tip-width:.4rem;
+$quote-line-height:200%;
+$quote-sign-space:$base-space;
+
+//dropdown:
+$directions:(top:'▲',right:'▶',bottom:'▼',left:'◀');
+$direction-size:0.7rem;
+$abc:10px;
+$dropdown-space:$btn-outline-width;
+$dropdown-shadow:0.2rem 0.2rem rgba($default-color,$base-opacity*2);
+$dropdown-min-width:120px;
+$dropdown-min-height:100px;
+
+$tooltip-angle:(
+    top:map-get($directions,bottom),
+    bottom:map-get($directions,top),
+    right:map-get($directions,left),
+    left:map-get($directions,right)
+);
+$tooltip-angle-size:.3rem;
+$tooltip-space:$base-space*.8;
+
+//tab:
+$tab-strip-height:.15rem;
+$tab-padding:$btn-size*0.8+0rem;
+$tab-content-marginTop:$base-space*1.3;
+$tab-content-minh:4rem;
+$tab-content-shd:2px 10px;
+$tab-nav-maxWidth:40rem;
+$tab-nav-min-maxWidth:(0:20rem,1:30rem,2:40rem);
+$fix-bg-color:rgba($effectColor,.5);
+//nav-side:
+$nav-side-width:10rem;
+$nav-side-shd-color:$l;
+$nav-side-bg-color:$light-color;
+
+//modal:
+$modal-sm-width:25rem;
+$modal-min-height:15rem;
+$modal-lg-width:800px;
+$modal-lgMd-width:90%;
+$modal-top:5%;
+$modal-header-height:2.5rem;
+$modal-shd:3px 15px;
+
+$min-modal-min-width:5rem;
+//badge:
+$badge-padding:.15em .3em;
+$badge-margin-x:.2rem;
+$pill-padding:.4rem .4rem;
+$pill-min-width:1.6rem;
+//carousel:
+$carousel-radius:$glob-radius;
+$carousel-btn:(width:3em,height:6em,fontSize:2.5em);
+$carousel-btn-radius:$carousel-radius;
+$carousel-nav-item-width:.65em;
+$carousel-nav-bottom:.5em;
+$carousel-item-header-bottom:1em;
+//collapse:
+$collapse-list-width:.5rem;
+//table:
+$table-td-padding:.9rem .7rem;
+$table-td-line-h:200%;
+$table-divider-color:$default-color;
+$table-color:$l;
+//alert:
+$alert-padding:$base-space*1.7 $base-space*2;
+$alert-margin:$base-space*0.5 0;
+//filter:
+$lamp-padding-y:$base-space*2;
+//slider:
+$slider-thumb-length:1rem;
+//scroll-bar:
+$scroll-bar-width:.5rem;
+$scroll-bar-height:.6rem;
+$scroll-bar-bg:$l;
+$scroll-thumb-bg:lighten($deep-default-color,20%);
+//progress-bar:
+$progress-margin:$base-space*2 $base-space;
+$progress-bg:$l;
+$progress-bar-h:1.5rem;
+$progress-bar-hs:(sm:1rem,lg:3rem);
+$progress-animate-duration:2s;

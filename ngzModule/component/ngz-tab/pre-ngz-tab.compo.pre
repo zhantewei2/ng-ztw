@@ -1,0 +1,142 @@
+import { Input,Injectable,ViewChild,EventEmitter,ElementRef,ContentChildren,Component,ContentChild,Output,Directive,TemplateRef} from '@angular/core';
+import {carousel} from '../../animate/base';
+@Injectable()
+export class tabService{
+  isOpen:boolean;
+  /*ngAfterContentInit(){
+    children[0].isOpen=true;
+  }
+  normal work well;but use *ngFor generate <ngz-tabContent>,also warn `pre not equal now`;
+  ngDoCheck will dismiss this warn....but ngDoCheck()&&contents just be triggered after ngAfterConentInit;
+  after ngAfterContentInit, I can not init my component.so I have to use service.Maybe I'll have a better way!
+  */
+}
+
+/*
+how to use:
+  <ngz-tab>
+
+    <ngz-tabContent>content1</ngz-tabContent>
+    <button ngz-tabBtn>btn1</button>
+
+  </ngz-tab>
+ */
+//ztwTabContent:
+@Component({
+  selector:'ngz-tabContent',
+  template:`
+      <div *ngIf="isOpen" class="tab-content" [@Carousel]="state">
+          <ng-content></ng-content>
+      </div>
+  `,
+  animations:[carousel()]
+})
+export class ngzTabContent{
+  isOpen:boolean=false;
+  state:string;
+  constructor(public _tab:tabService){
+    if(!_tab.isOpen){
+      this.isOpen=_tab.isOpen=true;
+    }
+  }
+}
+//ngz-tabBtn:
+@Directive({
+  selector:'[ngz-tabBtn]',
+  host:{
+    '(click)':'click()'
+  }
+})
+export class ngzTabBtn{
+  set type(val:string){
+    this._el.nativeElement.className='tab-btn flex-1';
+  }
+  constructor(public _el:ElementRef){}
+  click(){}
+}
+
+//ngz-tab:
+@Component({
+  selector: 'ngz-tab',
+  template: `      
+    <div class="tab-group-{{type}}">
+      <div class="flex tab-btn-group rel">
+          <ng-content select="[ngz-tabBtn]"></ng-content>
+      </div>
+      <div class="rel w-100 tab-container" style="overflow:hidden">
+          <ng-content select="ngz-tabContent"></ng-content>
+       <div>
+    </div>
+      `,
+  providers:[tabService]
+})
+export class ngzTabComponent {
+  constructor(
+      public _tab:tabService
+  ){}
+  @Input()type:string='l';
+  @ContentChildren(ngzTabContent)contents:any;
+  @ContentChildren(ngzTabBtn)btns:any;
+  ngAfterContentInit(){
+    this.initBtn();
+    this.initContent();
+    this.contents.changes.subscribe(()=>this.initContent());
+    this.btns.changes.subscribe(()=>this.initBtn());
+  }
+  //select primary content:
+  contentControls:Array<ngzTabContent>;
+  btnControls:Array<ngzTabBtn>;
+  preIndex:number;
+  len:number;
+  barLeft:number;
+  barWidth:number;
+  stripBar:any;
+  setBar(index:number){
+    this.stripBar.style.transform=`translateX(${100*index}%)`;
+  }
+  initContent(){
+    this.contentControls=this.contents._results;
+    this.len=this.contentControls.length;
+    this.btnControls=this.btns._results;
+    if(this.len){
+        this.stripBar=document.createElement('div');
+        this.stripBar.className='strip-bar';
+        this.btnControls[0]._el.nativeElement.appendChild(this.stripBar);
+        this.preIndex=0;
+    }
+  }
+  initBtn(){
+    this.btnControls=this.btns._results;
+    this.btnControls.forEach((control:ngzTabBtn,index:number)=>{
+      control.type=this.type;
+      this.btnControls[index].click=()=> {
+        const preI=this.preIndex;
+        if (index != preI) {
+          const _now=this.contentControls[index],
+              _pre=this.contentControls[preI];
+          console.log(_now);
+          this.contentControls.splice(0,1);
+          console.log(this.contentControls);
+          /*
+          if(index>preI){
+            _now.state='right';
+            _pre.state='left';
+          }else{
+            _now.state = 'left';
+            _pre.state = 'right';
+          }
+            this.setBar(index);
+            _pre.isOpen=false;
+            _now.isOpen=true;
+            this.preIndex=index;
+            */
+        }
+      }
+    })
+  }
+
+
+}
+
+
+

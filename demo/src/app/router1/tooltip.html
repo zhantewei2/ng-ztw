@@ -1,0 +1,52 @@
+<h4>
+    tooltip
+</h4>
+
+<div class="mt-4">
+    <item-card myTitle="Main">
+        <div class="myc1">
+            <span class="btn0 btn-l tooltip m-2" *ngFor="let i of tipArr">
+                    {{i}}
+                    <span class="tip-{{i}} show">tooltip {{i}}</span>
+            </span>
+        </div>
+        <my-code [html]="code1">
+        </my-code>
+    </item-card>
+
+</div>
+
+<item-card myTitle="Extend">
+    <p>Tooltip</p>
+
+        <div>
+            <div class="quote-w">
+                普通
+            </div>
+            <a [innerTp]="tp1"></a>
+            <p>
+                <small class="color-w">
+                    这里使用'btn0',在'btn'中,纯css的tooltip将不会显示。使用组件ngz-tooltip可以在body中插入tooltip。
+                </small>
+            </p>
+            <div class="quote-w">
+                设置背景色,添加'bg-p border-p'
+            </div>
+            <a [innerTp]="tp1" [deps]="{bg:true,border:true}"></a>
+            <div class="quote-w">
+                设置字体色,添加'color-p' | 'color-d' | 'color-s' | 'color-i'
+            </div>
+            <a [innerTp]="tp1" [deps]="{color:true}"></a>
+        </div>
+
+    <my-code [html]="code2">
+    </my-code>
+    </item-card>
+
+
+<ng-template #tp1 let-c>
+    <button class="btn0 m-1 btn-{{colors[index]}} tooltip" *ngFor="let i of tipArr;index as index;">
+        {{i}}
+        <span [ngClass]="selectTip(c,index)" class="tip-{{i}}" >{{i}}</span>
+    </button>
+</ng-template>

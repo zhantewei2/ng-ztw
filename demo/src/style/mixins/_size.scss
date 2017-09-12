@@ -1,0 +1,11 @@
+@mixin space($pos,$value,$pre:padding){
+  @if($pos==x){
+    #{$pre}-left:$value;
+    #{$pre}-right:$value;
+  }@else if($pos==y){
+  #{$pre}-top:$value;
+    #{$pre}-bottom:$value;
+  }@else{
+    #{$pre}-#{$pos}:$value;
+  }
+}
