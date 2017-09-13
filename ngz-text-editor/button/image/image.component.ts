@@ -1,5 +1,5 @@
 import { Component, OnInit,Input,ViewChild} from '@angular/core';
-import {ToolService} from '@ng-ztw';
+import {ToolService} from 'ng-ztw';
 import {parent} from '../../total.service';
 import {Subject} from 'rxjs/Subject';
 

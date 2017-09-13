@@ -1,3 +1,2 @@
-import './style/sass.scss';
-import './highlight/base.scss';
 import './styles.css';
+import '../../ngz-sass/sass.scss'

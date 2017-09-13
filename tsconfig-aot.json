@@ -10,7 +10,7 @@
     "baseUrl":"./node_modules",
 
     "paths":{
-      "@ng-ztw":["../ngzModule"],
+      "ng-ztw":["../ngzModule"],
       "*":["../ngzModule/*"]
     },
 
@@ -23,13 +23,6 @@
   "include": [
     "demo/**/*.ts",
     "ngzModule/**/*.ts"
-    /*
-    "./demo/src/main.ts",
-    "./demo/src/app/router1/router.module",
-    "./demo/src/app/router2/router.module",
-    "./demo/src/app/router2/directives-router.module",
-    "./demo/src/app/router2/expriment/expriment.module"
-    */
   ],
   "angularCompilerOptions":{
     "strictMetadataEmit":true

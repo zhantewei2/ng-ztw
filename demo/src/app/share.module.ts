@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {ngzModule} from '@ng-ztw';
+import {ngzModule} from 'ng-ztw';
  import {myExample} from './public/example.component';
 import {CodeComponent} from './public/code.component';
 import {MyTemplateComponent} from  './template.component';

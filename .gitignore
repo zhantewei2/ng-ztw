@@ -2,4 +2,6 @@
 /dist/
 /demo/dist/
 /indexDB_dist/
+/.idea/
+/.vs/
 npm-debug.log

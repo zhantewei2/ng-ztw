@@ -97,7 +97,7 @@ module.exports=function makeWepbackConfig(envOptions){
     config.resolve={
         modules:['node_modules',join('demo/src'),'ngzModule'],
         alias:{
-          '@ng-ztw':join('ngzModule')
+          'ng-ztw':join('ngzModule')
         },
         extensions:['.ts','.js','.css','.scss']
     };

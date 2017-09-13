@@ -64,6 +64,7 @@ export class MenuDirective{
     isOpen:boolean;
     comRef:any;
     prevent:boolean;
+    resOrder:any;
     constructor(
         private _vcr:ViewContainerRef,
         private _cfr:ComponentFactoryResolver,
@@ -74,7 +75,7 @@ export class MenuDirective{
         public _res:Resize
     ){
         this.body=document.querySelector('body');
-        this._res.valSub.subscribe(()=>{
+        this.resOrder=this._res.valSub.subscribe(()=>{
             this.storeEl=null;
             this.close(true);
         });
@@ -126,5 +127,6 @@ export class MenuDirective{
 
     ngOnDestroy(){
         this.comRef&&this.comRef.destroy();
+        this.resOrder.unsubscribe();
     }
 }

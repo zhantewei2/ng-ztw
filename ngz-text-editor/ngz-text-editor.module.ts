@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule} from '@angular/forms';
-import {ngzModule} from '@ng-ztw';
+import {ngzModule} from 'ng-ztw';
 import { TextEditorComponent } from './text-editor/text-editor.component';
 import { ModalComponent } from './modal/modal.component';
 import { FontColorComponent } from './button/font-color/font-color.component';
