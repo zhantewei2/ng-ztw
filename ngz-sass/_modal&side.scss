@@ -1,16 +1,19 @@
-.fix-bg{
-  @include fix-block(100%,100%);
+.nav-side-container{
+  @include fix-block($pos:absolute);
   z-index:map-get($indexes,fixBg);
+}
+.nav-side-bg{
+  @extend .full;
   background:$fix-bg-color;
 }
 .nav-side-c{
-  @include fix-block($nav-side-width,100%);
+  @include fix-block($w:$nav-side-width,$pos:absolute);
   @include bottom-left-shd($nav-side-shd-color);
   background:$nav-side-bg-color;
   z-index:map-get($indexes,navSide);
 }
 .modal-bg{
-  @include fix-block(100%,100%);
+  @include fix-block();
   z-index:map-get($indexes,modal);
   background:$fix-bg-color;
  }

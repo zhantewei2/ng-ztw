@@ -8,4 +8,5 @@ export class BtnComponent{
     constructor(public _main:MainService){}
     select1:any;
     select2:any;
+    btnArr=[1,2,3];
 }

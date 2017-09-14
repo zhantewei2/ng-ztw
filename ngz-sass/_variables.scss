@@ -23,13 +23,14 @@ $theme-colors2:append($theme-colors,(dark,$dark));
 $indexes:(
   normal:1,
   addon:2,
-  fixBg:5,
-  navSide:6,
-  fixTop:100,
-  fixCenter:201,
-  fixBottom:98,
-  modal:200,
-  menu:99
+  fixBg:6,
+  navSide:10,
+  absTop:99,
+  fixTop:1000,
+  fixCenter:2001,
+  fixBottom:97,
+  modal:2000,
+  menu:1001
 );
 $glob-font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
 $sm-font0:.9rem;
@@ -112,7 +113,10 @@ $list-child-space:1rem;
 //form:
 
 $form-control-height:2.6rem;
+$form-control-default-color:$deep-default-color;
+$form-control-border-width:1px;
 $form-control-px:.5rem;
+$form-control-mx:.5rem;
 $form-control-border:1px solid $dark;
 $form-control-border-focus-width:2px;
 

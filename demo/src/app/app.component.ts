@@ -6,14 +6,15 @@ import {MainHomeComponet} from './home/home.component';
     templateUrl:'./app.component.html'
 })
 export class AppComponent{
-
+    @ViewChild('navSide')navSide:any;
     useSide:boolean=true;
     constructor(public _main:MainService){}
-    @ViewChild('navSide')navSide:any;
+
     ngOnInit(){
-        this._main.closeNav=()=>this.navSide.close();
+      this._main.closeNav=()=>this.navSide.close();
     }
     routerActivate(e:any){
         this.useSide=!(e==MainHomeComponet||e instanceof MainHomeComponet);
     }
+
 }

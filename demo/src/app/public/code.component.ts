@@ -2,11 +2,11 @@ import {Component,Input,ViewChild} from '@angular/core';
 @Component({
     selector:'my-code',
     template:`
-        <div class="rel container-card" *ngIf="_code;else another">
+        <div class="rel" *ngIf="_code;else another">
             <p>
-                <span #tip="ngzTooltip"  (copyComplete)="complete()" 
-                      [ngz-clickCopy]="_code" [ngz-tooltip]="copyState" [class.bg-p]="copyOver" 
-                      (mouseleave)="mouseleave()" (mouseenter)="mouseenter()" class="abs-tr">Copy</span>
+                <em #tip="ngzTooltip"  (copyComplete)="complete()" 
+                      [ngz-clickCopy]="_code" [ngz-tooltip]="copyState"
+                       class="abs-tr b-w -hover-w">Copy</em>
             </p>
             <ng-template #tip>
                 <div>{{copyState}}</div>
@@ -21,14 +21,9 @@ import {Component,Input,ViewChild} from '@angular/core';
     `
 })
 export class CodeComponent{
-    copyOver:boolean;
+
     copyState:string='Copy to clipboard';
-    mouseenter(){
-        this.copyOver=true;
-    }
-    mouseleave(){
-        this.copyOver=false;
-    }
+
     _code:string;
     type:string;
     @ViewChild('tip')tip:any;

@@ -1,33 +1,46 @@
-<header class="header">
-    <samp class="quote-sign-w">
-        <i class="fa fa-bookmark"></i>
-        dropdown-menu
-    </samp>
-</header>
-<div *ngFor="let i of btnArr">
-    <div (click)="$event.stopPropagation()" class="m-2" [ngClass]="i.dr=='bottom'?'dropdown':'dropdown-'+i.dr">
-        <button (click)="show(menu,i)"  class="btn btn-p dropdown-btn">
-            {{i.dr}}
+<h4>Dropdown</h4>
+<item-card myTitle="dropdown">
+    <p>这是一个简单的基于css的dropdown</p>
+    <div *ngFor="let i of btnArr" (click)="$event.stopPropagation()" class="m-2 dropdown{{i.dr}}">
+        <button (click)="i.show=!i.show" (document:click)="i.show=false" class="btn0 btn-o-w dropdown-btn">
+            btn {{i.dr}}
         </button>
-        <div #menu class="dropdown-menu">
+        <div [class.show]="i.show" class="dropdown-menu">
             dropdown-menu {{i.value}}
         </div>
     </div>
-</div>
+    <p>HTML</p>
+    <my-code [html]="lib.dropdown1"></my-code>
+    <p>TS</p>
+    <my-code [js]="lib.dropdown2"></my-code>
+</item-card>
 <hr>
-<div style="height:400px;">
-<header class="header">
-    <samp class="quote-sign-w">
-        <i class="fa fa-bookmark"></i>
-        menu-list
-    </samp>
-</header>
-<div class="dropdown">
-    <button (click)="showList=!showList" class="btn btn-p dropdown-btn">
-        List
-    </button>
-    <ul [class.show]="showList" class="dropdown-list">
-        <div (click)="listSelect=i" [class.active]="listSelect==i" *ngFor="let i of menuList" class="dropdown-list-item">{{i}}</div>
-    </ul>
-</div>
-</div>
+
+<item-card myTitle="dropdown list">
+    <div class="center">
+    <div class="dropdown">
+        <button (click)="showList=!showList" class="btn btn-p dropdown-btn">
+            List
+        </button>
+        <ul [class.show]="showList" class="dropdown-list">
+            <li (click)="listSelect=i" [class.active]="listSelect==i" *ngFor="let i of menuList" class="dropdown-list-item">{{i}}</li>
+        </ul>
+    </div>
+    </div>
+    <my-code [html]="lib.dropdown3"></my-code>
+</item-card>
+<item-card myTitle="dropdown with -hover">
+    <div (click)="$event.stopPropagation()" *ngFor="let i of colorArr" class="dropdown m-1">
+        <button (document:click)="i.show=false" (click)="i.show=!i.show" class="btn btn-{{i.color}} dropdown-btn">
+            -hover-{{i.color}}
+        </button>
+        <ul class="dropdown-list" [class.show]="i.show">
+            <li [class.active]="i.select==j" (click)="i.select=j" class="dropdown-list-item -hover-{{i.color}}" *ngFor="let j of menuList">{{j}}</li>
+        </ul>
+    </div>
+    <p>HTML</p>
+    <my-code [html]="lib.dropdown4"></my-code>
+    <p>TS</p>
+    <my-code [js]="lib.dropdown5"></my-code>
+
+</item-card>

@@ -1,14 +1,14 @@
 <nav class="nav bg-l fix-top nav-shd">
-    <button *ngIf="_main._res.value=='sm'&&useSide" class="btn nav-item" (click)="navSide.toggle()" >
+    <a zIndex="999" top="60" width="200" [ngz-navSide]="_main.navTp" #navSide="ngz-navSide">
+    </a>
+    <button *ngIf="_main._res.value=='sm'&&useSide" (click)="navSide.toggle()" class="btn nav-item">
         <i class="fa fa-navicon"></i>
     </button>
     <button routerLink=""  class="btn nav-item">Zle</button>
     <button routerLink="css" routerLinkActive="active" class="btn nav-item">Css</button>
     <button routerLink="module" routerLinkActive="active" class="btn nav-item">ngzModule</button>
 </nav>
-<ngz-nav-side paddingTop="55" width="200" #navSide>
-    <div [innerTp]="_main.navTp"></div>
-</ngz-nav-side>
+
 <div class="row host-container">
     <div class="col-auto col-10">
         <router-outlet (activate)="routerActivate($event)"></router-outlet>

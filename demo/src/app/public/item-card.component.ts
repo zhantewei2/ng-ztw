@@ -5,7 +5,9 @@ import {Component,Input} from '@angular/core';
         <div class="mb-5">
             <p class="mb-2">
                 <strong >
-                    <i class="fa fa-bookmark"></i>{{myTitle}}
+                    <i class="fa fa-bookmark"></i>
+                    <span [innerHTML]="myTitle">
+                    </span>
                 </strong>
             </p>
             <div class="modal-divide"></div>

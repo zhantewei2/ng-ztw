@@ -46,4 +46,10 @@
             建议只在app.component中放入ngz-modal，其他组件通过service来访问它
         </div>
     </div>
+    <div class="API">
+        <h4>Content</h4>
+        <my-api [lib]="lib.api"></my-api>
+        <h4>ngz-modal</h4>
+        <my-api [lib]="lib.api2"></my-api>
+    </div>
 </my-template>

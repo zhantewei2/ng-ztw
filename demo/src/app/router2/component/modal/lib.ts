@@ -28,5 +28,25 @@ _content1:any={
     lg:true,
     title:'I am tiltle',
     cb:(e:boolean)=>this.result1=e
-};`
+};`,
+    api:
+    [
+    {title:'<var>@Input Content Opts</var>',
+     body:[
+         ['content',':string|TemplateRef<any>','可以传入字符串也可以是TemplateRef '],
+         ['title?',':string','modal tiitle'],
+         ['btn?',':"double"|"single（default）"|null',"为null时,将没有footer"],
+         ['type?',':string'],
+         ['lg?',':boolean false(default)',"配置大小"],
+         ['cb?(result:boolean)','如果btn =="double",result将返回用户的选择']
+     ],
+        count:3
+    }
+    ],
+    api2:
+    [{
+        title:'<var>Method</var>',
+        body:[['open()'],['close()']]
+    }]
+
 }

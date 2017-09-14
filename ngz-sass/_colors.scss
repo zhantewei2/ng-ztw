@@ -6,12 +6,14 @@
   .color-#{$abbrev}{color:$color};
   .border-#{$abbrev}{border-color:$color};
   .-hover-#{$abbrev}{
+    cursor:pointer;
     @include emptyBg-hover-focus($color:$color,$p1:.3,$p2:.6);
   }
 }
 .color-wt{color:white};
 
 .-hover{
+  cursor:pointer;
   &:hover{
     @include hover-darken($l,1%);
   }

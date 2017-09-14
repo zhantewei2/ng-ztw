@@ -1,10 +1,67 @@
+<h2>navSide<a class='sm b-d'>Directive</a></h2>
+<ngz-tab type="p">
+    <button ngz-tabBtn>API</button>
+    <button ngz-tabBtn>Example</button>
+    <div *ngz-tabContent>
 
-<my-template noTab="true" main="<ngz-nav-side>" title0="nav-side">
-    <div class="example-footer">
-        <pre highlight="
-   <ngz-nav-side #navSide></ngz-nav-sided>
-   <button (click)='navSide.toggle()'></button>
-        ">
-        </pre>
+        <my-api [lib]="lib.api"></my-api>
     </div>
-</my-template>
+    <ng-template ngz-tabContent>
+        <item-card myTitle="example1">
+            <div class='container'>
+                <ng-template #sideTp>
+                    <div class="bg-w">
+                        nav side content
+                    </div>
+                </ng-template>
+                <h5> Create a card as below:</h5>
+                <div class="card block" #sideContainer>
+                    <nav class="smNav nav-inverse bg-w">
+                        <button [parentEl]="sideContainer" (click)="navSide.toggle()" #navSide="ngz-navSide"
+                                class="nav-item" [ngz-navSide]="sideTp">
+                            <i class="fa fa-navicon"></i>
+                        </button>
+                    </nav>
+                    <div style="height:200px;" class="auto">
+                        <div style="height:400px;" >
+                        </div>
+                    </div>
+                </div>
+                <my-code [html]="lib.code1">
+                </my-code>
+
+            </div>
+        </item-card>
+        <item-card myTitle="example2">
+            <div class="container">
+                <h5><var>ngz-navSide</var>可以綁定到任意元素上，只要賦予它template就行</h5>
+                <div class="quote article sm">
+                    被绑定的元素并没有实际的使用意义，只是为了获取template
+                </div>
+                <div class="block card rel" #sideContainer2>
+                    <nav class="smNav abs-top nav-inverse bg-w">
+                        <a top="35" [parentEl]="sideContainer2" #navSide2="ngz-navSide" [ngz-navSide]="sideTp"></a>
+                        <button (click)="navSide2.toggle()" class="nav-item">
+                            <i class="fa fa-navicon"></i>
+                        </button>
+                    </nav>
+                    <div class="bg-l auto" style="height:200px">
+                        <div style="height:400px">Inner Contnent</div>
+                    </div>
+                </div>
+                <my-code [html]="lib.code2"></my-code>
+            </div>
+        </item-card>
+        <item-card myTitle="example3">
+            <div class="container">
+                <h5>如果你沒有指定 parentEl，那將自動指向<samp>body</samp>，並且position变为fixed</h5>
+                <div>
+                    <button class="btn btn-w" top="60" (click)="navSide3.toggle()"
+                            #navSide3="ngz-navSide" [ngz-navSide]="sideTp">Try It</button>
+                </div>
+            </div>
+            <my-code [html]="lib.code3">
+            </my-code>
+        </item-card>
+    </ng-template>
+</ngz-tab>

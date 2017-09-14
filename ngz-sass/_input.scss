@@ -1,20 +1,20 @@
+
 .form-c{
-  border:none;
   outline:none;
   display:block;
   background:transparent;
+  flex:1;
+  @include space(x,$form-control-px);
   height:$form-control-height;
-  margin:$base-space $form-control-px*2;
   @include space(top,$form-control-px);
-  @include space(bottom,$form-control-px/2);
-  width:80%;
-  width:calc(100% - #{$form-control-px*4});
-  @include set-border(bottom,$form-control-border);
+  @include inputBorder();
   @include place-holder();
+  margin:0 $form-control-mx;
+  width:90%;
+  width:calc(100% - #{$form-control-mx*2});
   @include transition();
   &:focus{
-    width:calc(100% - #{$form-control-px*2});
-    margin:$base-space $form-control-px;
+   @include input-focusBorder();
   };
 }
 @each $abbrev,$color in $theme-colors{

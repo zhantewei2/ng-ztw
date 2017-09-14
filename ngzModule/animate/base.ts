@@ -51,6 +51,8 @@ export function collapse(
         transition('void=>show',[style(style1),animate(t)])
     ])
 }
+
+
 export function fade(t:string=defaultT,style1:any={opacity:0}):any{
     return trigger('Fade',[
         transition('*=>void',[animate(t,style(style1))]),
@@ -58,11 +60,11 @@ export function fade(t:string=defaultT,style1:any={opacity:0}):any{
         ])
 }
 export function sideRight(
-    t:string=defaultT,
+    t:string='.2s ease-out',
     style1:any={transform:'translateX(-100%)'}):any{
     return trigger('SideRight',[
-        transition('*=>void',[animate(t,style(style1))]),
-        transition('void=>*',[style(style1),animate(t)])
+        transition('show=>hid',[animate(t,style(style1))]),
+        transition('*=>show',[style(style1),animate(t)])
     ])
 }
 export function modal(

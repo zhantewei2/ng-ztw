@@ -10,8 +10,8 @@ import {CollaspeBtnDirective} from './collapse/collapseBtn.directive';
 import {CollapseItemComponent} from './collapse/collapseItem.component';
 
 
-import {SideNavComponent} from './side-nav/side-nav.component';
-export {SideNavComponent} from './side-nav/side-nav.component';
+import {SideNavComponent,navSideDirective} from './side-nav/side-nav.component';
+export {SideNavComponent,navSideDirective} from './side-nav/side-nav.component';
 
 import {ModalComponent} from './modal/modal.component';
 export {ModalComponent} from './modal/modal.component';
@@ -58,6 +58,7 @@ const list=[
     CollaspeBtnDirective,
     CollapseItemComponent,
     SideNavComponent,
+    navSideDirective,
     ModalComponent,
     TooltipDirective,
     TooltipComponent,
@@ -84,7 +85,7 @@ const list=[
 @NgModule({
     imports:[CommonModule],
     declarations:list,
-    entryComponents:[TooltipComponent,MenuComponent],
+    entryComponents:[TooltipComponent,MenuComponent,SideNavComponent],
     exports:list
 })
 export class ComponentModule{

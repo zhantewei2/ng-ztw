@@ -1,14 +1,20 @@
 <h4>Btn</h4>
 <div class="mb-1" *ngFor="let size of btnSize">
-    <div class="m-1">
-        <button [ngClass]="{'btn-sm':size=='sm','btn-lg':size=='lg'}" *ngFor="let i of _main.allColors" class="btn0 btn-o-{{i}} m-1">btn-{{i}}</button>
-    </div>
-    <div class="m-1">
-        <button [ngClass]="{'btn-sm':size=='sm','btn-lg':size=='lg'}" class="btn btn-{{i}} mx-1" *ngFor="let i of _main.allColors">
+    <p>
+        <button [ngClass]="{'btn-sm':size=='sm','btn-lg':size=='lg'}" *ngFor="let i of _main.allColors" class="btn0 btn-o-{{i}} m-1">
+            btn-o-{{i}}
+        </button>
+    </p>
+    <p>
+        <button [ngClass]="{'btn-sm':size=='sm','btn-lg':size=='lg'}" class="btn btn-{{i}} m-1" *ngFor="let i of _main.allColors">
             btn-{{i}}
         </button>
-    </div>
+    </p>
 </div>
+<div class="quote">
+   class='btn btn-p btn-lg'
+</div>
+
 <h4 class="quote-sign">btn-group</h4>
 <br>
 <div class="btn-group m-1">
@@ -18,9 +24,12 @@
     <button (click)="select2=i" [class.active]="select2==i" class="btn btn-d" *ngFor="let i of _main.allColors">{{i}}</button>
 </div>
 <br>
-<h4 class="quote-sign">btn-group-vertical</h4>
+<h4 class="quote-sign">btn-group-block</h4>
 <div class="btn-group-block">
-    <button class="btn btn-p">1</button>
-    <button class="btn btn-p">2</button>
-    <button class="btn btn-p">3</button>
+    <button class="btn btn-p" *ngFor="let i of btnArr">{{i}}</button>
+</div>
+<h4 class="quote-sign">btn-group-vertical</h4>
+<br>
+<div class="btn-group-vertical">
+    <button *ngFor="let i of btnArr" class="btn btn-d">{{i}}</button>
 </div>

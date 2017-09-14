@@ -101,14 +101,18 @@ export class MenuDirective{
             this.storeEl.style[i]=pos.pos[i];
         }
     }
+    viewRef:any;
     open(){
+        console.log(this.tp);
         if(this.prevent||!(this.tp instanceof TemplateRef))return;
         this.prevent=true;
         if(!this.storeEl){
-            const viewRef=this._vcr.createEmbeddedView(this.tp);
-            this.comRef=this._vcr.createComponent(this._cfr.resolveComponentFactory(MenuComponent),0,this._injector,[viewRef.rootNodes]);
+            this.viewRef&&this._vcr.remove(this._vcr.indexOf(this.viewRef));
+            this.viewRef=this._vcr.createEmbeddedView(this.tp);
+            this.comRef=this._vcr.createComponent(this._cfr.resolveComponentFactory(MenuComponent),0,this._injector,[this.viewRef.rootNodes]);
             this.storeEl=this.comRef.location.nativeElement;
             this.comRef.instance.placement=this.placement;
+
             this.setPos();
         }
         this.body.appendChild(this.storeEl);

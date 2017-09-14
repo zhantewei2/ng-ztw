@@ -56,8 +56,10 @@ export class StickyBlockDirective{
     scrollSub:any;
 
     ngOnInit(){
+
         this.self=this.el.nativeElement;
         this.parent=this.self.parentElement;
+        if(!this.parent)return;
         const style=window.getComputedStyle(this.self,null);
         if(!this.useJs&&style.position.match(/sticky/)){
             this.state.emit('css');

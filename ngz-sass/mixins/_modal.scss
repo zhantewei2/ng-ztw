@@ -1,11 +1,12 @@
 
-@mixin fix-block($w,$h,$top:0,$left:0){
-  position:fixed;
+@mixin fix-block($w:100%,$h:100%,$top:0,$left:0,$pos:fixed){
+  position:$pos;
   height:$h;
   width:$w;
   top:$top;
   left:$left;
-  overflow:auto;
+  overflow-y:auto;
+  overflow-x:hidden;
 }
 @mixin fix-child($margin:auto){
   margin:$margin;

@@ -1,36 +1,28 @@
 import {Component} from '@angular/core';
-
+import {lib} from './lib/main';
+import {MainService} from '../main.service';
 @Component({
     templateUrl:'./dropdown.html'
 })
 export class DropdownComponent{
+    lib=lib;
     btnArr:Array<any>=[
-        {isShow:false,dr:'bottom'},
-        {isShow:false,dr:'top'},
-        {isShow:false,dr:'left'},
-        {isShow:false,dr:'right'}
+        {dr:'',show:false},
+        {dr:'-top',show:false},
+        {dr:'-left',show:false},
+        {dr:'-right',show:false}
     ];
-    show(node:any,i:any){
-        i.isShow?this.close(node,i):this.open(node,i);
-        let click=()=>{
-            document.removeEventListener('click',click);
-        }
-        document.addEventListener('click',click);
-    }
-    close=(node:any,i:any)=>{
-        i.isShow=false;
-        node.classList.remove('show')
-    }
-    open=(node:any,i:any)=>{
-        i.isShow=true;
-        node.classList.add('show');
-    }
+   constructor(public main:MainService){
+       this.colorArr=main.allColors.map((color:string)=>{return {color:color,show:false,select:null}})
+   }
+   colorArr:any=[];
     menuList:Array<string>=[
         'list1',
         'list2',
         'list3',
         'list4'
     ]
+
     showList:boolean;
     listSelect:any;
 }

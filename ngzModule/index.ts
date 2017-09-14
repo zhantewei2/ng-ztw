@@ -13,6 +13,7 @@ export {
     CollapseComponent,
     CarsouselComponent,
     SideNavComponent,
+    navSideDirective,
     ModalComponent,
     TooltipComponent,
     TooltipDirective,

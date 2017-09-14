@@ -1,5 +1,6 @@
-<div class="p-2">
+
     <h4>Card</h4>
+    <item-card myTitle="Example">
     <div style="width:300px;" class="card" *ngFor="let i of cardArr">
         <img class="card-img" [src]="i">
         <div class="card-header">
@@ -12,5 +13,9 @@
             <button class="btn btn-sm btn-l">cancel</button>
             <button class="btn btn-sm btn-d">entry</button>
         </div>
+
     </div>
-</div>
+    </item-card>
+    <item-card myTitle="CODE">
+        <my-code [html]="code"></my-code>
+    </item-card>

@@ -3,14 +3,14 @@
         <span [innerTp]="navTp"></span>
     </div>
 
-    <div class="col">
+    <div class="col-10 col-sm-12">
         <div class="container">
             <router-outlet></router-outlet>
         </div>
     </div>
 </div>
 <ng-template #navTp>
-        <div class="btn-group-vertical">
+        <div top="60" class="btn-group-block">
             <ng-container *ngFor="let cg of cgList">
                 <button (click)="_main.closeNav()" [routerLink]="[noString(cg)?cg.router:cg]" routerLinkActive="active" class="btn btn-l between" >
                     {{noString(cg)?cg.name:cg}}

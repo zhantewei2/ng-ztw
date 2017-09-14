@@ -22,4 +22,4 @@ export const code2:string=`
 tdArr:any=['td1','td2','td3']
 trArr:any=[1,2,3]
 tableArr:any=['','table-stripe','table-inverse','table-stripe table-inverse']
-`
+`;

@@ -16,7 +16,8 @@ export class HomeComponent{
     ){}
     ngAfterViewInit(){
         setTimeout(()=>{
-            this._main.navTp=this.navTp;},1);
+            this._main.navTp=this.navTp;
+            },1);
     }
     noString=(val:any)=>typeof val !='string';
     cgList:Array<any>=[

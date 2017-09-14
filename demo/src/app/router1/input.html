@@ -1,4 +1,5 @@
 <h4>Form-c</h4>
+
 <div class="list-group">
     <div class="list-item border-l">
         <div class="header">
@@ -13,30 +14,28 @@
         <div class="header">
             <a class="quote-sign-p ">
                 <i class="fa fa-bookmark-o"></i>
-                input-group:
+                input-group
             </a>
         </div>
-        <div class="input-group mt-2">
+        <div class="input-group my-2 border-l">
             <label class="color-p">label</label>
-            <input type="number" placeholder="holder" class="form-c">
-            <samp>end</samp>
+            <input type="number" placeholder="holder" class="form-c control-p">
+            <button class="btn0 btn-o-p">btn</button>
         </div>
+        <my-code [html]="code2"></my-code>
     </div>
     <div class="list-item border-l">
-        <header class="header">
-            <a class="quote-sign-d">
+        <header>
+            <a class="quote-sign-w">
                 <i class="fa fa-bookmark-o"></i>
-                input-validator:
+                Variant Input
             </a>
         </header>
-        <div class="validator-container">
-            <input class="form-c" minlength="4" type="text" name="input1" #input1="ngModel"  required #inputNode ngModel>
+        <div class="py-1 mb-2" *ngFor="let i of main.allColors">
+            <label class="color-{{i}}">form-c control-{{i}}</label>
+            <input class="form-c control-{{i}}">
         </div>
-        <div class="quote-p">
-            minlength=4;
-        </div>
-        {{inputNode.className}}
-        <button (click)="input1.reset()" class="btn btn-p">reset</button>
-        <div class="test1" #div2><b class="test2">bibibi</b></div>aaab<span>span2</span>
+        <my-code [html]="code3"></my-code>
     </div>
+
 </div>
