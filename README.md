@@ -1,4 +1,6 @@
-ng-ztw  angular
+### ng-ztw
+
+Angular components
 
 Install
 ---
@@ -22,9 +24,12 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     ]
 })
 ```
-4. include ng-ztw.css:
+4. import css:
+```js
+import 'ng-ztw/ngz.min.css'
 
- path in  `ng-ztw/ng-ztw.min.css`;
+```
+### [Visit site](http://39.108.193.57:3000/) 
 
 Component List:
 ---
