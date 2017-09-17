@@ -20,6 +20,15 @@ export class GridComponent{
             itd:'网格只分了三种情况。<em>.col-#</em>,是属于全视窗的网格。'
         },
         {
+            title:'<var>Class</var>',
+            body:[
+                ['.gt-sm-show','大于sm才显示'],
+                ['.gt-md-show','大于md才显示'],
+                ['.lt-lg-show','小于lg才显示']
+            ],
+            itd:'小的元素使用css控制'
+        },
+        {
             title:'<var>Directive</var> ngz-col-show',
             head:['*ngz-col-show=','!sm','sm'],
             body:[

@@ -1,6 +1,24 @@
 const fs=require('fs');
 const zlib=require('zlib');
-const sendFile=(ctx,fd,type)=>{
+
+const filterType=(name)=>{
+	const index=name.lastIndexOf('.')+1;
+	if(!index||index==name.length){
+		return {type:'text/html',gzip:true}
+	}else{
+		const suf=name.slice(index);
+		if(suf=='css'){
+			return {type:'text/css',gzip:true};
+		}else if(suf=='ico'){
+			return {type:'image/x-icon',gzip:false};
+		}else{
+			return {type:'text/html',gzip:true};
+		}
+	}
+};
+
+
+const sendFile=(ctx,fd,name)=>{
 	return new Promise((resolve,reject)=>{
 	ctx.res.statusCode=200;
 	const end=()=>{
@@ -16,12 +34,14 @@ const sendFile=(ctx,fd,type)=>{
 			ctx.res.statusCode=304;
 			return end()
 		}
-		let nowPos=0;
-		ctx.res.writeHead(200,{
-			'Content-Type':type,
-			'Content-Encoding':'gzip',
-			'Etag':mfTime
-		});
+		const typeState=filterType(name);
+		const header={
+            'Content-Type':typeState.type,
+            'Etag':mfTime
+		};
+		if(typeState.gzip)header['Content-Encoding']='gzip';
+		ctx.res.writeHead(200,header);
+        let nowPos=0;
 		const read=()=>{
 			let dis=size-nowPos;
 			dis=dis>bufferSize?bufferSize:dis;
@@ -31,7 +51,7 @@ const sendFile=(ctx,fd,type)=>{
 				ctx.res.write(bf);
 				nowPos>=size?end():read();
 			})
-		}
+		};
 		read();
 	})
 	})
@@ -40,17 +60,14 @@ module.exports=function(path){
 	return async(ctx,next)=>{
 		const main=path+'/index.html';
 		const name=ctx.url=='/'?main:path+ctx.url;
-		let type='text/html';
-		if(ctx.url.match(/\.css$/))type='text/css';
 		let body=await new Promise((resolve,reject)=>{
 			fs.open(name,'r',(err,fd)=>{
-
 				if(err){
 					fs.open(main,'r',(err,fd)=>{
-						sendFile(ctx,fd,type).then(()=>resolve)
+						sendFile(ctx,fd,name).then(()=>resolve)
                     })
 				}else{
-					sendFile(ctx,fd,type).then(()=>resolve())
+					sendFile(ctx,fd,name).then(()=>resolve())
 				}
 			})
 		})

@@ -9,6 +9,11 @@
     cursor:pointer;
     @include emptyBg-hover-focus($color:$color,$p1:.3,$p2:.6);
   }
+  .wash-#{$abbrev}{
+    cursor:pointer;
+    color:$light-color;
+    @include emptyBg-wash($color);
+  }
 }
 .color-wt{color:white};
 .color-muted{color:gray};

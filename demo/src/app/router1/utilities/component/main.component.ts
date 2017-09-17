@@ -44,7 +44,13 @@ export class MainComponent{
     get scrollValue(){
         return this._scrollValue;
     }
-
+    colorList=[
+        {title:'background',css:'bg'},
+        {title:'font',css:'color'},
+        {title:'border',css:'border'},
+        {title:'hover',css:'-hover'},
+        {title:'wash',css:'wash'}
+    ];
     space={
         head:['all','x','y','left','right','top','bottom'],
         pos:['','x','y','l','r','t','b']
@@ -53,6 +59,8 @@ export class MainComponent{
         cg:[
             ['flex','display:flex'],
             ['flex-fluid | flex-wrap','流动的flex'],
+            ['flex-start','start对齐的flex'],
+            ['flex-end','end对齐的flex'],
             ['center','垂直水平居中的flex'],
             ['around','around对齐的flex'],
             ['between','between对齐的flex'],

@@ -1,10 +1,15 @@
 $table-space:.3rem;
 $tdPadding:$tr-padding-y $tr-indent-space;
+
 %z-hLight-table0{
   padding:$table-space;
   font-size:$font-size;
   font-family:$comment-family;
+  background-color:disabled-color($bg-color,60%);
   word-spacing: $word-spacing;
+  @include space(y,$base-space*2);
+  @include radius();
+  border:1px solid $bg-color;
   line-height: $line-height;
   width:100%;
   &.stripe tr:nth-child(odd){

@@ -23,6 +23,12 @@
 @mixin hover-darken($color:$effectColor,$percent:$hover-darken-percent){
   background:darken($color,$percent);
 }
+@mixin emptyBg-wash($color){
+  background:rgba($color,.3);
+  &.active,&:active,&:hover{
+    background:$color;
+  }
+}
 @mixin emptyBg-hover-focus($color,$yiq:$hover-yiq,$p1:.1,$p2:.3,$hover:null){
   &:hover{
     background-color:rgba($color,$p1);

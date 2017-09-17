@@ -47,6 +47,7 @@
   @include screen(md){
     width:$modal-lgMd-width;
   }
+  @include modalScreenSm();
  }
  .min-modal{
    @include shadow-out($default-color,40px);

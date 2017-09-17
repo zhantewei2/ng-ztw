@@ -8,9 +8,15 @@
   overflow-y:auto;
   overflow-x:hidden;
 }
+@mixin modalScreenSm(){
+  @include screen(sm){
+    width:$modal-screen-sm-width;
+  }
+}
 @mixin fix-child($margin:auto){
   margin:$margin;
   top:$modal-top;
-  width:$modal-sm-width;
+  width:$modal-width;
+  @include modalScreenSm();
   min-height:$modal-min-height;
 }

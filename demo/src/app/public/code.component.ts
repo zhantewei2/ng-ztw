@@ -6,12 +6,12 @@ import {Component,Input,ViewChild} from '@angular/core';
             <p>
                 <em #tip="ngzTooltip"  (copyComplete)="complete()" 
                       [ngz-clickCopy]="_code" [ngz-tooltip]="copyState"
-                       class="abs-tr b-p -hover-p">Copy</em>
+                       class="abs-tr wash-p">Copy</em>
             </p>
             <ng-template #tip>
                 <div>{{copyState}}</div>
             </ng-template>
-            <pre [useIndex]="useIndex" class="pt-1" [highlight]="_code" [language]="type"></pre>
+            <pre [useIndex]="useIndex" [highlight]="_code" [language]="type"></pre>
         </div>
         <ng-template #another>
             <h3 class="center m-2 color-d">

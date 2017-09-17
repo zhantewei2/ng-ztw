@@ -51,6 +51,8 @@ module.exports=function makeWepbackConfig(envOptions){
     config.plugins=[
         new HtmlWebpackPlugin({
             template:'./demo/src/index.html',
+            title:'ngz',
+            favicon:join('demo/src/assets/favicon.ico'),
             chunksSortMode:function(a,b){
                 const order=['vendors','ployfills','main'];
                 return order.indexOf(a.names[0])-order.indexOf(b.names[0]);

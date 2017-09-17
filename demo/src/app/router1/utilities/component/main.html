@@ -37,13 +37,11 @@
 
     </frag-item>
     <frag-item ngz-scroll-item="color" frag="color">
-        <h4>background color</h4>
         <ul class="list-group list-group-sm text-center">
-            <li class="list-item bg-{{i}}" *ngFor="let i of main.allColors">bg-{{i}}</li>
-            <h4 class="text-left">font color</h4>
-            <li class="list-item color-{{i}} " *ngFor="let i of main.allColors">color-{{i}}</li>
-            <h4 class="text-left">border color</h4>
-            <li class="list-item border-{{i}}" *ngFor="let i of main.allColors">border-{{i}}</li>
+            <ng-template ngFor [ngForOf]="colorList" let-item>
+                <h4 class="text-left">{{item.title}}</h4>
+                <li [class]="'list-item '+item.css+'-'+i" *ngFor="let i of main.allColors">{{item.css+'-'+i}}</li>
+            </ng-template>
         </ul>
 
     </frag-item>

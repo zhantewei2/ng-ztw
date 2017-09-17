@@ -8,7 +8,7 @@ import {Resize} from 'service/resize.service';
             <ngz-tab appendNav="tab-btn-group-sm-1"  *ngIf="!noTab" type="p">
                 <button ngz-tabBtn>EXAMPLE</button>
                 <button ngz-tabBtn>HTML</button>
-                <button ngz-tabBtn [hidden]="!lib.code2">CODE</button>
+                <button ngz-tabBtn *ngIf="lib.code2">CODE</button>
                 <div *ngz-tabContent>
                     <ng-content select=".example"></ng-content>
                 </div>

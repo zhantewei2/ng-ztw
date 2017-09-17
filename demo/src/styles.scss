@@ -11,9 +11,11 @@ $sbg-color:$p;
   width:100%;
 }
 .footer{
-  @extend %showBg-linear;
+  border-top:1px solid $default-color;
+  height:200px;
+  background:$l;
   padding:2rem;
-  @include color-yiq($sbg-color);
+  color:$deep-default-color;
 }
 .nav-icon{
   @include radius();
@@ -22,4 +24,11 @@ $sbg-color:$p;
 }
 .nav-icon2{
   border-color:$default-color;
+}
+a{
+  vertical-align: middle;
+}
+a:link{
+  text-decoration:none;
+  color:$deep-default-color;
 }
