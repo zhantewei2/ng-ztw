@@ -1,12 +1,24 @@
-<div class="text-center p-3">
-    <h1>
-        Welcome to NgzModule
+<div class="py-3 container">
+    <h1 class="text-center">
+        Welcome to ng-ztw
     </h1>
     <p>
-    <div *ngIf="obj.a==1 as u;">
-        {{u}} aab{{u.b}}
+    <hr>
+    <div *ngFor="let i of steps">
+        <h4>{{i.title}}</h4>
+        <div >
+            <pre [language]="null" [highlight]="i.content" class='alert-l'>
+
+            </pre>
+        </div>
     </div>
-    <ng-template let-u #tp1>
-        hello {{u}}
-    </ng-template>
+    <h4 class="my-2"></h4>
+    <p class="center-column mt-5">
+        <button routerLink="module" class="btn btn-p btn-lg">
+            <i class="fa fa-hand-o-right"></i>
+            NG-ZTW
+        </button>
+        <br>
+
+    </p>
 </div>

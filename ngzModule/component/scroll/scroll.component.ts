@@ -46,6 +46,7 @@ export class ScrollComponent{
   @Input()throttleTime:number=0;
   @Output('event')event:EventEmitter<any>=new EventEmitter();
   @Input()justScroll:boolean;
+  @Input()forbidAnimate:boolean;
   scrollOb:Observable<any>=Observable.fromEvent(window,'scroll');
   resizeOb:Observable<any>=Observable.fromEvent(window,'resize');
   offsetControls:Array<OffsetControl>=[];
@@ -114,7 +115,6 @@ export class ScrollComponent{
     }
     this.offsetControls=_newOffC;
   });
-
 };
 getControlOffset=(value:any)=>this.offsetControls.find((v:any)=>v.value==value);
 
@@ -146,6 +146,10 @@ scrollTo2(opts:ScrollOpts2|any){
         pos=opts.value;
     if(pos>end||pos==-1)pos=opts.notBottom?end-20:end;
     if(pos<0)pos=0;
+    if(this.forbidAnimate){
+      this.pause=false;
+      return resolve(!!window.scrollTo(0,pos));
+    }
     this._scroll.pos.moveAnimate(
         {x0:top,x1:pos,timing:opts.timing,t:opts.duration,vt:opts.vt},
         (n:number)=>{window.scrollTo(0,top+n)},

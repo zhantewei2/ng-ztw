@@ -6,7 +6,8 @@
   "scripts": {
     "demo": "webpack-dev-server --open",
     "demo:prod": "webpack --env.MODE=prod",
-    "ngz-d": "node_modules/.bin/ngc -p tsconfig-lib.json"
+    "ngz-d": "node_modules/.bin/ngc -p tsconfig-lib.json",
+    "genCss":"node-sass ngz-sass/sass.scss dist/ngz.min.css --output-style compressed"
   },
   "author": "",
   "license": "ISC",

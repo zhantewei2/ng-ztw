@@ -1,21 +1,31 @@
 <div class="row">
-    <div *ngz-col-show="'!sm'"  class="col-2" >
+    <div *ngz-col-show="'!sm'"  class="col-2">
         <span [innerTp]="navTp"></span>
     </div>
 
     <div class="col-10 col-sm-12">
         <div class="container">
-            <router-outlet></router-outlet>
+            <router-outlet (activate)="activate($event)"></router-outlet>
         </div>
     </div>
 </div>
-<ng-template #navTp>
-        <div top="60" class="btn-group-block">
-            <ng-container *ngFor="let cg of cgList">
-                <button (click)="_main.closeNav()" [routerLink]="[noString(cg)?cg.router:cg]" routerLinkActive="active" class="btn btn-l between" >
-                    {{noString(cg)?cg.name:cg}}
-                    <i class="color-l fa fa-chevron-right"></i>
-                </button>
-            </ng-container>
-        </div>
+<ng-template #navTp let-insert>
+
+            <div class="list-group" #stickyNav="ngz-sticky" detectHeight="true" [ngz-sticky]="insert?'destroy':60" [ngStyle]="{width:insert?'100%':'150px'}" *ngIf="!isUtil">
+                <li class="py-1">
+                    <i class="fa fa-book"></i>
+                    Css List
+                    <hr>
+                </li>
+                <li class="border-null list-item -hover-w" *ngFor="let cg of cgList"
+                    (click)="_main.closeNav();stickyNav.relCal()" [routerLink]="cg" routerLinkActive="active" >
+                    {{cg}}
+
+                </li>
+            </div>
+            <div [hidden]="!isUtil">
+                <a [innerTp]="_rs.utilTp" [deps]="insert"></a>
+            </div>
+
+
 </ng-template>

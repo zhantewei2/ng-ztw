@@ -9,7 +9,22 @@
   left:$left;
   transform:translateX(-$left);
 }
-@mixin get-fix($name:normal){
+@mixin get-fix($name:normal,$full:null){
   position:fixed;
   z-index:map-get($indexes,$name);
+  @if($full) {
+    width:100%;
+  }
+}
+@mixin get-full(){
+  width:100%;
+  height:100%;
+}
+@mixin get-abs($top:0,$left:0,$isFull:null){
+  position:absolute;
+  $top:0;
+  $left:0;
+  @if($isFull){
+    @include get-full();
+  }
 }

@@ -3,11 +3,18 @@
   top:0;
   left:0;
 }
-.hidNode{
-  position:absolute;
-  opacity:0;
-  top:0;
-  left:0;
+.show{
+  visibility:visible !important;
+}
+.close{
+  cursor:pointer;
+  float:right;
+  line-height:70%;
+  margin:0 $base-space;
+  font-size:$close-size;
+  font-weight: bold;
+  @include transition(all .1s ease-in);
+  @include fontHover($close-size);
 }
 .animateNode{
   @include transition()

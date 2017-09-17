@@ -27,7 +27,8 @@ const routing:any=[
             {path:'tooltip',component:TooltipComponent},
             {path:'badge',component:BadgeComponent},
             {path:'table',component:TableComponent},
-            {path:'alert',component:AlertComponent}
+            {path:'alert',component:AlertComponent},
+            {path:'utilities',loadChildren:'./utilities/utilities.module#UtilitiesModule'}
         ]
     }
 ];

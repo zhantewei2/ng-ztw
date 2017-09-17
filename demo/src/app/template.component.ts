@@ -4,16 +4,16 @@ import {Resize} from 'service/resize.service';
     selector:'my-template',
     template:`
         <h2>{{title}}</h2>
-        <item-card myTitle="Example">
+        <item-card noHr="true" myTitle="Example">
             <ngz-tab appendNav="tab-btn-group-sm-1"  *ngIf="!noTab" type="p">
                 <button ngz-tabBtn>EXAMPLE</button>
                 <button ngz-tabBtn>HTML</button>
-                <button ngz-tabBtn>CODE</button>
+                <button ngz-tabBtn [hidden]="!lib.code2">CODE</button>
                 <div *ngz-tabContent>
                     <ng-content select=".example"></ng-content>
                 </div>
                 <div *ngz-tabContent>
-                    <my-code [html]="lib.code1"></my-code>
+                    <my-code [useIndex]="true" [html]="lib.code1"></my-code>
                 </div>
                 <div *ngz-tabContent>
                     <my-code [js]="lib.code2"></my-code>

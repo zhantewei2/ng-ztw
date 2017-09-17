@@ -51,6 +51,19 @@ api:[
          ['clear()','强行清除组件']
      ],
         count:2
+    },
+    {title:'<var>TemplateRef</var>',
+     body:[
+         ['$implicit',':boolean 被navSide插入时返回true'],
+         [{
+            title:'example',
+             content:[
+                 '<ng-template #insertTp let-isInsert></ng-template>'
+             ],
+             type:'html'
+         }]
+     ],
+        count:2
     }
 
 ]

@@ -23,13 +23,15 @@
 @mixin hover-darken($color:$effectColor,$percent:$hover-darken-percent){
   background:darken($color,$percent);
 }
-@mixin emptyBg-hover-focus($color,$yiq:$hover-yiq,$p1:.1,$p2:.3){
+@mixin emptyBg-hover-focus($color,$yiq:$hover-yiq,$p1:.1,$p2:.3,$hover:null){
   &:hover{
     background-color:rgba($color,$p1);
   }
-  &.active,&:active,&:focus{
-    background-color:rgba($color,$p2);
-  };
+  @if(not $hover){
+    &.active,&:active,&:focus{
+      background-color:rgba($color,$p2);
+    };
+  }
 }
 @mixin headerFont(){
   font-family: "Microsoft YaHei UI";

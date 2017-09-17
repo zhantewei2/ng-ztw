@@ -28,4 +28,5 @@ export class pipesComponent{
     limitEn:string='abcdefghjk';
     limitCn:string='中文占两个';
     limitStrs:Array<number>=[8,4,5,10];
+    trustList=['Html','Url','Script','Url','ResourceUrl']
 }

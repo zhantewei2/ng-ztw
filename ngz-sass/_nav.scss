@@ -7,6 +7,7 @@
 .lgNav{
   @include get-nav(lg);
 }
+
 .nav-item{
   @extend .center;
   @extend %button;
@@ -17,8 +18,15 @@
     @include hover-focus();
   }
   &.active{
-   @include hover-focus($effectColor,.2);
+   @include hover-focus($effectColor,.1);
   }
+}
+.nav-container-right{
+  @include absPos(top,right,0);
+  height:100%;
+  margin-right:$base-space*2;
+  display:block;
+  @extend .center;
 }
 .nav-brand{
   @extend .center;
@@ -31,5 +39,11 @@
   }
 }
 .nav-shd{
-  @include nav-shd(black);
+  @include nav-shd();
+}
+.nav-fixed{
+  background:$light-color;
+  color:$deep-default-color;
+  border-bottom:1px solid $l;
+
 }

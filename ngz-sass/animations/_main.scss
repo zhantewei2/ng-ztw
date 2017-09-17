@@ -2,12 +2,23 @@
 @mixin an_transition($name){
   animation:$name $animate-timer;
 }
-@keyframes an_Show {
+@mixin an-origin($x:0,$y:0,$z:0){
+  transform-origin:$x $y $z;
+}
+@keyframes An_Show {
   from{opacity:0}
   to{opacity:1}
 }
+@keyframes An_Left_Entry{
+  from{transform:translateX(-100%);opacity:0}
+  to{}
+}
+@keyframes An_Right_Entry{
+  from{transform:translateX(100%);opacity:0}
+  to{}
+}
 .an_show{
-  @include an_transition(an_Show);
+  @include an_transition(An_Show);
   @include transition();
 }
 .fadeOut{
@@ -15,3 +26,9 @@
   opacity:0
 }
 
+.an_left_entry{
+  @include an_transition(An_Left_Entry);
+}
+.an_right_entry{
+  @include an_transition(An_Right_Entry);
+}

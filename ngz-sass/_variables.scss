@@ -1,7 +1,7 @@
 $default-color:#ddd !default;
 $light-color:white !default;
 $deep-default-color:darken($default-color,40%);
-$p:#69d2e7 !default;
+$p:#2CA4BF !default;
 $i:#9b539c !default;
 $w:#e8b71a !default;
 $s:#1fda9a !default;
@@ -41,6 +41,8 @@ $close-size:1.5rem;
 $screen:(sm:720px,md:1140px,lg:1140px);
 $maxScreen:(xl:1365px,xxl:1790px);
 $sort-screen:md,sm,lg;
+$compare-screen:(sm:gt,md:gt,lg:lt);
+
 //animate:
 $animate-timer:.3s ease;
 //invser:
@@ -108,7 +110,8 @@ $nav-item-ml:1rem .7rem 1.2rem;
 
 $list-item-px:.8rem;
 $list-item-py:.7rem;
-
+$list-item-py-sm:.4rem;
+$list-item-px-sm:.5rem;
 $list-child-space:1rem;
 //form:
 
@@ -182,7 +185,7 @@ $carousel-nav-item-width:.65em;
 $carousel-nav-bottom:.5em;
 $carousel-item-header-bottom:1em;
 //collapse:
-$collapse-list-width:.5rem;
+$collapse-list-width:.2rem;
 //table:
 $table-td-padding:.9rem .7rem;
 $table-td-line-h:200%;

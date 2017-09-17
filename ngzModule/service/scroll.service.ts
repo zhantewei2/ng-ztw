@@ -11,10 +11,22 @@ export interface ScrollEvent{
 
 @Injectable()
 export class ScrollService{
+    detectBodyHeight:Observable<any>;
+    scrollEvent:Observable<ScrollEvent>;
     constructor(public pos:PositionService){
-        const scrollOb=Observable.fromEvent(window,'scroll').map((event:any)=>this.getPos());
-        const endOb=scrollOb.debounceTime(150);
-        this.scrollEvent=scrollOb.merge(endOb);
+        const scrollOb=Observable.fromEvent(window,'scroll').map(()=>this.getPos());
+        const tailerOb=scrollOb.debounceTime(150);
+        const initOb=Observable.timer(1,100).take(2).map(()=>this.getPos());
+        this.scrollEvent=scrollOb.merge(tailerOb,initOb);
+        let preH:number,nowH,body=document.querySelector('body');
+        this.detectBodyHeight=Observable.interval(500).filter(()=>{
+            nowH=body.offsetHeight;
+            if(nowH!==preH){
+                preH=nowH;
+                return true;
+            }
+            return false;
+        });
     }
     getPos=()=>{
         const top=this.getScrollTop();
@@ -22,5 +34,5 @@ export class ScrollService{
     };
     getScrollTop=()=>window.pageYOffset;
     getScrollEnd=()=>document.querySelector('body').scrollHeight;
-    scrollEvent:Observable<ScrollEvent>;
+
 }

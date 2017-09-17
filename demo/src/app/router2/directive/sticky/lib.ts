@@ -1,17 +1,20 @@
 export const lib:any={
     sticky:{
         html:`
- <div top="80" style="height:100px;width:50px;" class="alert hazy-w color-dark" ngz-sticky>222</div> 
+ <div style="width:150px;" class="alert hazy-w color-dark" ngz-sticky="60">Sticky Card</div> 
  `,m:`当浏览器支持<samp>position:sticky</samp>使用CSS，不支持时，使用JS实现。`,
   api:[
       {title:'<var>@Input</var>',
           body:[
-              ['top',':number','（px）指定高度'],
-              ['useJs',':boolean','强制只使用JS']
+              ['ngz-sticky',':number|"destroy"','（px）指定高度'],
+              ['useJs',':boolean','强制只使用JS'],
+              ['detectHeight',':boolean','自动检测页面高度改变，在父元素高度经常变化时，需要使用它，default:false'],
+              ['fixed',':boolean','跳出父元素的底部束约，default:false']
           ]},
       {title:'<var>Method</var>',
           body:[
-              ['cal()','使用JS时，如果你改变了对象的高度，你可能需要调用这个方法']
+              ['relCal()','使用JS时，如果你改变了父对象的高度，你可能需要调用这个方法，也可以指定detectHeight，来代替它。' +
+              '或者在一些视窗变化比较大的情况下，两者都调用']
           ]
       },
       {title:'<var>@Output</var>',
@@ -39,7 +42,9 @@ export const lib:any={
         title:'<var>@Input</var>',
          body: [
              ['lightlight','接口'],
-             ['language','<em>js</em> | <em>html</em>']]
+             ['language','<em>js</em> | <em>html</em>'],
+             ['useIndex','使用自动编号 default:false']
+         ]
         }
     ]
     },

@@ -38,7 +38,7 @@ export class TooltipDirective {
     if(this.node) {
       this.close();
       this.node = null;
-      this.open();
+      setTimeout(()=>this.open());
     }
   }
   open(){

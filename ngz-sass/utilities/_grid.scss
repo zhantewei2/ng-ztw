@@ -7,6 +7,7 @@
   }
 }
 
+
 @each $size in $sort-screen{
   @include screen($size){
     //col
@@ -14,6 +15,11 @@
       .col-#{$size}-#{$i}{
         @include get-col($i);
       }
+    }
+    //show
+    $compare:map-get($compare-screen,$size);
+    .#{$compare}-#{$size}-show{
+      display:none !important;
     }
     //container:
     .container{

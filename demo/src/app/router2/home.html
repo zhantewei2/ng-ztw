@@ -1,22 +1,28 @@
 <div class="pt-2 row">
     <div *ngz-col-show="'!sm'" class="col-2 rel">
-        <div class="sticky scroll-appearance" style="top:55px; height:88vh;overflow-y:auto">
+        <div class="sticky scroll-appearance" style="top:70px; height:92vh;overflow-y:auto">
              <span [innerTp]="navTp"></span>
         </div>
     </div>
     <div [ngClass]="_main._res.value!='sm'?'col-10':'col-12'">
         <div class="container">
-            <router-outlet></router-outlet>
+            <router-outlet (activate)="activate()"></router-outlet>
         </div>
     </div>
 </div>
 
 <ng-template #navTp>
-
+    <div class="py-1">
+    <i class="fa fa-book"></i>Angular Components
+    </div>
+    <hr>
     <ngz-collapse [type]="null">
-        <ngz-collapse-item *ngFor="let item of list;index as index"  [open]="item.name==selectList">
-            <span class="ngz-header" ngz-collapse-btn>{{item.name}}</span>
-            <div (click)="_main.closeNav()" [routerLink]="item.prefix?[item.prefix,i]:i" class="collapse-list btn text-left -hover" routerLinkActive="active"  *ngFor="let i of item.value">{{i}}</div>
+        <ngz-collapse-item #_clpItem *ngFor="let item of list;index as index"  [open]="item.name==selectList">
+            <span  class="between list-item border-null collapse-list" ngz-collapse-btn>
+                <span>{{item.name}}</span>
+                <i [class.rotate45]="_clpItem.isOpen" class="animateNode fa fa-chevron-right"></i>
+            </span>
+            <div (click)="_main.closeNav()" [routerLink]="item.prefix?[item.prefix,i]:i" class="btn0 text-left collapse-list" routerLinkActive="active"  *ngFor="let i of item.value">{{i}}</div>
         </ngz-collapse-item>
     </ngz-collapse>
 </ng-template>

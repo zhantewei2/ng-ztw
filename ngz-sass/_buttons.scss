@@ -1,6 +1,6 @@
 .btn0{
   @extend %button;
-  @include size-btn($btn-size);
+  @include size-btn();
   &:disabled{
     cursor:not-allowed !important;
     box-shadow:none !important;

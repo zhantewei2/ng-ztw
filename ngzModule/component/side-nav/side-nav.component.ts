@@ -31,7 +31,8 @@ export class SideNavComponent{
   @ViewChild('container',{read:ViewContainerRef})container:ViewContainerRef;
   createTp(tp:TemplateRef<any>){
     this.container.clear();
-    this.container.createEmbeddedView(tp);
+    const viewRef=this.container.createEmbeddedView(tp);
+    viewRef.context.$implicit=true;
     this._cd.markForCheck();
   }
   clear(){this.container.clear()}
@@ -108,9 +109,8 @@ export class navSideDirective{
       inst.closeSelf=this.close.bind(this);
     }
     this.parent.appendChild(this.tpEl);
-    this.comRef.instance.open(()=>{
-      this.isOpen=true;this.prevent=false
-    });
+    this.isOpen=true;
+    this.comRef.instance.open(()=>this.prevent=false);
   }
   clear(){
     this.comRef&&this.comRef.destroy();

@@ -9,11 +9,10 @@
 }
 .ngz-header{
   @extend .noSelect;
-  font-size:1rem !important;
   @include sassFont();
   color:$deep-default-color;
 
 }
 .bold{
-  font-weight:bold;
+  font-weight:bold !important;
 }

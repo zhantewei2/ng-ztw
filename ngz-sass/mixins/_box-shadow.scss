@@ -8,10 +8,10 @@
     box-shadow:0 0 $shd $out $color;
   }
 }
-@mixin nav-shd($color){
+@mixin nav-shd($color:$effectColor,$offset:8px){
   $color:getShdColor($color);
   @if shadow-enabled{
-    box-shadow:0 1px 8px $color;
+    box-shadow:0 1px $offset $color;
   }
 }
 @mixin bottom-left-shd($color:$shadow-color,$width:$shadow-width,$shd:0){

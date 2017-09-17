@@ -22,7 +22,7 @@
         </tr>
         <tr *ngFor="let i of limitStrs">
             <td>
-                <var>ngzLimitStr:{{i}}</var>
+                <samp>ngzLimitStr:{{i}}</samp>
             </td>
             <td>
             {{limitEn|ngzLimitStr:i}} {{limitCn|ngzLimitStr:i}}
@@ -32,4 +32,16 @@
     <div class="quote">
         作者觉得在排版上，中英文不能混为一样长，<em>ngzValidator</em>也是基于这个规则.
     </div>
+</item-card>
+<item-card myTitle="ngzTrust">
+    <table class="table">
+        <tr *ngFor="let i of trustList">
+            <td><samp>ngzTrust:'{{i}}'</samp></td>
+            <td>{{i}}</td>
+        </tr>
+    </table>
+    <p class="quote">
+        Angular sanitizer Pipe<br>
+        Default : 'html'<br>
+    </p>
 </item-card>

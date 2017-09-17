@@ -14,16 +14,23 @@ export class Highlight{
     filterTag:any=(val:string)=>val.replace(/</g,'&lt;').replace(/>/g,'&gt;');
     @Input()language:string='html';//default 'html', options: 'js;
     @Input()stripe:boolean=false;
+    @Input()useIndex:boolean=false;
     @Input()set highlight(val:string) {
         if(!val)return;
         val = this.filterTag(val);
         let listVal=val.split(/\n/);
-        let tableClass='z-hLight-table';
+        let tableClass=this.useIndex?'z-hLight-table-list':'z-hLight-table';
         if(this.stripe)tableClass+=' stripe';
         let str=`<table class="${tableClass}">`;
-        listVal.forEach((v:string,index:number)=>{
-            str+=`<tr><td>${index}</td><td>${v}</td></tr>`;
-        })
+        if(!this.useIndex){
+            listVal.forEach((v:string)=>{
+                str+=`<tr><td>${v}</td></tr>`
+            })
+        }else{
+            listVal.forEach((v:string,index:number)=>{
+                str+=`<tr><td>${index}</td><td>${v}</td></tr>`;
+            })
+        }
         str+='</table>';
         switch (this.language){
             case 'html':

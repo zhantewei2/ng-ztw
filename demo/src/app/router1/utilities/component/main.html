@@ -1,0 +1,60 @@
+<ngz-scroll forbidAnimate="true" [(ngModel)]="scrollValue" baseLine="60" #scroll>
+<ng-template #navTp let-insert>
+    <div ngz-scroll-item="btn" [sticky]="insert?'destroy':'60px'" [ngStyle]="{width:insert?'100%':'100px'}" class="text-center list-group">
+        <div (click)="main.closeNav()" [routerLink]="['../../','nav']" class="list-item -hover-w">
+            <i class="fa fa-arrow-left"></i>
+        </div>
+        <div (click)="scrollValue=i;main.closeNav()" [class.active]="i==scrollValue" *ngFor="let i of fragList" class="list-item -hover-w">
+           {{i}}
+        </div>
+    </div>
+</ng-template>
+<div>
+    <frag-item ngz-scroll-item="space" frag="space">
+        <h4>Margin:</h4>
+        <p class="article">指定不同位置margin</p>
+        <table class="table sm">
+            <thead>
+                <th *ngFor="let i of space.head">{{i}}</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let i of main.allSpace;index as index">
+                    <td *ngFor="let j of space.pos">m{{j}}-{{index+1}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <h4>Padding</h4>
+        <p class="article">同margin</p>
+    </frag-item>
+    <frag-item ngz-scroll-item="flex" frag="flex">
+        <util-table [lib]="flex.cg"></util-table>
+    </frag-item>
+    <frag-item ngz-scroll-item="position" frag="position">
+        <h4>absolute</h4>
+        <util-table [lib]="pos.abs"></util-table>
+        <h4>position</h4>
+        <util-table [lib]="pos.some"></util-table>
+
+    </frag-item>
+    <frag-item ngz-scroll-item="color" frag="color">
+        <h4>background color</h4>
+        <ul class="list-group list-group-sm text-center">
+            <li class="list-item bg-{{i}}" *ngFor="let i of main.allColors">bg-{{i}}</li>
+            <h4 class="text-left">font color</h4>
+            <li class="list-item color-{{i}} " *ngFor="let i of main.allColors">color-{{i}}</li>
+            <h4 class="text-left">border color</h4>
+            <li class="list-item border-{{i}}" *ngFor="let i of main.allColors">border-{{i}}</li>
+        </ul>
+
+    </frag-item>
+    <frag-item ngz-scroll-item="other" frag="other">
+        <util-table [lib]="other.main"> </util-table>
+    </frag-item>
+    <frag-item ngz-scroll-item="grid" frag="grid">
+        <h4></h4>
+        <p class="text-center">
+            <button routerLink="/module/Directive/col-show" class="btn btn-w">visit grid</button>
+        </p>
+    </frag-item>
+</div>
+</ngz-scroll>

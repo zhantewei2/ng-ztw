@@ -1,6 +1,5 @@
 .full{
-  width:100%;
-  height:100%;
+  @include get-full();
 }
 .rel{
   position:relative;
@@ -10,7 +9,7 @@
     position:sticky;
     position:-webkit-sticky;
   }
-  .fix-top{
+  .sticky-top{
     position:sticky;
     top:0;
     z-index:map-get($indexes,fixTop);
@@ -29,13 +28,19 @@ $absList:(tr,top,right),(tl,top,left),(br,bottom,right),(bl,bottom,left);
   }
 }
 .abs-center{
+  display:absolute;
   @include abs-center();
+}
+.fix-top{
+  @include get-fix(fixTop,true);
+  top:0;
 }
 .fix-center{
   @include get-fix(fixCenter);
   @extend .abs-center;
 }
 .abs-mid{
+  display:absolute;
   @include abs-mid();
 }
 .fix-bottom{
@@ -51,6 +56,9 @@ $absList:(tr,top,right),(tl,top,left),(br,bottom,right),(bl,bottom,left);
 
 .auto{
   overflow:auto;
+}
+.hidden{
+  overflow:hidden;
 }
 .block{
   display:block;

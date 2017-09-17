@@ -16,18 +16,14 @@
   }
 }
 .collapse-null-btn{
-  font-size:$head-font-size;
-  text-align:left;
   color:$deep-default-color;
 }
 .collapse-list{
-  border-color:$p;
+  outline:none;
   &.active,&:active{
     color:$p;
   }
-  &:hover{
-    border-left:$collapse-list-width solid $p;
-  }
+  @include emptyBg-hover-focus($color:$p,$hover:true);
 }
 @each $abbrev,$value in $theme-colors{
   ._clp-btn-#{$abbrev}::after{

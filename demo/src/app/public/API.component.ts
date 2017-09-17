@@ -1,4 +1,4 @@
-import {Component,Input} from '@angular/core';
+import {Component,Input,ViewChild} from '@angular/core';
 export interface Tds{
     type:string,
     value:Array<string>
@@ -54,28 +54,30 @@ export class MyApiComponent{
                            let addon='';
                            if(count){
                                let cell=count-index;
-                               if(index==len-1&&cell>1)
-                               addon=`colspan='${cell}'`;
+                               if(index==len-1&&cell>1)addon=`colspan='${cell}'`;
                            }
                            let tdTp:any='';
                            if(typeof td=='object'){
                                //{title:'',content:[]}
                                tdTp+=`<a class="b-w">${td.title}</a>`||'';
                                tdTp+='<div class="quote-w px-0">';
-                               td.content.forEach((list:string|any)=>{
+                               td.content&&td.content.forEach((list:string|any)=>{
                                    let inner=list;
                                    if(typeof list=='object'){
                                        //{pre:'',value:''}
                                        inner=(list.pre?`<samp>${list.pre}</samp>`:'')+(list.value||'');
                                    }
+                                   if(td.type=='html'){
+                                       inner=inner.replace(/\>/g,'&gt;').replace(/\</g,'&lt;');
+                                   }
                                    tdTp+=`<div class="ml-1">${inner}</div>`;
-                               })
+                               });
                                tdTp+='</div>';
                            }else{
                                tdTp=td;
                            }
                            const tdContent=addonClass?`<a ${addonClass}>${tdTp}</a>`:tdTp;
-                           body+=index==0?`<th ${addon}>${td}</th>`:`<td ${addon}>${tdContent}</td>`;
+                           body+=index==0?`<th ${addon}>${tdContent}</th>`:`<td ${addon}>${tdContent}</td>`;
                        })
                        body+='</tr>';
                 });

@@ -21,7 +21,8 @@ export const apiLib=[
       ['[(ngModel)]','绑定值，get时获取滚动值，set时默认调用<em>scrollTo</em>'],
       ['baseLine','(px)设置滚动基线，默认为0'],
       ['justScroll','仅使用滚动函数，不对对象进行监听'],
-      ['throttleTime','滚动监听的<em>throttleTime</em>，默认为0']
+      ['throttleTime','滚动监听的<em>throttleTime</em>，默认为0'],
+      ['forbidAnimate','禁止滚动动画，直接跳转，default:false']
     ]
   },
   {

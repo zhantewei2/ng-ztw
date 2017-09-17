@@ -1,2 +1,2 @@
 import './styles.css';
-import '../../ngz-sass/sass.scss'
+import './styles.scss'

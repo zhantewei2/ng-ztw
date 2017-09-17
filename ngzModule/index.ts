@@ -3,11 +3,11 @@ import {CommonModule} from '@angular/common';
 import {DirectionModule} from './direction/direction.module';
 
 import {ComponentModule} from './component/component.module';
-import {Pipes} from './pipe/pipes';
+//import {Pipes} from './pipe/pipes';
 import {serviceList} from './service/service.module';
 import {TimePipe} from './pipe/time.pipe';
 import {LimitPipe} from './pipe/limit.pipe';
-
+import {TrustPipe} from './pipe/trust.pipe';
 export {
     innerTp,
     CollapseComponent,
@@ -51,14 +51,16 @@ export {
     ],
     declarations:[
         TimePipe,
-        LimitPipe
+        LimitPipe,
+        TrustPipe
     ],
     exports:[
         CommonModule,
         DirectionModule,
         ComponentModule,
         TimePipe,
-        LimitPipe
+        LimitPipe,
+        TrustPipe
     ]
 })
 export class ngzModule{

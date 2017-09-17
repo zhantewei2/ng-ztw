@@ -6,12 +6,12 @@ import {Component,Input,ViewChild} from '@angular/core';
             <p>
                 <em #tip="ngzTooltip"  (copyComplete)="complete()" 
                       [ngz-clickCopy]="_code" [ngz-tooltip]="copyState"
-                       class="abs-tr b-w -hover-w">Copy</em>
+                       class="abs-tr b-p -hover-p">Copy</em>
             </p>
             <ng-template #tip>
                 <div>{{copyState}}</div>
             </ng-template>
-            <pre class="pt-1" [highlight]="_code" [language]="type"></pre>
+            <pre [useIndex]="useIndex" class="pt-1" [highlight]="_code" [language]="type"></pre>
         </div>
         <ng-template #another>
             <h3 class="center m-2 color-d">
@@ -21,13 +21,14 @@ import {Component,Input,ViewChild} from '@angular/core';
     `
 })
 export class CodeComponent{
-
+    @Input()useIndex:boolean;
     copyState:string='Copy to clipboard';
 
     _code:string;
     type:string;
     @ViewChild('tip')tip:any;
     complete(){
+        console.log('com');
         this.tip.onceShow('Copied!')
     }
     @Input()set js(val:string){

@@ -1,14 +1,10 @@
-%base-font-family{
-  font-family: $light-family;
-}
+
 @mixin set-base($color,$family:null){
   color:$color;
   @if($family){
     font-family:$family;
   }
-  @else{
-    @extend %base-font-family;
-  }
+
 }
 
 .zl-tag{

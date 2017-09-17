@@ -9,7 +9,7 @@
 @mixin alert-variant($color){
   $bgPercent:25%;
   $subColor:sub-color-deep($color);
-  background-color:lighten($color,$bgPercent);
+  background-color:disabled-color($color,60%);
   color:$subColor;
   border-color:$color;
   & hr{

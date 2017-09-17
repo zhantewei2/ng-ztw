@@ -4,4 +4,7 @@
 /indexDB_dist/
 /.idea/
 /.vs/
+/koa-server/node_modules/
+/koa-server/assets/*
+/koa-server/public/*
 npm-debug.log

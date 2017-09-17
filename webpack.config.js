@@ -19,8 +19,7 @@ module.exports=function makeWepbackConfig(envOptions){
         path:join('demo/dist'),
         filename:'[name].bundle.js',
         chunkFilename:'[id].chunk.js',
-        sourceMapFilename:'[name].bundle.map',
-        //publicPath:join('assets')
+        sourceMapFilename:'[name].bundle.map'
     };
     config.module={
       rules:[

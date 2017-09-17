@@ -33,7 +33,7 @@ export const lib={
         {
             title:'<var>@Input</var>',
             body:[
-                ['type','设置主题'],
+                ['type','设置主题,为null时，取消样式'],
                 ['noAnimate','不使用动画']
             ]
         }
@@ -43,6 +43,13 @@ export const lib={
         body:[
             ['open',':boolean 设置初始为打开状态']
         ]
+        },
+        {
+        title:'Property',
+            body:[
+                ['isOpen',':boolean'],
+                ['index',':number']
+            ]
         },
         {title:'<var>Method</var>',
          body:[

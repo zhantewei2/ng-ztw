@@ -1,7 +1,7 @@
 @mixin _linear($args...){
   background-image:linear-gradient($args);
 }
-@mixin gra-line($color,$percent:10%) {
+@mixin gra-line($color) {
   $colorBoth:rgba($color,$base-opacity);
   @include _linear(45deg,$colorBoth,$color 35%,$color 65%,$colorBoth)
 }

@@ -21,7 +21,9 @@ export class HomeComponent{
     ngAfterViewInit(){
         setTimeout(()=>this._main.navTp=this.navTp,1)
     }
-
+    activate(){
+        this._main.repairH();
+    }
     componentList:Array<string>=[
         'collapse',
         'nav-side',

@@ -5,3 +5,16 @@ body{
 pre{
     background:rgba(200,200,200,.1);
 }
+
+
+.bg-dp{
+    color:white;
+    background:rgba(255,255,255,0.2);
+}
+.bg-brand{
+    width:300px;
+    height:300px;
+}
+.nav-brand-icon{
+    width:50px;
+}

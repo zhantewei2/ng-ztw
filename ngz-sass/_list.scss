@@ -13,12 +13,19 @@
     }
   }
 }
-
 .list-item{
   border:1px solid $default-color;
   padding:$list-item-py $list-item-px;
+  outline:none;
   @include transition();
   @include radius();
+}
+
+.list-group-sm{
+  & .list-item{
+    padding:$list-item-py-sm $list-item-px-sm;
+    border-color:$l;
+  }
 }
 
 @each $abbrev,$color in $theme-colors{

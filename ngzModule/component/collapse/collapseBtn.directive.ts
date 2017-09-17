@@ -23,7 +23,7 @@ export class CollaspeBtnDirective{
     addType(type:any){
         if(type===this.nowType)return;
         const node=this._el.nativeElement;
-        let reg=type!==null?/(btn-\w?|_clp-btn-\w?)/g:/(btn-\w?|_clp-btn-\w?|collapse-btn\s?)/g;
+        let reg=type!==null?/(btn-\w?|_clp-btn-\w?)/g:/(btn|btn-\w?|_clp-btn-\w?|collapse-btn\s?)/g;
         node.className=node.className.replace(reg,'');
         if(type!==null){
             node.classList.add(`btn-${type}`,`_clp-btn-${type}`,'collapse-btn');

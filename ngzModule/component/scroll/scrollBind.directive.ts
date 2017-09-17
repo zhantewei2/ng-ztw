@@ -13,14 +13,21 @@ export class ScrollBindDirective{
 	offsetSelf:any;
 	remainTop:number;
 	scrollSelf:any=this.parent.event.map((event:any)=>{
-
 	    if(!this.offsetSelf)this.offsetSelf=this.parent.getControlOffset(this.value);
 	    return this.over?event.bottom:event.top;
     });
 	stickySub:any;
 	@Input()set sticky(val:string){
-	    if(!val)return;
+	    if(val===undefined)return;
 	    const node=this.el.nativeElement;
+	    const destrop=()=>{
+            node.style.position=null;
+            node.style.top=null;
+        };
+	    if(val=='destroy'){
+            destrop();
+            return;
+        }
 	    const parent=document.createElement('div');
 	    setTimeout(()=>{
 	      node.parentNode.insertBefore(parent,node);
@@ -35,8 +42,7 @@ export class ScrollBindDirective{
                       node.style.position='fixed';
                       node.style.top=val;
                   }else{
-                      node.style.position=null;
-                      node.style.top=null;
+                      destrop();
                   }
               })
           }
@@ -51,11 +57,10 @@ export class ScrollBindDirective{
             this.entry.emit(value);
       };
 
-    let control:any;
     this.entrySub=this.scrollSelf.subscribe((val:number)=>{
-        if(val<control.top){
+        if(val<this.offsetSelf.top){
             fn1('up')
-        }else if(val>=control.top&&val<=control.bottom){
+        }else if(val>=this.offsetSelf.top&&val<=this.offsetSelf.bottom){
             fn1('in');
         }else{
             fn1('down');

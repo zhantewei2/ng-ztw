@@ -1,0 +1,25 @@
+@import '../../ngz-sass/sass';
+$sbg-color:$p;
+
+%showBg-linear{
+  @include _linear(135deg,$sbg-color,darken-color($sbg-color));
+}
+.showBg{
+  height:600px;
+  position:relative;
+  @extend %showBg-linear;
+  width:100%;
+}
+.footer{
+  @extend %showBg-linear;
+  padding:2rem;
+  @include color-yiq($sbg-color);
+}
+.nav-icon{
+  @include radius();
+  @include size-btn();
+  border:1px solid sub-color($sbg-color);
+}
+.nav-icon2{
+  border-color:$default-color;
+}
