@@ -7,7 +7,8 @@
     "demo": "webpack-dev-server --open",
     "demo:prod": "webpack --env.MODE=prod",
     "ngz-d": "node_modules/.bin/ngc -p tsconfig-lib.json",
-    "genCss":"node-sass ngz-sass/sass.scss dist/ngz.min.css --output-style compressed"
+    "genCss":"node-sass ngz-sass/sass.scss dist/ngz.min.css --output-style compressed",
+    "genDB":"tsc -d --lib 'es6','DOM' ngz-indexDB/index --outDir indexDB_dist"
   },
   "author": "",
   "license": "ISC",
