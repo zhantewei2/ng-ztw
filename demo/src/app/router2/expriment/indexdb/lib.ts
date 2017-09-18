@@ -3,17 +3,21 @@ export const lib={
 import {IndexDB} from 'ztw-indexeddb'
 
 const db=new IndexDB('dbName',{publishVersion:1})
-db.use('collectionName',{keyPath:'name'}).then((collection:any)=>{
-    collection.insert({name:'test',age:11},(err)=>{})
+db.init().then(()=>{
+    db.use('collectionName',{keyPath:'name'}).then((collection:any)=>{
+        collection.insert({name:'test',age:11},(err)=>{})
+    })
 })
+
 /*外部调用collection也是可以的: */
 let articleColle:any;
 let click=()=>articleColle.findOne('id_1',(err,data)=>{})；
-db.use('collectionName2',{keyPath:'articleId'}).then((collection:any)=>{
-    articleColle=collection
-});
-//外部调用，你要确保的是调用时，获取Collection的回调已经完成。
-
+db.init().then(()=>{
+    db.use('collectionName2',{keyPath:'articleId'}).then((collection:any)=>{
+        articleColle=collection
+    })
+})
+//外部调用也是可以的,你要确保的是调用时，获取Collection的回调已经完成。
     `,
     api:[
         {title:'<var>Collection Options</var>',

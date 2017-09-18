@@ -18,7 +18,7 @@ import {ngzModule} from 'ng-ztw';
 improt {BrowserAnimationsModule} from '..';
 @NgModule({
     imports:[
-        ngzModules.forRoot();
+        ngzModules.forRoot(),
         BrowserAnimationsModule
     ]
 })
