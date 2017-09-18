@@ -1,5 +1,5 @@
 import {inheritMethod} from './method/method';
-import {toCB} from './util';
+
 import {filterModel,initTypeDB} from './model';
 import {DBOpts,CollectionOpts} from './config';
 
@@ -9,7 +9,7 @@ export class IndexDB{
     destroy:Function;
     db:any;
     constructor(dataName:string,opts:DBOpts){
-        let publishV:number,locationV:number;
+        let publishV:number;
         const
             dynamicKey='_ngz_dynamicV_'+dataName,
             publishKey='_ngz_publishV_'+dataName,
@@ -18,15 +18,14 @@ export class IndexDB{
             getVersion=(k=dynamicKey)=>localStorage[k];
         this.destroy=(publishVersion:number)=>{
             indexDB.deleteDatabase(dataName);
-            locationV=setVersion(1);
+            setVersion(1);
             publishV=setVersion(publishVersion,publishKey);
         };
         let compareVersion=()=>{
-                const pubV=getVersion(publishKey),nowV=opts.publishVersion,locV=getVersion();
-                if(!pubV||pubV!=nowV||!locV){
+                const pubV=getVersion(publishKey),nowV=opts.publishVersion;
+                if(!pubV||pubV!=nowV||!getVersion()){
                     this.destroy(nowV);
                 }else{
-                    locationV=locV;
                     publishV=nowV;
                 }
             };
@@ -39,25 +38,29 @@ export class IndexDB{
         collections:any=[],
         */
         req:any,
-        getModel=(modelName:string)=>this.db.transaction(modelName,'readwrite').objectStore(modelName),
+        getModel=(modelName:string)=>this.db.transaction(modelName, 'readwrite').objectStore(modelName),
         createModel=(modelName:string,opts:CollectionOpts)=>{
-            return new Promise(resolve=>{
-                let newV=Number(locationV)+1,objectStore:any;
-                this.db.close();
-                setTimeout(()=>{
-                    req=indexDB.open(dataName,newV);
-                    req.onupgradeneeded=(e:any)=>{
-                        this.db=req.result;
-                        objectStore=this.db.createObjectStore(modelName,{keyPath:opts.keyPath});
-                        filterModel(objectStore,opts);
-                    };
-                    req.onsuccess=()=>setVersion(newV)&&resolve();
-                })
+          return new Promise(resolve=>{
+            let newV=Number(getVersion())+1,objectStore:any;
+            this.db.close();
+            setTimeout(()=>{
+              req=indexDB.open(dataName,newV);
+              req.onupgradeneeded=(e:any)=>{
+                this.db=req.result;
+                objectStore=this.db.createObjectStore(modelName,{keyPath:opts.keyPath});
+                setVersion(newV);
+                filterModel(objectStore,opts);
+              };
+              req.onsuccess=()=>{
+                this.db=req.result;
+                resolve();
+              }
             })
+          })
         };
         this.init=()=>{
             return new Promise((resolve)=>{
-                req=indexDB.open(dataName,locationV);
+                req=indexDB.open(dataName,getVersion());
                 req.onupgradeneeded=(e:any)=>{
                     this.db=req.result;
                    // db.createObjectStore(mainCollectionName,{keyPath:'name'});
@@ -80,11 +83,10 @@ export class IndexDB{
                 initModel=()=>{
                   model=getModel(collectionName);
                   inheritMethod(model,this.db,collectionName,opts);
-                  initTypeDB(model,opts);
+                  model=initTypeDB(model,opts);
                   resolve(model);
-                },
-                buildModel=()=>this.db.objectStoreNames.contains(collectionName)?initModel():createModel(collectionName,opts).then(initModel);
-                !this.db?this.init().then(buildModel):buildModel();
+                };
+                this.db.objectStoreNames.contains(collectionName)?initModel():createModel(collectionName,opts).then(initModel)
             })
         }
     }

@@ -2,7 +2,8 @@ import {CollectionOpts,cappedKey} from './config';
 import {indexMethod} from './method/indexMethod';
 
 export function initTypeDB(model:any,opts:CollectionOpts){
-  if(!opts.type)return;
+  if(!opts.type)return model;
+  indexMethod.call(model);
   if(opts.type=='capped'){
     let model2:any={};
     model2.__proto__=model;
@@ -18,9 +19,10 @@ export function initTypeDB(model:any,opts:CollectionOpts){
           }else{next()}
         })(()=>model.insert(params,cb))
       })
-    }
+    };
+    return model2
   }
-  indexMethod.call(model);
+  return model;
 }
 
 export function filterModel(objectStore:any,opts:CollectionOpts){

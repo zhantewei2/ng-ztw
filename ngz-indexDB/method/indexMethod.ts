@@ -1,11 +1,12 @@
 import {cappedKey} from '../config';
+
 export class indexMethod{
     getList:Function;
-    constructor(model:any){
+    constructor(){
         this.getList=(size:number,select:any,index:any=cappedKey,direction='next',query:any=null)=>{
             return new Promise(resolve=>{
                 let results:any=[];
-                model.useCursor({index:index,direction:direction,query:query},(err:any,cursor:any)=>{
+                (this as any).useCursor({index:index,direction:direction,query:query},(err:any,cursor:any)=>{
                     if(cursor&&size--){
                         if(select&&select.length){
                             let obj:any={};

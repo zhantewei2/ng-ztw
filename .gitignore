@@ -1,8 +1,8 @@
 /node_modules/
 /dist/
-/demo/dist/
-/demo/dist.gz/
-/indexDB_dist/
+/demo/dist
+/demo/dist.gz
+/indexDB_dist
 /.idea/
 /.vs/
 /koa-server/node_modules/
