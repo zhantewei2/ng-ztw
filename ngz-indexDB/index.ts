@@ -8,6 +8,7 @@ export class IndexDB{
     use:Function;
     destroy:Function;
     db:any;
+
     constructor(dataName:string,opts:DBOpts){
         let publishV:number;
         const
@@ -79,12 +80,12 @@ export class IndexDB{
         this.use=(collectionName:string,opts:CollectionOpts)=>{
             return new Promise(resolve=>{
                 let
-                model:any,
+                modelOut:any={},
                 initModel=()=>{
-                  model=getModel(collectionName);
-                  inheritMethod(model,this.db,collectionName,opts);
-                  model=initTypeDB(model,opts);
-                  resolve(model);
+                  modelOut.__proto__=getModel(collectionName);
+                  inheritMethod(modelOut,this,collectionName,opts);
+                  modelOut=initTypeDB(modelOut,opts);
+                  resolve(modelOut);
                 };
                 this.db.objectStoreNames.contains(collectionName)?initModel():createModel(collectionName,opts).then(initModel)
             })

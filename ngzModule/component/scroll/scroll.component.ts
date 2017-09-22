@@ -82,12 +82,13 @@ export class ScrollComponent{
     return {top:top,bottom:top+window.innerHeight};
   }
   checkOnce(pos:any){
-    let i=this.offsetControls.length;
+    let i=this.offsetControls.length,control:any;
     this.event.emit(pos);
     while(i--) {
-      this.bound=this.offsetControls[i].over === 'bottom' ?pos.bottom:pos.top;
-      if (this.bound >= this.offsetControls[i].top && this.bound <= this.offsetControls[i].bottom) {
-        this.changeEmit(this.offsetControls[i].value);
+      control=this.offsetControls[i];
+      this.bound=control.over === 'bottom' ?pos.bottom:pos.top;
+      if (this.bound >= control.top && this.bound <= control.bottom) {
+        this.changeEmit(control.value);
         return;
       }
     }

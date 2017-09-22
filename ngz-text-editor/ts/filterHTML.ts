@@ -8,7 +8,7 @@ export class FilterHTML{
       allArr.push([
         result.index,
         regExp.lastIndex,
-        result.toString().replace(/style=".*?"|rel=".*?"|id=".*?"|class=".*?"|data-.*?=".*?"/g,'')
+        result.toString().replace(/style=".*?"|rel=".*?"|id=".*?"|class=".*?"|data-.*?=".*?|\<!--[^]*?--\>"/g,'')
       ]);
       getAll();
     };

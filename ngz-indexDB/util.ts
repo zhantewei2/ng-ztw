@@ -1,5 +1,5 @@
 export function toCB(colle:any,method:string,val:any,cb:Function){
-  const req=colle[method].call(colle,val);
+  const req=colle['__proto__'][method].call(colle['__proto__'],val);
   req.onsuccess=(e:any)=>{cb(null,e.target.result)};
   req.onerror=(e:any)=>{cb(e.target.result,null)};
 };

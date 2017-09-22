@@ -1,13 +1,17 @@
 import {toCB,asyncForEach} from '../util';
 import {CollectionOpts} from '../config';
-import {} from ''
-export function dbMethod(db:any,modelName:string,keyPath:string){
+
+export function dbMethod(parentObj:any,modelName:string,keyPath:string){
   const tryToCB=(model:any,method:string,params:any,cb:Function)=>{
     try{
       toCB(model,method,params,cb);
     }catch(err){
-      let objectStore=db.transaction(modelName,'readwrite').objectStore(modelName);
-      toCB(objectStore,method,params,cb);
+      try {
+        model.__proto__= parentObj.db.transaction(modelName, 'readwrite').objectStore(modelName);
+        toCB(model, method, params, cb);
+      }catch(e){
+        console.log('handle error')
+      }
     }
   };
   this.removeAll=(cb:Function)=>tryToCB(this,'clear',null,cb);
@@ -42,7 +46,7 @@ export function dbMethod(db:any,modelName:string,keyPath:string){
     try{
       method(this)
     }catch(e){
-      let objStore=db.transaction(modelName,'readwrite').objectStore(modelName);
+      let objStore=parentObj.db.transaction(modelName,'readwrite').objectStore(modelName);
       method(objStore);
     }
   };
@@ -73,7 +77,7 @@ export function dbMethod(db:any,modelName:string,keyPath:string){
     return key.slice(0,-1);
   }
 }
-export function inheritMethod(model:any,db:any,modelName:string,opts:CollectionOpts){
-  dbMethod.call(model,db,modelName,opts.keyPath);
+export function inheritMethod(modelOut:any,parentObj:any,modelName:string,opts:CollectionOpts){
+  dbMethod.call(modelOut,parentObj,modelName,opts.keyPath);
 
 }
