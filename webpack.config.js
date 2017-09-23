@@ -16,7 +16,7 @@ module.exports=function makeWepbackConfig(envOptions){
         vendors:join('demo/src/vendors.ts')
     };
     config.output={
-        path:join('demo/dist'),
+        path:join('docs'),
         filename:'[name].bundle.js',
         chunkFilename:'[id].chunk.js',
         sourceMapFilename:'[name].bundle.map'
@@ -52,6 +52,7 @@ module.exports=function makeWepbackConfig(envOptions){
         new HtmlWebpackPlugin({
             template:'./demo/src/index.html',
             title:'ngz',
+            prefix:'/ng-ztw/',
             favicon:join('demo/src/assets/favicon.ico'),
             chunksSortMode:function(a,b){
                 const order=['vendors','ployfills','main'];
