@@ -18,7 +18,7 @@ module.exports=function makeWepbackConfig(envOptions){
     config.output={
         path:join('docs'),
         filename:'[name].bundle.js',
-        chunkFilename:'[id].chunk.js',
+        chunkFilename:'ng-ztw/[id].chunk.js',
         sourceMapFilename:'[name].bundle.map'
     };
     config.module={
