@@ -1,5 +1,5 @@
 ### ng-ztw
-### [Visit ng-ztw web site](http://39.108.193.57:3000/) 
+### [Visit ng-ztw DEMO](https://zhantewei2.github.io/ng-ztw/) 
 Angular components
 
 Install
