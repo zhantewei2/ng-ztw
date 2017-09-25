@@ -21,6 +21,9 @@
     .#{$compare}-#{$size}-show{
       display:none !important;
     }
+    html{
+      font-size:map-get($base-fontSize,$size);
+    }
     //container:
     .container{
       padding:$container-padding-y map-get($container-padding-x,$size) !important;

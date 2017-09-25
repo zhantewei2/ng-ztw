@@ -54,7 +54,11 @@ $icon-tag-margin:.3rem;
 
 $enable-transition:true !default;
 $transition-base:all .3s ease !default;
-$base-fontSize:16px;
+$base-fontSize:(
+        lg:16px,
+        md:15px,
+        sm:13px
+);
 
 $base-space:.5rem;
 $base-opacity:.2;
@@ -89,9 +93,9 @@ $article-indent:2em;
 //button:
 $btn-transition:$transition-base;
 $btn-size:1;
-$btn-size-sm:.8;
+$btn-size-sm:.5;
 $btn-size-lg:1.4;
-$btn-size-map:(sm:.8,lg:1.4);
+$btn-size-map:(sm:.5,lg:1.4);
 $btn-border:1px solid $default-color !default;
 $btn-outline-width:.15rem;
 $keyframe-duration:0.3s;

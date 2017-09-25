@@ -1,4 +1,4 @@
-import {trigger,transition,style,animate,state,keyframes,query,animateChild} from '@angular/animations';
+import {trigger,transition,style,animate,state,keyframes} from '@angular/animations';
 let defaultT='.3s ease-out';
 
 export function carousel(
@@ -73,7 +73,7 @@ export function modal(
 ):any{
     return trigger('Modal',[
         transition('*=>void',[animate(t2,style({opacity:0,top:'-10%'}))]),
-        transition('void=>*',[style({top:'0%',opacity:.5}),animate(t)])
+        transition('void=>*',[style({top:'0%'}),animate(t)])
     ])
 }
 export function pop(

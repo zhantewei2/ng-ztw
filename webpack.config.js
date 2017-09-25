@@ -5,7 +5,7 @@ const ExtractTextPlugin=require('extract-text-webpack-plugin');
 const {AotPlugin}=require('@ngtools/webpack');
 
 const join=(...args)=>path.join(__dirname,...args);
-
+const assets=(...args)=>path.join(__dirname,'demo/src/ng-ztw/assets',...args);
 module.exports=function makeWepbackConfig(envOptions){
     const isProd=process.env.isProd=!!(envOptions&&envOptions.MODE);
     const config={};
@@ -17,9 +17,8 @@ module.exports=function makeWepbackConfig(envOptions){
     };
     config.output={
         path:join('docs'),
-        publicPath:join('docs/assets'),
         filename:'[name].bundle.js',
-        chunkFilename:'ng-ztw/[id].chunk.js',
+        chunkFilename:(isProd?'ng-ztw/':'')+'[id].chunk.js',
         sourceMapFilename:'[name].bundle.map'
     };
     config.module={
@@ -53,8 +52,8 @@ module.exports=function makeWepbackConfig(envOptions){
         new HtmlWebpackPlugin({
             template:'./demo/src/index.html',
             title:'ngz',
-
-            favicon:join('demo/src/assets/favicon.ico'),
+            prefix:isProd?'/ng-ztw/':'',
+            favicon:assets('favicon.ico'),
             chunksSortMode:function(a,b){
                 const order=['vendors','ployfills','main'];
                 return order.indexOf(a.names[0])-order.indexOf(b.names[0]);

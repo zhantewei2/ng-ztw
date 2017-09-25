@@ -29,8 +29,8 @@ export interface Content{
         <div *ngIf="btn">
             <div class="modal-divide"></div>
             <div class="modal-footer" >
-                <button *ngIf="btn=='double'" (click)="this.cb&&this.cb(true);this.close()" class="btn0 btn-{{type||'o-l'}} btn-sm mx-2">确定</button>
-                <button (click)="this.cb&&this.cb(false);this.close()" class="btn0 btn-{{type||'o-l'}} btn-sm mx-2">{{btn=='single'?'关闭':'取消'}}</button>
+                <button *ngIf="btn=='double'" (click)="this.cb&&this.cb(true);this.close()" class="btn0 btn-{{type||'o-l'}} mx-2">确定</button>
+                <button (click)="this.cb&&this.cb(false);this.close()" class="btn0 btn-{{type||'o-l'}} mx-2">{{btn=='single'?'关闭':'取消'}}</button>
             </div>
         </div>
     </div>

@@ -5,10 +5,12 @@
   "main": "index.js",
   "scripts": {
     "demo": "webpack-dev-server --open",
-    "demo:prod": "webpack --env.MODE=prod",
+    "demo:prod": "webpack --env.MODE=prod && npm run cpy1  && npm run cpy2",
+    "cpy1":"node_modules/.bin/cpy docs/ng-ztw/* docs",
+    "cpy2":"node_modules/.bin/cpy demo/src/ng-ztw/assets/* docs/assets",
     "ngz-d": "node_modules/.bin/ngc -p tsconfig-lib.json",
     "genCss": "node-sass ngz-sass/sass.scss dist/ngz.min.css --output-style compressed",
-    "genDB": "tsc -d --lib 'es6','DOM' ngz-indexDB/index --outDir indexDB_dist"
+    "genDB": "tsc -d --lib es6,dom ngz-indexDB/index --outDir indexDB_dist"
   },
   "author": "",
   "license": "ISC",
@@ -32,6 +34,7 @@
     "@ngtools/webpack": "^1.6.0",
     "angular-router-loader": "^0.6.0",
     "angular2-template-loader": "^0.6.2",
+    "cpy-cli": "^1.0.1",
     "css-loader": "^0.28.5",
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^0.11.2",
