@@ -10,4 +10,5 @@ export class TrustPipe implements PipeTransform{
         const method='bypassSecurityTrust'+args[0].toUpperCase()+args.slice(1);
         return (this.sanitizer as any)[method].call(this.sanitizer,val);
     }
+
 }

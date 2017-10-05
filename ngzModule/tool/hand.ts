@@ -33,10 +33,10 @@ const moveEvent=(node:any,begin?:Function,cb?:Function,end?:any,withDrag?:boolea
     touchEndOb=Observable.fromEvent(node,'touchend');
     subs.touchStartSub=touchStartOb.subscribe((e:any)=>{
       startOri(e.targetTouches[0]);
-      e.preventDefault()
+      !noDis&&e.preventDefault()
     });
     subs.touchMoveSub=touchMoveOb.subscribe((e:any)=>{
-      e.preventDefault();
+      !noDis&&e.preventDefault();
       moveOri(e.targetTouches[0]);
     }),
     subs.touchEndSub=end&&touchEndOb.subscribe(end);
